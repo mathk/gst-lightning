@@ -1,0 +1,7 @@
+<package>
+  <name>Lightning</name>
+  <namespace>Lightning</namespace>
+  <module>Lightning</module>
+  <filein>Register.st</filein>
+  <file>Register.st</file>
+</package>
