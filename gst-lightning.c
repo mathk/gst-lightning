@@ -597,3 +597,30 @@ jmpr (char i)
 {
   jit_jmpr (i);
 }
+
+/* Common */
+jit_insn*
+get_label()
+{
+	return jit_get_label();
+}
+
+jit_insn*
+forward()
+{
+	return jit_forward();
+}
+
+jit_code
+get_ip()
+{
+	return jit_get_ip();
+}
+
+void
+set_ip(jit_insn* ip)
+{
+	jit_set_ip(ip);
+}
+
+
