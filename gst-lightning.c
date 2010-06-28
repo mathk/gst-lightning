@@ -326,3 +326,175 @@ void gei_ui(char i, char j, char k)
 {
 	jit_gei_ui(i, j, k);
 }
+
+/* Jump */
+void bltr_i(char i, char j, char k)
+{
+	jit_bltr_i(i, j, k);
+}
+
+void bler_i(char i, char j, char k)
+{
+	jit_bler_i(i, j, k);
+}
+
+void bgtr_i(char i, char j, char k)
+{
+	jit_bgtr_i(i, j, k);
+}
+
+void bger_i(char i, char j, char k)
+{
+	jit_bger_i(i, j, k);
+}
+
+void beqr_i(char i, char j, char k)
+{
+	jit_beqr_i(i, j, k);
+}
+
+void bner_i(char i, char j, char k)
+{
+	jit_bner_i(i, j, k);
+}
+
+void bltr_ui(char i, char j, char k)
+{
+	jit_bltr_ui(i, j, k);
+}
+
+void bler_ui(char i, char j, char k)
+{
+	jit_bler_ui(i, j, k);
+}
+
+void bgtr_ui(char i, char j, char k)
+{
+	jit_bgtr_ui(i, j, k);
+}
+
+void bger_ui(char i, char j, char k)
+{
+	jit_bger_ui(i, j, k);
+}
+
+void bmsr_i(char i, char j, char k)
+{
+	jit_bmsr_i(i, j, k);
+}
+
+void bmcr_i(char i, char j, char k)
+{
+	jit_bmcr_i(i, j, k);
+}
+
+void boaddr_i(char i, char j, char k)
+{
+	jit_boaddr_i(i, j, k);
+}
+
+void bosubr_i(char i, char j, char k)
+{
+	jit_bosubr_i(i, j, k);
+}
+
+void boaddr_ui(char i, char j, char k)
+{
+	jit_boaddr_ui(i, j, k);
+}
+
+void bosubr_ui(char i, char j, char k)
+{
+	jit_bosubr_ui(i, j, k);
+}
+
+void blti_i(char i, char j, char k)
+{
+	jit_blti_i(i, j, k);
+}
+
+void blei_i(char i, char j, char k)
+{
+	jit_blei_i(i, j, k);
+}
+
+void bgti_i(char i, char j, char k)
+{
+	jit_bgti_i(i, j, k);
+}
+
+void bgei_i(char i, char j, char k)
+{
+	jit_bgei_i(i, j, k);
+}
+
+void beqi_i(char i, char j, char k)
+{
+	jit_beqi_i(i, j, k);
+}
+
+void bnei_i(char i, char j, char k)
+{
+	jit_bnei_i(i, j, k);
+}
+
+void blti_ui(char i, char j, char k)
+{
+	jit_blti_ui(i, j, k);
+}
+
+void blei_ui(char i, char j, char k)
+{
+	jit_blei_ui(i, j, k);
+}
+
+void bgti_ui(char i, char j, char k)
+{
+	jit_bgti_ui(i, j, k);
+}
+
+void bgei_ui(char i, char j, char k)
+{
+	jit_bgei_ui(i, j, k);
+}
+
+void boaddi_i(char i, char j, char k)
+{
+	jit_boaddi_i(i, j, k);
+}
+
+void bosubi_i(char i, char j, char k)
+{
+	jit_bosubi_i(i, j, k);
+}
+
+void boaddi_ui(char i, char j, char k)
+{
+	jit_boaddi_ui(i, j, k);
+}
+
+void bosubi_ui(char i, char j, char k)
+{
+	jit_bosubi_ui(i, j, k);
+}
+
+
+void bmsi_i(char i, char j, char k)
+{
+	jit_bmsi_i(i, j, k);
+}
+
+void bmci_i(char i, char j, char k)
+{
+	jit_bmci_i(i, j, k);
+}
+
+void jmpi(char i)
+{
+	jit_jmpi(i);
+}
+
+void jmpr(char i)
+{
+	jit_jmpr(i);
+}
