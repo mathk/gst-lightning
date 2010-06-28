@@ -225,3 +225,104 @@ void ntoh_us (char i, char j)
   jit_ntoh_us (i, j);
 }
 
+/* Boolean */
+
+void ltr_i(char i, char j, char k)
+{
+	jit_ltr_i(i, j, k);
+}
+
+void ler_i(char i, char j, char k)
+{
+	jit_ler_i(i, j, k);
+}
+
+void gtr_i(char i, char j, char k)
+{
+	jit_gtr_i(i, j, k);
+}
+
+void ger_i(char i, char j, char k)
+{
+	jit_ger_i(i, j, k);
+}
+
+void eqr_i(char i, char j, char k)
+{
+	jit_eqr_i(i, j, k);
+}
+
+void ner_i(char i, char j, char k)
+{
+	jit_ner_i(i, j, k);
+}
+
+void ltr_ui(char i, char j, char k)
+{
+	jit_ltr_ui(i, j, k);
+}
+
+void ler_ui(char i, char j, char k)
+{
+	jit_ler_ui(i, j, k);
+}
+
+void gtr_ui(char i, char j, char k)
+{
+	jit_gtr_ui(i, j, k);
+}
+
+void ger_ui(char i, char j, char k)
+{
+	jit_ger_ui(i, j, k);
+}
+
+void lti_i(char i, char j, char k)
+{
+	jit_lti_i(i, j, k);
+}
+
+void lei_i(char i, char j, char k)
+{
+	jit_lei_i(i, j, k);
+}
+
+void gti_i(char i, char j, char k)
+{
+	jit_gti_i(i, j, k);
+}
+
+void gei_i(char i, char j, char k)
+{
+	jit_gei_i(i, j, k);
+}
+
+void eqi_i(char i, char j, char k)
+{
+	jit_eqi_i(i, j, k);
+}
+
+void nei_i(char i, char j, char k)
+{
+	jit_nei_i(i, j, k);
+}
+
+void lti_ui(char i, char j, char k)
+{
+	jit_lti_ui(i, j, k);
+}
+
+void lei_ui(char i, char j, char k)
+{
+	jit_lei_ui(i, j, k);
+}
+
+void gti_ui(char i, char j, char k)
+{
+	jit_gti_ui(i, j, k);
+}
+
+void gei_ui(char i, char j, char k)
+{
+	jit_gei_ui(i, j, k);
+}
