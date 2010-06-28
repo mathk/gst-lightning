@@ -69,3 +69,129 @@ void xorr_i (char i, char j, char k)
 {
   jit_xorr_i (i, j, k);
 }
+
+void ori_i (char i, char j, char k)
+{
+  jit_ori_i (i, j, k);
+}
+
+void xori_i (char i, char j, char k)
+{
+  jit_xori_i (i, j, k);
+}
+
+void muli_i (char i, char j, char k)
+{
+  jit_muli_i (i, j, k);
+}
+
+void mulr_i (char i, char j, char k)
+{
+  jit_mulr_i (i, j, k);
+}
+
+void muli_uid (char i, char j, char k)
+{
+  jit_muli_uid (i, j, k);
+}
+
+void mulr_uid (char i, char j, char k)
+{
+  jit_mulr_uid (i, j, k);
+}
+
+void hmuli_i (char i, char j, char k)
+{
+  jit_hmuli_i (i, j, k);
+}
+
+void hmulr_i (char i, char j, char k)
+{
+  jit_hmulr_i (i, j, k);
+}
+
+void hmuli_ui (char i, char j, char k)
+{
+  jit_hmuli_ui (i, j, k);
+}
+
+void hmulr_ui (char i, char j, char k)
+{
+  jit_hmulr_ui (i, j, k);
+}
+
+void divi_i (char i, char j, char k)
+{
+  jit_divi_i (i, j, k);
+}
+
+void divi_ui (char i, char j, char k)
+{
+  jit_divi_ui (i, j, k);
+}
+
+void modi_i (char i, char j, char k)
+{
+  jit_modi_i (i, j, k);
+}
+
+void modi_ui (char i, char j, char k)
+{
+  jit_modi_ui (i, j, k);
+}
+
+void divr_i (char i, char j, char k)
+{
+  jit_divr_i (i, j, k);
+}
+
+void divr_ui (char i, char j, char k)
+{
+  jit_divr_ui (i, j, k);
+}
+
+void modr_i (char i, char j, char k)
+{
+  jit_modr_i (i, j, k);
+}
+
+void modr_ui (char i, char j, char k)
+{
+  jit_modr_ui (i, j, k);
+}
+
+void shift_ui (char i, char j, char k)
+{
+  jit_shift_ui (i, j, k);
+}
+
+void lshi_i (char i, char j, char k)
+{
+  jit_lshi_i (i, j, k);
+}
+
+void rshi_i (char i, char j, char k)
+{
+  jit_rshi_i (i, j, k);
+}
+
+void rshi_ui (char i, char j, char k)
+{
+  jit_rshi_ui (i, j, k);
+}
+
+void lshr_i (char i, char j, char k)
+{
+  jit_lshr_i (i, j, k);
+}
+
+void rshr_i (char i, char j, char k)
+{
+  jit_rshr_i (i, j, k);
+}
+
+void rshr_ui (char i, char j, char k)
+{
+  jit_rshr_ui (i, j, k);
+}
+
