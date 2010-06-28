@@ -195,3 +195,33 @@ void rshr_ui (char i, char j, char k)
   jit_rshr_ui (i, j, k);
 }
 
+void retval_i (char i)
+{
+  jit_retval_i (i);
+}
+
+void negr_i (char i, char j)
+{
+  jit_negr_i (i, j);
+}
+
+void movr_i (char i, char j)
+{
+  jit_movr_i (i, j);
+}
+
+void movi_i (char i, char j)
+{
+  jit_movi_i (i, j);
+}
+
+void ntoh_ui (char i, char j)
+{
+  jit_ntoh_ui (i, j);
+}
+
+void ntoh_us (char i, char j)
+{
+  jit_ntoh_us (i, j);
+}
+
