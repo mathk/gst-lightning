@@ -45,7 +45,7 @@ andi_i (char i, char j, char k)
 void
 andr_i (char i, char j, char k)
 {
-  jit_andxr_i (i, j, k);
+  jit_andr_i (i, j, k);
 }
 
 void
@@ -109,15 +109,15 @@ mulr_i (char i, char j, char k)
 }
 
 void
-muli_uid (char i, char j, char k)
+muli_ui (char i, char j, char k)
 {
-  jit_muli_uid (i, j, k);
+  jit_muli_ui (i, j, k);
 }
 
 void
-mulr_uid (char i, char j, char k)
+mulr_ui (char i, char j, char k)
 {
-  jit_mulr_uid (i, j, k);
+  jit_mulr_ui (i, j, k);
 }
 
 void
@@ -192,11 +192,12 @@ modr_ui (char i, char j, char k)
   jit_modr_ui (i, j, k);
 }
 
-void
-shift_ui (char i, char j, char k)
+/*void
+shift (char i, char j, char k, l)
 {
-  jit_shift_ui (i, j, k);
+	jit_shift (i, j, k, l);
 }
+*/
 
 void
 lshi_i (char i, char j, char k)
@@ -602,25 +603,25 @@ jmpr (char i)
 jit_insn*
 get_label()
 {
-	return jit_get_label();
+	return jit_get_label ();
 }
 
 jit_insn*
 forward()
 {
-	return jit_forward();
+	return jit_forward ();
 }
 
 jit_code
 get_ip()
 {
-	return jit_get_ip();
+	return jit_get_ip ();
 }
 
 void
 set_ip(jit_insn* ip)
 {
-	jit_set_ip(ip);
+	jit_set_ip (ip);
 }
 
 
