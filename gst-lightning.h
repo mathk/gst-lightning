@@ -7,6 +7,12 @@
 
 typedef int (*pifi)(int);
 
+typedef struct _jit_stack {
+	jit_state   state;
+	jit_insn    * codeBuffer;
+
+} jit_stack;
+
 #endif /* GST_LIGHTNING_H */
 
 /* Local Variables: */
