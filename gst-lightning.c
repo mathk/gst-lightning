@@ -1,4 +1,4 @@
-#include "lightning.h"
+#include <lightning.h>
 
 void
 addi_i (char i, char j, char k)
