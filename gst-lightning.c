@@ -833,14 +833,22 @@ set_ip (jit_state *jit, jit_insn * ip)
 #undef _jit
 }
 
+void
+leaf(jit_state *jit, size_t numargs)
+{
+#define _jit (*jit)
+	jit_leaf(numargs);
+#undef _jit
+}
+
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
  */
 jit_state*
-lightning_alloc_jit_state (size_t insnSize)
+alloc_jit_state (size_t insnSize)
 {
-	jit_state* new_jit_state;
-	jit_insn* new_pc;
+	jit_state *new_jit_state;
+	jit_insn *new_pc;
 	new_pc = malloc (insnSize);
 	new_jit_state = malloc (sizeof (jit_state));
 	new_jit_state->x.pc = new_pc;
@@ -851,5 +859,6 @@ void
 gst_initModule (VMProxy* proxy)
 {
 	_gst_vm_proxy = proxy;
-	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", lightning_alloc_jit_state);
+	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+	_gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
 }
