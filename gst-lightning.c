@@ -1,5 +1,6 @@
 #include <lightning.h>
 #include <stdlib.h>
+#include <gstpub.h>
 
 static VMProxy *_gst_vm_proxy;
 
@@ -836,19 +837,19 @@ set_ip (jit_state *jit, jit_insn * ip)
  * It also allocate the code buffer of a insnSize bytes
  */
 jit_state*
-lightning_allocate_jit_state (size_t insnSize)
+lightning_alloc_jit_state (size_t insnSize)
 {
 	jit_state* new_jit_state;
 	jit_insn* new_pc;
-	new_pc = malloc(insnSize);
-	new_jit_state = malloc(sizeof(jit_state));
+	new_pc = malloc (insnSize);
+	new_jit_state = malloc (sizeof (jit_state));
 	new_jit_state->x.pc = new_pc;
 	return new_jit_state;
 }
 
 void
-gst_initModule (proxy)
-     VMProxy *proxy;
+gst_initModule (VMProxy* proxy)
 {
 	_gst_vm_proxy = proxy;
+	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", lightning_alloc_jit_state);
 }
