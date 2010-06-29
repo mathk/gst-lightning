@@ -837,9 +837,83 @@ void
 leaf(jit_state *jit, size_t numargs)
 {
 #define _jit (*jit)
-	jit_leaf(numargs);
+  jit_leaf (numargs);
 #undef _jit
 }
+
+/* Args */
+int
+arg_c (jit_state *jit)
+{
+#define _jit (*jit)
+  return jit_arg_c ();
+#undef _jit
+}
+
+int
+arg_uc (jit_state *jit)
+{
+#define _jit (*jit)
+  return jit_arg_uc ();
+#undef _jit
+}
+
+int
+arg_s (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_s ();
+#undef _jit
+}
+
+int
+arg_us (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_us ();
+#undef _jit
+}
+
+int
+arg_i (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_i ();
+#undef _jit
+}
+
+int
+arg_ui (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_ui ();
+#undef _jit
+}
+
+int
+arg_l (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_l ();
+#undef _jit
+}
+
+int
+arg_ul (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_ul ();
+#undef _jit
+}
+
+int
+arg_p (jit_state *jit)
+{
+#define _jit (*jit)
+  jit_arg_p ();
+#undef _jit
+}
+
 
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
@@ -847,18 +921,19 @@ leaf(jit_state *jit, size_t numargs)
 jit_state*
 alloc_jit_state (size_t insnSize)
 {
-	jit_state *new_jit_state;
-	jit_insn *new_pc;
-	new_pc = malloc (insnSize);
-	new_jit_state = malloc (sizeof (jit_state));
-	new_jit_state->x.pc = new_pc;
-	return new_jit_state;
+  jit_state *new_jit_state;
+  jit_insn *new_pc;
+  new_pc = malloc (insnSize);
+  new_jit_state = malloc (sizeof (jit_state));
+  new_jit_state->x.pc = new_pc;
+  return new_jit_state;
 }
 
 void
 gst_initModule (VMProxy* proxy)
 {
-	_gst_vm_proxy = proxy;
-	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
-	_gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
+  _gst_vm_proxy = proxy;
+  _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+  _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
+  _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
 }
