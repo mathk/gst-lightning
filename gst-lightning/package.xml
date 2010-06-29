@@ -3,5 +3,8 @@
   <namespace>Lightning</namespace>
   <module>Lightning</module>
   <filein>Register.st</filein>
+  <filein>CJitState.st</filein>
+
+  <file>CJitState.st</file>
   <file>Register.st</file>
 </package>
