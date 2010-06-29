@@ -1,0 +1,14 @@
+GST-GNU lightning
+=================
+
+A Smalltalk binding of GNU lightning. GNU lightning exposes a 
+portable interface for generating machine language at run-time. 
+GNU lightning is fast and tries to be as little intrusive as 
+possible, so that the generated code can also be optimized 
+easily. So far, it has been ported to the x86, SPARC and 
+PowerPC architecture.
+
+Authors of the binding:
+
+  - Gwenael Casaccio mrgwen@gmail.com
+  - Mathieu Suen     mathk.sue@gmail.com
