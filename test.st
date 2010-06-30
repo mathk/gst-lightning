@@ -7,5 +7,11 @@ Eval [
 	    addInt: Lightning.RET to: Lightning.R0 int: 1;
 	    ret;
 	    assemble;
-	    value: 5) printNl
+	    value: 5) printNl.
+
+	jitState := Lightning.CJitState new.
+	(jitState 
+	    prolog;
+	    assemble;
+	    value) printNl
 ]

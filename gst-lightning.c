@@ -832,11 +832,20 @@ set_ip (jit_stack * jitStack, jit_insn * ip)
 #undef _jit
 }
 
+/* Function prolog */
 void
 leaf (jit_stack * jitStack, size_t numargs)
 {
 #define _jit (jitStack->state)
   jit_leaf (numargs);
+#undef _jit
+}
+
+void
+prolog (jit_stack * jitStack, size_t numargs)
+{
+#define _jit (jitStack->state)
+	jit_prolog (numargs);
 #undef _jit
 }
 
@@ -1066,6 +1075,7 @@ value (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
   pif fct = (pifi) jitStack->codeBuffer;
+	__asm__ ("int3");
   return fct ();
 #undef _jit
 }
@@ -1086,6 +1096,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
+  _gst_vm_proxy->defineCFunc ("lightningProlog", prolog);
   _gst_vm_proxy->defineCFunc ("lightningArgC", arg_c);
   _gst_vm_proxy->defineCFunc ("lightningArgUC", arg_uc);
   _gst_vm_proxy->defineCFunc ("lightningArgS", arg_s);

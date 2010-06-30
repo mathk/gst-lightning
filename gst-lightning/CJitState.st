@@ -16,14 +16,26 @@ CObject subclass: CJitState [
 
     leaf: numargs [
 	"Initialize the Jit and set the number of argument"
-	<category: 'dsl initialize'>
+	<category: 'dsl prolog'>
 	<cCall: 'lightningLeaf' returning: #void args: #(#self #ulong)>
     ]
 
     leaf [
 	"Initialize the Jit and set the number of argument to 0"
-	<category: 'dsl initialize'>
+	<category: 'dsl prolog'>
 	self leaf: 0.
+    ]
+
+    prolog: numargs [
+	"Add the function prolog with numargs arguments"
+	<category: 'dsl prolog'>
+	<cCall: 'lightningProlog' returning: #void args: #(#self #ulong)>
+    ]
+
+    prolog [
+	"Add the function prolog with 0 argument"
+	<category: 'dsl prolog'>
+	self prolog: 0.
     ]
 	
     argChar [
