@@ -1031,7 +1031,7 @@ alloc_jit_state (size_t insnSize)
   new_pc = malloc (insnSize);
   new_jit_stack = malloc (sizeof (jit_stack));
   new_jit_stack->state.x.pc = new_pc;
-	new_jit_stack->codeBuffer = new_pc;
+  new_jit_stack->codeBuffer = new_pc;
   return new_jit_stack;
 }
 
