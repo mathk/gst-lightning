@@ -3,7 +3,7 @@
 static VMProxy *_gst_vm_proxy;
 
 void
-addi_i (jit_state *jit, char i, char j, char k)
+addi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addi_i (i, j, k);
@@ -11,7 +11,7 @@ addi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-addr_i (jit_state *jit, char i, char j, char k)
+addr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addr_i (i, j, k);
@@ -19,7 +19,7 @@ addr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-addci_i (jit_state *jit, char i, char j, char k)
+addci_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addci_i (i, j, k);
@@ -27,7 +27,7 @@ addci_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-addcr_i (jit_state *jit, char i, char j, char k)
+addcr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addcr_i (i, j, k);
@@ -35,7 +35,7 @@ addcr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-addxi_i (jit_state *jit, char i, char j, char k)
+addxi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addxi_i (i, j, k);
@@ -43,7 +43,7 @@ addxi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-addxr_i (jit_state *jit, char i, char j, char k)
+addxr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_addxr_i (i, j, k);
@@ -51,7 +51,7 @@ addxr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-andi_i (jit_state *jit, char i, char j, char k)
+andi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_andi_i (i, j, k);
@@ -59,7 +59,7 @@ andi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-andr_i (jit_state *jit, char i, char j, char k)
+andr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_andr_i (i, j, k);
@@ -67,7 +67,7 @@ andr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-orri_i (jit_state *jit, char i, char j, char k)
+orr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_orr_i (i, j, k);
@@ -75,7 +75,7 @@ orri_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-subr_i (jit_state *jit, char i, char j, char k)
+subr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_subr_i (i, j, k);
@@ -83,7 +83,7 @@ subr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-subcr_i (jit_state *jit, char i, char j, char k)
+subcr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_subcr_i (i, j, k);
@@ -91,7 +91,7 @@ subcr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-subxr_i (jit_state *jit, char i, char j, char k)
+subxr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_subxr_i (i, j, k);
@@ -99,7 +99,7 @@ subxr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-subxi_i (jit_state *jit, char i, char j, char k)
+subxi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_subxi_i (i, j, k);
@@ -107,7 +107,7 @@ subxi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-xorr_i (jit_state *jit, char i, char j, char k)
+xorr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_xorr_i (i, j, k);
@@ -115,7 +115,7 @@ xorr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-ori_i (jit_state *jit, char i, char j, char k)
+ori_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ori_i (i, j, k);
@@ -123,7 +123,7 @@ ori_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-xori_i (jit_state *jit, char i, char j, char k)
+xori_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_xori_i (i, j, k);
@@ -131,7 +131,7 @@ xori_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-muli_i (jit_state *jit, char i, char j, char k)
+muli_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_muli_i (i, j, k);
@@ -139,7 +139,7 @@ muli_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-mulr_i (jit_state *jit, char i, char j, char k)
+mulr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_mulr_i (i, j, k);
@@ -147,7 +147,7 @@ mulr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-muli_ui (jit_state *jit, char i, char j, char k)
+muli_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_muli_ui (i, j, k);
@@ -155,7 +155,7 @@ muli_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-mulr_ui (jit_state *jit, char i, char j, char k)
+mulr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_mulr_ui (i, j, k);
@@ -163,7 +163,7 @@ mulr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-hmuli_i (jit_state *jit, char i, char j, char k)
+hmuli_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_hmuli_i (i, j, k);
@@ -171,7 +171,7 @@ hmuli_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-hmulr_i (jit_state *jit, char i, char j, char k)
+hmulr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_hmulr_i (i, j, k);
@@ -179,7 +179,7 @@ hmulr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-hmuli_ui (jit_state *jit, char i, char j, char k)
+hmuli_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_hmuli_ui (i, j, k);
@@ -187,7 +187,7 @@ hmuli_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-hmulr_ui (jit_state *jit, char i, char j, char k)
+hmulr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_hmulr_ui (i, j, k);
@@ -195,7 +195,7 @@ hmulr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-divi_i (jit_state *jit, char i, char j, char k)
+divi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_divi_i (i, j, k);
@@ -203,7 +203,7 @@ divi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-divi_ui (jit_state *jit, char i, char j, char k)
+divi_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_divi_ui (i, j, k);
@@ -211,7 +211,7 @@ divi_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-modi_i (jit_state *jit, char i, char j, char k)
+modi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_modi_i (i, j, k);
@@ -219,7 +219,7 @@ modi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-modi_ui (jit_state *jit, char i, char j, char k)
+modi_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_modi_ui (i, j, k);
@@ -227,7 +227,7 @@ modi_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-divr_i (jit_state *jit, char i, char j, char k)
+divr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_divr_i (i, j, k);
@@ -235,7 +235,7 @@ divr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-divr_ui (jit_state *jit, char i, char j, char k)
+divr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_divr_ui (i, j, k);
@@ -243,7 +243,7 @@ divr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-modr_i (jit_state *jit, char i, char j, char k)
+modr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_modr_i (i, j, k);
@@ -251,7 +251,7 @@ modr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-modr_ui (jit_state *jit, char i, char j, char k)
+modr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_modr_ui (i, j, k);
@@ -267,7 +267,7 @@ shift (jit_state *jit, char i, char j, char k, l)
 */
 
 void
-lshi_i (jit_state *jit, char i, char j, char k)
+lshi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lshi_i (i, j, k);
@@ -275,7 +275,7 @@ lshi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-rshi_i (jit_state *jit, char i, char j, char k)
+rshi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_rshi_i (i, j, k);
@@ -283,7 +283,7 @@ rshi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-rshi_ui (jit_state *jit, char i, char j, char k)
+rshi_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_rshi_ui (i, j, k);
@@ -291,7 +291,7 @@ rshi_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-lshr_i (jit_state *jit, char i, char j, char k)
+lshr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lshr_i (i, j, k);
@@ -299,7 +299,7 @@ lshr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-rshr_i (jit_state *jit, char i, char j, char k)
+rshr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_rshr_i (i, j, k);
@@ -307,7 +307,7 @@ rshr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-rshr_ui (jit_state *jit, char i, char j, char k)
+rshr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_rshr_ui (i, j, k);
@@ -315,7 +315,7 @@ rshr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-retval_i (jit_state *jit, char i)
+retval_i (jit_state * jit, char i)
 {
 #define _jit (*jit)
   jit_retval_i (i);
@@ -323,7 +323,7 @@ retval_i (jit_state *jit, char i)
 }
 
 void
-negr_i (jit_state *jit, char i, char j)
+negr_i (jit_state * jit, char i, char j)
 {
 #define _jit (*jit)
   jit_negr_i (i, j);
@@ -331,7 +331,7 @@ negr_i (jit_state *jit, char i, char j)
 }
 
 void
-movr_i (jit_state *jit, char i, char j)
+movr_i (jit_state * jit, char i, char j)
 {
 #define _jit (*jit)
   jit_movr_i (i, j);
@@ -339,7 +339,7 @@ movr_i (jit_state *jit, char i, char j)
 }
 
 void
-movi_i (jit_state *jit, char i, char j)
+movi_i (jit_state * jit, char i, char j)
 {
 #define _jit (*jit)
   jit_movi_i (i, j);
@@ -347,7 +347,7 @@ movi_i (jit_state *jit, char i, char j)
 }
 
 void
-ntoh_ui (jit_state *jit, char i, char j)
+ntoh_ui (jit_state * jit, char i, char j)
 {
 #define _jit (*jit)
   jit_ntoh_ui (i, j);
@@ -355,7 +355,7 @@ ntoh_ui (jit_state *jit, char i, char j)
 }
 
 void
-ntoh_us (jit_state *jit, char i, char j)
+ntoh_us (jit_state * jit, char i, char j)
 {
 #define _jit (*jit)
   jit_ntoh_us (i, j);
@@ -365,7 +365,7 @@ ntoh_us (jit_state *jit, char i, char j)
 /* Boolean */
 
 void
-ltr_i (jit_state *jit, char i, char j, char k)
+ltr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ltr_i (i, j, k);
@@ -373,7 +373,7 @@ ltr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-ler_i (jit_state *jit, char i, char j, char k)
+ler_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ler_i (i, j, k);
@@ -381,7 +381,7 @@ ler_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-gtr_i (jit_state *jit, char i, char j, char k)
+gtr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gtr_i (i, j, k);
@@ -389,7 +389,7 @@ gtr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-ger_i (jit_state *jit, char i, char j, char k)
+ger_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ger_i (i, j, k);
@@ -397,7 +397,7 @@ ger_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-eqr_i (jit_state *jit, char i, char j, char k)
+eqr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_eqr_i (i, j, k);
@@ -405,7 +405,7 @@ eqr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-ner_i (jit_state *jit, char i, char j, char k)
+ner_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ner_i (i, j, k);
@@ -413,7 +413,7 @@ ner_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-ltr_ui (jit_state *jit, char i, char j, char k)
+ltr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ltr_ui (i, j, k);
@@ -421,7 +421,7 @@ ltr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-ler_ui (jit_state *jit, char i, char j, char k)
+ler_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ler_ui (i, j, k);
@@ -429,7 +429,7 @@ ler_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-gtr_ui (jit_state *jit, char i, char j, char k)
+gtr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gtr_ui (i, j, k);
@@ -437,7 +437,7 @@ gtr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-ger_ui (jit_state *jit, char i, char j, char k)
+ger_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_ger_ui (i, j, k);
@@ -445,7 +445,7 @@ ger_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-lti_i (jit_state *jit, char i, char j, char k)
+lti_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lti_i (i, j, k);
@@ -453,7 +453,7 @@ lti_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-lei_i (jit_state *jit, char i, char j, char k)
+lei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lei_i (i, j, k);
@@ -461,7 +461,7 @@ lei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-gti_i (jit_state *jit, char i, char j, char k)
+gti_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gti_i (i, j, k);
@@ -469,7 +469,7 @@ gti_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-gei_i (jit_state *jit, char i, char j, char k)
+gei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gei_i (i, j, k);
@@ -477,7 +477,7 @@ gei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-eqi_i (jit_state *jit, char i, char j, char k)
+eqi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_eqi_i (i, j, k);
@@ -485,7 +485,7 @@ eqi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-nei_i (jit_state *jit, char i, char j, char k)
+nei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_nei_i (i, j, k);
@@ -493,7 +493,7 @@ nei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-lti_ui (jit_state *jit, char i, char j, char k)
+lti_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lti_ui (i, j, k);
@@ -501,7 +501,7 @@ lti_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-lei_ui (jit_state *jit, char i, char j, char k)
+lei_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_lei_ui (i, j, k);
@@ -509,7 +509,7 @@ lei_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-gti_ui (jit_state *jit, char i, char j, char k)
+gti_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gti_ui (i, j, k);
@@ -517,7 +517,7 @@ gti_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-gei_ui (jit_state *jit, char i, char j, char k)
+gei_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_gei_ui (i, j, k);
@@ -526,7 +526,7 @@ gei_ui (jit_state *jit, char i, char j, char k)
 
 /* Jump */
 void
-bltr_i (jit_state *jit, char i, char j, char k)
+bltr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bltr_i (i, j, k);
@@ -534,7 +534,7 @@ bltr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bler_i (jit_state *jit, char i, char j, char k)
+bler_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bler_i (i, j, k);
@@ -542,7 +542,7 @@ bler_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgtr_i (jit_state *jit, char i, char j, char k)
+bgtr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgtr_i (i, j, k);
@@ -550,7 +550,7 @@ bgtr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bger_i (jit_state *jit, char i, char j, char k)
+bger_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bger_i (i, j, k);
@@ -558,7 +558,7 @@ bger_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-beqr_i (jit_state *jit, char i, char j, char k)
+beqr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_beqr_i (i, j, k);
@@ -566,7 +566,7 @@ beqr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bner_i (jit_state *jit, char i, char j, char k)
+bner_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bner_i (i, j, k);
@@ -574,7 +574,7 @@ bner_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bltr_ui (jit_state *jit, char i, char j, char k)
+bltr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bltr_ui (i, j, k);
@@ -582,7 +582,7 @@ bltr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bler_ui (jit_state *jit, char i, char j, char k)
+bler_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bler_ui (i, j, k);
@@ -590,7 +590,7 @@ bler_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgtr_ui (jit_state *jit, char i, char j, char k)
+bgtr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgtr_ui (i, j, k);
@@ -598,7 +598,7 @@ bgtr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bger_ui (jit_state *jit, char i, char j, char k)
+bger_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bger_ui (i, j, k);
@@ -606,7 +606,7 @@ bger_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bmsr_i (jit_state *jit, char i, char j, char k)
+bmsr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bmsr_i (i, j, k);
@@ -614,7 +614,7 @@ bmsr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bmcr_i (jit_state *jit, char i, char j, char k)
+bmcr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bmcr_i (i, j, k);
@@ -622,7 +622,7 @@ bmcr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-boaddr_i (jit_state *jit, char i, char j, char k)
+boaddr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_boaddr_i (i, j, k);
@@ -630,7 +630,7 @@ boaddr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bosubr_i (jit_state *jit, char i, char j, char k)
+bosubr_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bosubr_i (i, j, k);
@@ -638,7 +638,7 @@ bosubr_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-boaddr_ui (jit_state *jit, char i, char j, char k)
+boaddr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_boaddr_ui (i, j, k);
@@ -646,7 +646,7 @@ boaddr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bosubr_ui (jit_state *jit, char i, char j, char k)
+bosubr_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bosubr_ui (i, j, k);
@@ -654,7 +654,7 @@ bosubr_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-blti_i (jit_state *jit, char i, char j, char k)
+blti_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_blti_i (i, j, k);
@@ -662,7 +662,7 @@ blti_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-blei_i (jit_state *jit, char i, char j, char k)
+blei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_blei_i (i, j, k);
@@ -670,7 +670,7 @@ blei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgti_i (jit_state *jit, char i, char j, char k)
+bgti_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgti_i (i, j, k);
@@ -678,7 +678,7 @@ bgti_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgei_i (jit_state *jit, char i, char j, char k)
+bgei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgei_i (i, j, k);
@@ -686,7 +686,7 @@ bgei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-beqi_i (jit_state *jit, char i, char j, char k)
+beqi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_beqi_i (i, j, k);
@@ -694,7 +694,7 @@ beqi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bnei_i (jit_state *jit, char i, char j, char k)
+bnei_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bnei_i (i, j, k);
@@ -702,7 +702,7 @@ bnei_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-blti_ui (jit_state *jit, char i, char j, char k)
+blti_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_blti_ui (i, j, k);
@@ -710,7 +710,7 @@ blti_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-blei_ui (jit_state *jit, char i, char j, char k)
+blei_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_blei_ui (i, j, k);
@@ -718,7 +718,7 @@ blei_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgti_ui (jit_state *jit, char i, char j, char k)
+bgti_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgti_ui (i, j, k);
@@ -726,7 +726,7 @@ bgti_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bgei_ui (jit_state *jit, char i, char j, char k)
+bgei_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bgei_ui (i, j, k);
@@ -734,7 +734,7 @@ bgei_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-boaddi_i (jit_state *jit, char i, char j, char k)
+boaddi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_boaddi_i (i, j, k);
@@ -742,7 +742,7 @@ boaddi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bosubi_i (jit_state *jit, char i, char j, char k)
+bosubi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bosubi_i (i, j, k);
@@ -750,7 +750,7 @@ bosubi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-boaddi_ui (jit_state *jit, char i, char j, char k)
+boaddi_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_boaddi_ui (i, j, k);
@@ -758,7 +758,7 @@ boaddi_ui (jit_state *jit, char i, char j, char k)
 }
 
 void
-bosubi_ui (jit_state *jit, char i, char j, char k)
+bosubi_ui (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bosubi_ui (i, j, k);
@@ -767,7 +767,7 @@ bosubi_ui (jit_state *jit, char i, char j, char k)
 
 
 void
-bmsi_i (jit_state *jit, char i, char j, char k)
+bmsi_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bmsi_i (i, j, k);
@@ -775,7 +775,7 @@ bmsi_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-bmci_i (jit_state *jit, char i, char j, char k)
+bmci_i (jit_state * jit, char i, char j, char k)
 {
 #define _jit (*jit)
   jit_bmci_i (i, j, k);
@@ -783,7 +783,7 @@ bmci_i (jit_state *jit, char i, char j, char k)
 }
 
 void
-jmpi (jit_state *jit, char i)
+jmpi (jit_state * jit, char i)
 {
 #define _jit (*jit)
   jit_jmpi (i);
@@ -791,7 +791,7 @@ jmpi (jit_state *jit, char i)
 }
 
 void
-jmpr (jit_state *jit, char i)
+jmpr (jit_state * jit, char i)
 {
 #define _jit (*jit)
   jit_jmpr (i);
@@ -800,7 +800,7 @@ jmpr (jit_state *jit, char i)
 
 /* Common */
 jit_insn *
-get_label (jit_state *jit)
+get_label (jit_state * jit)
 {
 #define _jit (*jit)
   return jit_get_label ();
@@ -808,7 +808,7 @@ get_label (jit_state *jit)
 }
 
 jit_insn *
-forward (jit_state *jit)
+forward (jit_state * jit)
 {
 #define _jit (*jit)
   return jit_forward ();
@@ -816,7 +816,7 @@ forward (jit_state *jit)
 }
 
 jit_code
-get_ip (jit_state *jit)
+get_ip (jit_state * jit)
 {
 #define _jit (*jit)
   return jit_get_ip ();
@@ -824,7 +824,7 @@ get_ip (jit_state *jit)
 }
 
 void
-set_ip (jit_state *jit, jit_insn * ip)
+set_ip (jit_state * jit, jit_insn * ip)
 {
 #define _jit (*jit)
   jit_set_ip (ip);
@@ -832,7 +832,7 @@ set_ip (jit_state *jit, jit_insn * ip)
 }
 
 void
-leaf(jit_state *jit, size_t numargs)
+leaf (jit_state * jit, size_t numargs)
 {
 #define _jit (*jit)
   jit_leaf (numargs);
@@ -841,7 +841,7 @@ leaf(jit_state *jit, size_t numargs)
 
 /* Args */
 int
-arg_c (jit_state *jit)
+arg_c (jit_state * jit)
 {
 #define _jit (*jit)
   return jit_arg_c ();
@@ -849,7 +849,7 @@ arg_c (jit_state *jit)
 }
 
 int
-arg_uc (jit_state *jit)
+arg_uc (jit_state * jit)
 {
 #define _jit (*jit)
   return jit_arg_uc ();
@@ -857,7 +857,7 @@ arg_uc (jit_state *jit)
 }
 
 int
-arg_s (jit_state *jit)
+arg_s (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_s ();
@@ -865,7 +865,7 @@ arg_s (jit_state *jit)
 }
 
 int
-arg_us (jit_state *jit)
+arg_us (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_us ();
@@ -873,7 +873,7 @@ arg_us (jit_state *jit)
 }
 
 int
-arg_i (jit_state *jit)
+arg_i (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_i ();
@@ -881,7 +881,7 @@ arg_i (jit_state *jit)
 }
 
 int
-arg_ui (jit_state *jit)
+arg_ui (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_ui ();
@@ -889,7 +889,7 @@ arg_ui (jit_state *jit)
 }
 
 int
-arg_l (jit_state *jit)
+arg_l (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_l ();
@@ -897,7 +897,7 @@ arg_l (jit_state *jit)
 }
 
 int
-arg_ul (jit_state *jit)
+arg_ul (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_ul ();
@@ -905,7 +905,7 @@ arg_ul (jit_state *jit)
 }
 
 int
-arg_p (jit_state *jit)
+arg_p (jit_state * jit)
 {
 #define _jit (*jit)
   jit_arg_p ();
@@ -987,7 +987,7 @@ getarg_p (jit_state *jit, int reg, int ofs)
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
  */
-jit_state*
+jit_state *
 alloc_jit_state (size_t insnSize)
 {
   jit_state *new_jit_state;
@@ -999,12 +999,74 @@ alloc_jit_state (size_t insnSize)
 }
 
 void
-gst_initModule (VMProxy* proxy)
+gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
+  _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
+  _gst_vm_proxy->defineCFunc ("lightningAddR_I", addr_i);
+  _gst_vm_proxy->defineCFunc ("lightningAddCR_I", addcr_i);
+  _gst_vm_proxy->defineCFunc ("lightningAddXI_I", addxi_i);
+  _gst_vm_proxy->defineCFunc ("lightningAddXR_I", addxr_i);
+  _gst_vm_proxy->defineCFunc ("lightningAndI_I", andi_i);
+  _gst_vm_proxy->defineCFunc ("lightningAndR_I", andr_i);
+  _gst_vm_proxy->defineCFunc ("lightningOrR_I", orr_i);
+  _gst_vm_proxy->defineCFunc ("lightningSubR_I", subr_i);
+  _gst_vm_proxy->defineCFunc ("lightningSubCR_I", subcr_i);
+  _gst_vm_proxy->defineCFunc ("lightningSubXR_I", subxr_i);
+  _gst_vm_proxy->defineCFunc ("lightningSubXI_I", subxi_i);
+  _gst_vm_proxy->defineCFunc ("lightningXorR_I", xorr_i);
+  _gst_vm_proxy->defineCFunc ("lightningOrI_I", ori_i);
+  _gst_vm_proxy->defineCFunc ("lightningXorI_I", xori_i);
+  _gst_vm_proxy->defineCFunc ("lightningMulI_I", muli_i);
+  _gst_vm_proxy->defineCFunc ("lightningMulR_I", mulr_i);
+  _gst_vm_proxy->defineCFunc ("lightningMulI_UI", muli_ui);
+  _gst_vm_proxy->defineCFunc ("lightningMulR_UI", mulr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningHMulI_I", hmuli_i);
+  _gst_vm_proxy->defineCFunc ("lightningHMulR_I", hmulr_i);
+  _gst_vm_proxy->defineCFunc ("lightningHMulI_UI", hmuli_ui);
+  _gst_vm_proxy->defineCFunc ("lightningHMulR_UI", hmulr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningDivI_I", divi_i);
+  _gst_vm_proxy->defineCFunc ("lightningDivI_UI", divi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningModI_I", modi_i);
+  _gst_vm_proxy->defineCFunc ("lightningModI_UI", modi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningDivR_I", divr_i);
+  _gst_vm_proxy->defineCFunc ("lightningDivR_UI", divr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningModR_I", modr_i);
+  _gst_vm_proxy->defineCFunc ("lightningModR_UI", modr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLshI_I", lshi_i);
+  _gst_vm_proxy->defineCFunc ("lightningRshI_I", rshi_i);
+  _gst_vm_proxy->defineCFunc ("lightningRshI_UI", rshi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLshR_I", lshr_i);
+  _gst_vm_proxy->defineCFunc ("lightningRshR_UI", rshr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningRetval_I", retval_i);
+  _gst_vm_proxy->defineCFunc ("lightningNegR_I", negr_i);
+  _gst_vm_proxy->defineCFunc ("lightningMovR_I", movr_i);
+  _gst_vm_proxy->defineCFunc ("lightningMovI_I", movi_i);
+  _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
+  _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
+  _gst_vm_proxy->defineCFunc ("lightningLtR_I", ltr_i);
+  _gst_vm_proxy->defineCFunc ("lightningLeR_I", ler_i);
+  _gst_vm_proxy->defineCFunc ("lightningGtR_I", gtr_i);
+  _gst_vm_proxy->defineCFunc ("lightningGeR_I", ger_i);
+  _gst_vm_proxy->defineCFunc ("lightningEqR_I", eqr_i);
+  _gst_vm_proxy->defineCFunc ("lightningNeR_I", ner_i);
+  _gst_vm_proxy->defineCFunc ("lightningLtR_UI", ltr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLeR_UI", ler_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGtR_UI", gtr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGeR_UI", ger_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLtI_I", lti_i);
+  _gst_vm_proxy->defineCFunc ("lightningLeI_I", lei_i);
+  _gst_vm_proxy->defineCFunc ("lightningGtI_I", gti_i);
+  _gst_vm_proxy->defineCFunc ("lightningGeI_I", gei_i);
+  _gst_vm_proxy->defineCFunc ("lightningEqI_I", eqi_i);
+  _gst_vm_proxy->defineCFunc ("lightningNeI_I", nei_i);
+  _gst_vm_proxy->defineCFunc ("lightningLtI_UI", lti_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLeI_UI", lei_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGtI_UI", gti_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGeI_UI", gei_ui);
 }
 
 /* Local Variables: */
