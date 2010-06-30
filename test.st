@@ -6,5 +6,6 @@ Eval [
 	jitState getargInt: Lightning.R0 from: argNum.
 	jitState addInt: Lightning.RET to: Lightning.R0 int: 1.
 	jitState ret.
-
+	jitState assemble.
+	(jitState intValue: 6) putln.
 ]

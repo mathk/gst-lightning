@@ -1035,10 +1035,29 @@ alloc_jit_state (size_t insnSize)
 }
 
 void
+flush_code(jit_state *jit)
+{
+#define _jit (*jit)
+	jit_flush_code (jit->x.pc, jit_get_ip ().ptr);
+#undef _jit
+}
+
+int
+i_value(jit_state *jit, int arg)
+{
+#define _jit (*jit)
+	pifi fct = (pifi)jit_get_ip ().iptr;
+	return fct(arg);
+#undef _jit
+}
+
+void
 gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+	_gst_vm_proxy->defineCFunc ("lightningIValue", i_value);
+  _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
   _gst_vm_proxy->defineCFunc ("lightningGetargI", getarg_i);

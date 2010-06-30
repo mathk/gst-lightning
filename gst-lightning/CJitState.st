@@ -66,4 +66,16 @@ CObject subclass: CJitState [
 	<category: 'dsl stack'>
 	<cCall: 'lightningRetFct' returning: #void args: #(#self)>
     ]
+
+    assemble [
+	"Flsuh the code so that it can be execute"
+	<category: 'dsl process'>
+	<cCall: 'lightningFlushCode' returning: #void args: #(#self)>
+    ]
+
+    intValue: arg [
+	"Invoke the jit code"
+	<category: 'dsl running'>
+	<cCall: 'lightningIValue' returning: #int args: #(#self #int)>
+    ]
 ]

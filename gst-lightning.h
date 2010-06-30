@@ -5,6 +5,8 @@
 #include <gstpub.h>
 #include <lightning.h>
 
+typedef int (*pifi)(int);
+
 #endif /* GST_LIGHTNING_H */
 
 /* Local Variables: */
