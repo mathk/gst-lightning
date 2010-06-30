@@ -26,6 +26,42 @@ CObject subclass: CJitState [
 	self leaf: 0.
     ]
 	
+    argChar [
+	"Return the value used by #getArgChar: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgC' returning: #int args: #(#self)>
+    ]
+
+    argUChar [
+	"Return the value used by #getArgUChar: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgUC' returning: #int args: #(#self)>
+    ]
+
+    argShort [
+	"Return the value used by #getArgShort: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgS' returning: #int args: #(#self)>
+    ]
+
+    argUShort [
+	"Return the value used by #getArgUShort: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgUS' returning: #int args: #(#self)>
+    ]
+
     argInt [
 	"Return the value used by #getArgInt: 
 	 Each time you call an #arg* method it popup the argument so next
@@ -33,6 +69,94 @@ CObject subclass: CJitState [
 	
 	<category: 'dsl arguments'>
 	<cCall: 'lightningArgI' returning: #int args: #(#self)>
+    ]
+
+    argUInt [
+	"Return the value used by #getArgUInt: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgUI' returning: #int args: #(#self)>
+    ]
+
+    argLong [
+	"Return the value used by #getArgLong: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgUL' returning: #int args: #(#self)>
+    ]
+
+    argULong [
+	"Return the value used by #getArgULong: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgUL' returning: #int args: #(#self)>
+    ]
+
+    argPtr [
+	"Return the value used by #getArgPtr: 
+	 Each time you call an #arg* method it popup the argument so next
+	 time you call it you get the next argument"
+	
+	<category: 'dsl arguments'>
+	<cCall: 'lightningArgP' returning: #int args: #(#self)>
+    ]
+
+    getargChar: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargChar: reg number from: offset
+    ]
+
+    primGetargChar: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargIntChar:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargC' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargUChar: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargUChar: reg number from: offset
+    ]
+
+    primGetargUChar: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargUChar:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargUC' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargShort: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargShort: reg number from: offset
+    ]
+
+    primGetargShort: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargIntShort:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargS' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargUShort: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargUShort: reg number from: offset
+    ]
+
+    primGetargUShort: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargUShort:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargUS' returning: #void args: #(#self #int #int)>
     ]
     
     getargInt: reg from: offset [
@@ -46,6 +170,58 @@ CObject subclass: CJitState [
 	 This is a private primitive use #getargInt:from: instead"
 	<category: 'private dsl arguments'>
 	<cCall: 'lightningGetargI' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargUInt: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargUInt: reg number from: offset
+    ]
+
+    primGetargUInt: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargUInt:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargUI' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargLong: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargLong: reg number from: offset
+    ]
+
+    primGetargLong: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargLong:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargL' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargULong: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargULong: reg number from: offset
+    ]
+
+    primGetargULong: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargULong:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargUL' returning: #void args: #(#self #int #int)>
+    ]
+
+    getargPtr: reg from: offset [
+	"Fetch the argument and store it intop a register"
+	<category: 'dsl arguments'>
+	self primGetargPtr: reg number from: offset
+    ]
+
+    primGetargPtr: reg from: offset [
+	"Fetch the argument and store it intop a register
+	 This is a private primitive use #getargPtr:from: instead"
+	<category: 'private dsl arguments'>
+	<cCall: 'lightningGetargP' returning: #void args: #(#self #int #int)>
     ]
     
     addInt: regDst to: regSrc int: val [
