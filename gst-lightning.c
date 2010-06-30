@@ -916,7 +916,7 @@ void
 getarg_c (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-  jit_getarg_c(JIT_REG(reg), ofs);
+  jit_getarg_c (JIT_REG(reg), ofs);
 #endif
 }
 
@@ -924,11 +924,65 @@ void
 getarg_uc (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-  jit_getarg_uc(JIT_REG(reg), ofs);
+  jit_getarg_uc (JIT_REG(reg), ofs);
 #end
 }
 
+void
+getarg_s (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_s (JIT_REG(reg), ofs);
+#undef _jit
+}
 
+void
+getarg_us (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_us (JIT_REG(reg), ofs);
+#undef _jit
+}
+
+void
+getarg_i (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_i (JIT_REG(reg), ofs);
+#define _jit
+}
+
+void
+getarg_ui (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_ui (JIT_REG(reg), ofs);
+#define _jit
+}
+
+void
+getarg_l (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_l (JIT_REG(reg), ofs);
+#define _jit
+}
+
+void
+getarg_ul (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_ul (JIT_REG(reg), ofs);
+#define _jit
+}
+
+void
+getarg_p (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+	jit_getarg_p (JIT_REG(reg), ofs);
+#define _jit
+}
 
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes

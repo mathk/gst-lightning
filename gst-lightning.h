@@ -9,3 +9,9 @@
 					  JIT_R(num) : JIT_V((num) - 3))
 
 #endif /* GST_LIGHTNING_H */
+
+/* Local Variables: */
+/* mode:c           */
+/* c-basic-offset:2 */
+/* tab-width:2      */
+/* End:             */
