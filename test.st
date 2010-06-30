@@ -20,5 +20,5 @@ Eval [
 		finish: jitState printf;
 		ret;
 	    assemble;
-	    value
+	    value: 4
 ]
