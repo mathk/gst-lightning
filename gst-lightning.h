@@ -5,9 +5,6 @@
 #include <gstpub.h>
 #include <lightning.h>
 
-#define JIT_REG(num) ((num) >= 0 && (num) < 3 ? \
-					  JIT_R(num) : JIT_V((num) - 3))
-
 #endif /* GST_LIGHTNING_H */
 
 /* Local Variables: */
@@ -15,3 +12,4 @@
 /* c-basic-offset:2 */
 /* tab-width:2      */
 /* End:             */
+

@@ -2,8 +2,9 @@
 
 static VMProxy *_gst_vm_proxy;
 
+/* ALU */
 void
-addi_i (jit_state * jit, char i, char j, char k)
+addi_i (jit_state * jit, int i, int j, int k)
 {
 #define _jit (*jit)
   jit_addi_i (i, j, k);
@@ -916,23 +917,23 @@ void
 getarg_c (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-  jit_getarg_c (JIT_REG(reg), ofs);
-#endif
+  jit_getarg_c (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_uc (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-  jit_getarg_uc (JIT_REG(reg), ofs);
-#end
+  jit_getarg_uc (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_s (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_s (JIT_REG(reg), ofs);
+	jit_getarg_s (reg, ofs);
 #undef _jit
 }
 
@@ -940,7 +941,7 @@ void
 getarg_us (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_us (JIT_REG(reg), ofs);
+	jit_getarg_us (reg, ofs);
 #undef _jit
 }
 
@@ -948,41 +949,76 @@ void
 getarg_i (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_i (JIT_REG(reg), ofs);
-#define _jit
+	jit_getarg_i (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_ui (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_ui (JIT_REG(reg), ofs);
-#define _jit
+	jit_getarg_ui (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_l (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_l (JIT_REG(reg), ofs);
-#define _jit
+	jit_getarg_l (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_ul (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_ul (JIT_REG(reg), ofs);
-#define _jit
+	jit_getarg_ul (reg, ofs);
+#undef _jit
 }
 
 void
 getarg_p (jit_state *jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_p (JIT_REG(reg), ofs);
-#define _jit
+	jit_getarg_p (reg, ofs);
+#undef _jit
 }
+
+/* Register access */
+int
+R0 ()
+{
+	return JIT_R0;
+}
+
+int
+R1 ()
+{
+	return JIT_R1;
+}
+
+int
+R2 ()
+{
+	return JIT_R2;
+}
+
+int
+RET ()
+{
+	return JIT_RET;
+}
+
+/* Stack manipulation */
+void
+retFct (jit_state *jit)
+{
+#define _jit (*jit)
+	jit_ret();
+#undef _jit
+}
+
 
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
@@ -1005,6 +1041,12 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
+  _gst_vm_proxy->defineCFunc ("lightningGetargI", getarg_i);
+  _gst_vm_proxy->defineCFunc ("lightningR0", R0);
+  _gst_vm_proxy->defineCFunc ("lightningR1", R1);
+  _gst_vm_proxy->defineCFunc ("lightningR2", R2);
+  _gst_vm_proxy->defineCFunc ("lightningRET", RET);
+  _gst_vm_proxy->defineCFunc ("lightningRetFct", retFct);
   _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
   _gst_vm_proxy->defineCFunc ("lightningAddR_I", addr_i);
   _gst_vm_proxy->defineCFunc ("lightningAddCR_I", addcr_i);
