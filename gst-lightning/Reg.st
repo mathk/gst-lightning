@@ -24,6 +24,30 @@ Register subclass: R2 [
 	]
 ]
 
+Register subclass: V0 [
+	V0 class >> number [
+		"Return the lightning reg number"
+		<category: 'accessing'>
+		<cCall: 'lightningV0' returning: #int args: #()>
+	]
+]
+
+Register subclass: V1 [
+	V1 class >> number [
+		"Return the lightning reg number"
+		<category: 'accessing'>
+		<cCall: 'lightningV1' returning: #int args: #()>
+	]
+]
+
+Register subclass: V2 [
+	V2 class >> number [
+		"Return the lightning reg number"
+		<category: 'accessing'>
+		<cCall: 'lightningV2' returning: #int args: #()>
+	]
+]
+
 
 Register subclass: RET [
 	RET class >> number [

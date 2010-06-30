@@ -1,3 +1,4 @@
+
 #include "gst-lightning.h"
 
 static VMProxy *_gst_vm_proxy;
@@ -1005,6 +1006,25 @@ R2 ()
 }
 
 int
+V0 ()
+{
+	return JIT_V0;
+}
+
+int
+V1 ()
+{
+	return JIT_V1;
+}
+
+int
+V2 ()
+{
+	return JIT_V2;
+}
+
+
+int
 RET ()
 {
 	return JIT_RET;
@@ -1015,7 +1035,7 @@ void
 retFct (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
-	jit_ret();
+	jit_ret ();
 #undef _jit
 }
 
@@ -1049,7 +1069,7 @@ i_value(jit_stack * jitStack, int arg)
 #define _jit (jitStack->state)
 	int result;
 	pifi fct = (pifi)jitStack->codeBuffer;
-	return fct(arg);
+	return fct (arg);
 #undef _jit
 }
 
@@ -1066,6 +1086,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningR0", R0);
   _gst_vm_proxy->defineCFunc ("lightningR1", R1);
   _gst_vm_proxy->defineCFunc ("lightningR2", R2);
+  _gst_vm_proxy->defineCFunc ("lightningV0", V0);
+  _gst_vm_proxy->defineCFunc ("lightningV1", V1);
+  _gst_vm_proxy->defineCFunc ("lightningV2", V2);
   _gst_vm_proxy->defineCFunc ("lightningRET", RET);
   _gst_vm_proxy->defineCFunc ("lightningRetFct", retFct);
   _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
