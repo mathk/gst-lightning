@@ -6,14 +6,20 @@ CObject subclass: CJitState [
 	<cCall: 'lightningAllocJitState' returning: #{CJitState} args: #(#ulong)>
 	]
 
+	CJitState class >> new [
+	"Create a new instance that can hold 1024bytes of assembly code"
+	<category: 'instance creation'>
+	^(self primAlloc: 1024) initialize; yourself
+	]
+
 	leaf: numargs [
-	"Initialize and set the number of argument"
+	"Initialize the Jit and set the number of argument"
 	<category: 'dsl initialize'>
 	<cCall: 'lightningLeaf' returning: #void args: #(#self #ulong)>
 	]
 
 	leaf [
-	"Initialize and set the number of argument to 0"
+	"Initialize the Jit and set the number of argument to 0"
 	<category: 'dsl initialize'>
 	self leaf: 0.
 	]

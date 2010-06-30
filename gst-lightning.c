@@ -1,6 +1,4 @@
-#include <lightning.h>
-#include <stdlib.h>
-#include <gstpub.h>
+#include "gst-lightning.h"
 
 static VMProxy *_gst_vm_proxy;
 
@@ -914,6 +912,23 @@ arg_p (jit_state *jit)
 #undef _jit
 }
 
+void
+getarg_c (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+  jit_getarg_c(JIT_REG(reg), ofs);
+#endif
+}
+
+void
+getarg_uc (jit_state *jit, int reg, int ofs)
+{
+#define _jit (*jit)
+  jit_getarg_uc(JIT_REG(reg), ofs);
+#end
+}
+
+
 
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
@@ -937,3 +952,9 @@ gst_initModule (VMProxy* proxy)
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
 }
+
+/* Local Variables: */
+/* mode:c           */
+/* c-basic-offset:2 */
+/* tab-width:2      */
+/* End:             */
