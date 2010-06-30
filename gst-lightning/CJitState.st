@@ -38,7 +38,7 @@ CObject subclass: CJitState [
     getargInt: reg from: offset [
 	"Fetch the argument and store it intop a register"
 	<category: 'dsl arguments'>
-	self primGetargInt: register number from: offset
+	self primGetargInt: reg number from: offset
     ]
 
     primGetargInt: reg from: offset [
@@ -54,11 +54,11 @@ CObject subclass: CJitState [
 	self primAddInt: regDst number to: regDst number int: val
     ]
 	
-    primAddInt: regDstNumber to: regDstNumber int: val [
+    primAddInt: regDstNumber to: regSrcNumber int: val [
 	"Add an integer to a register. Result is store in a register
 	 This is a private primitive use #addInt:to:ont: instead"
 	<category: 'private dsl binary alu'>
-	<cCall: '' returning: #void args: #(#self #int #int #int)>
+	<cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
     ret [
