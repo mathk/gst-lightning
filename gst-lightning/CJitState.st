@@ -237,7 +237,104 @@ CObject subclass: CJitState [
 	<cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
+    primAddR: regDstNumber to: regSrcNumber int: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addInt:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddXI: regDstNumber to: regSrcNumber int: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addInt:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddXI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddXR: regDstNumber to: regSrcNumber int: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addInt:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddXR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddCI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddCI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddCR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddCR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddXI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddXI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddXR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddXR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAndI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAndI_I' returning: #void args: #(#self #int #int #int)>
+    ]   
+
+    primAndR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAndR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primOrI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningOrI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primOrR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningOrR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primXorI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningXorI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primXorR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningXorR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primLshI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLshI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primLshR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLshR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primRshISigned: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningRshI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primRshI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningRshI_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primRshR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningRshR_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
     ret [
+
 	"Return from a function instruction"
 	<category: 'dsl stack'>
 	<cCall: 'lightningRetFct' returning: #void args: #(#self)>
