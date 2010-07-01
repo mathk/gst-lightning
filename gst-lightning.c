@@ -914,7 +914,7 @@ arg_p (jit_state * jit)
 }
 
 void
-getarg_c (jit_state *jit, int reg, int ofs)
+getarg_c (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
   jit_getarg_c (reg, ofs);
@@ -922,7 +922,7 @@ getarg_c (jit_state *jit, int reg, int ofs)
 }
 
 void
-getarg_uc (jit_state *jit, int reg, int ofs)
+getarg_uc (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
   jit_getarg_uc (reg, ofs);
@@ -930,58 +930,58 @@ getarg_uc (jit_state *jit, int reg, int ofs)
 }
 
 void
-getarg_s (jit_state *jit, int reg, int ofs)
+getarg_s (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_s (reg, ofs);
+  jit_getarg_s (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_us (jit_state *jit, int reg, int ofs)
+getarg_us (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_us (reg, ofs);
+  jit_getarg_us (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_i (jit_state *jit, int reg, int ofs)
+getarg_i (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_i (reg, ofs);
+  jit_getarg_i (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_ui (jit_state *jit, int reg, int ofs)
+getarg_ui (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_ui (reg, ofs);
+  jit_getarg_ui (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_l (jit_state *jit, int reg, int ofs)
+getarg_l (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_l (reg, ofs);
+  jit_getarg_l (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_ul (jit_state *jit, int reg, int ofs)
+getarg_ul (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_ul (reg, ofs);
+  jit_getarg_ul (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_p (jit_state *jit, int reg, int ofs)
+getarg_p (jit_state * jit, int reg, int ofs)
 {
 #define _jit (*jit)
-	jit_getarg_p (reg, ofs);
+  jit_getarg_p (reg, ofs);
 #undef _jit
 }
 
@@ -989,36 +989,59 @@ getarg_p (jit_state *jit, int reg, int ofs)
 int
 R0 ()
 {
-	return JIT_R0;
+  return JIT_R0;
 }
 
 int
 R1 ()
 {
-	return JIT_R1;
+  return JIT_R1;
 }
 
 int
 R2 ()
 {
-	return JIT_R2;
+  return JIT_R2;
 }
 
 int
 RET ()
 {
-	return JIT_RET;
+  return JIT_RET;
 }
 
 /* Stack manipulation */
 void
-retFct (jit_state *jit)
+retFct (jit_state * jit)
 {
 #define _jit (*jit)
-	jit_ret();
+  jit_ret ();
 #undef _jit
 }
 
+/* Evaluation */
+int
+value (jit_state * jit)
+{
+#define _jit (*jit)
+  typedef int (*pifi) ();
+  pifi fun = (pifi) (jit_get_ip ().iptr);
+  jit_flush_code (jit->x.pc, jit_get_ip ().ptr);
+  return fun ();
+#undef _jit
+}
+
+int
+valueWith (jit_state * jit, int arg1)
+{
+#define _jit (*jit)
+  typedef int (*pifi) (int);
+  jit_flush_code (jit->x.pc, jit_get_ip ().ptr);
+  pifi fun = (pifi) (jit_get_ip ().iptr);
+  fprintf (stderr, "%p\n", fun);
+  return fun (5);
+#undef _jit
+}
 
 /* Create a new jit_state used by gst
  * It also allocate the code buffer of a insnSize bytes
@@ -1027,10 +1050,8 @@ jit_state *
 alloc_jit_state (size_t insnSize)
 {
   jit_state *new_jit_state;
-  jit_insn *new_pc;
-  new_pc = malloc (insnSize);
-  new_jit_state = malloc (sizeof (jit_state));
-  new_jit_state->x.pc = new_pc;
+  new_jit_state = calloc (1, sizeof (*new_jit_state));
+  new_jit_state->x.pc = calloc (insnSize, sizeof (*(new_jit_state->x.pc)));
   return new_jit_state;
 }
 
@@ -1047,6 +1068,8 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningR2", R2);
   _gst_vm_proxy->defineCFunc ("lightningRET", RET);
   _gst_vm_proxy->defineCFunc ("lightningRetFct", retFct);
+  _gst_vm_proxy->defineCFunc ("lightningValue", value);
+  _gst_vm_proxy->defineCFunc ("lightningValueWith", valueWith);
   _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
   _gst_vm_proxy->defineCFunc ("lightningAddR_I", addr_i);
   _gst_vm_proxy->defineCFunc ("lightningAddCR_I", addcr_i);

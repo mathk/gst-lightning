@@ -66,4 +66,16 @@ CObject subclass: CJitState [
 	<category: 'dsl stack'>
 	<cCall: 'lightningRetFct' returning: #void args: #(#self)>
     ]
+
+    value [
+	"call the generated method and return the result"
+	<category: 'dsl stack'>
+	<cCall: 'lightningValue' returning: #void args: #(#self)>
+    ]
+
+    value: anArg [
+        "call the generated method and return the result"
+        <category: 'dsl stack'>
+        <cCall: 'lightningValueWith' returning: #void args: #(#self #int)>
+    ]
 ]
