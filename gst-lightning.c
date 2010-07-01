@@ -4,361 +4,361 @@ static VMProxy *_gst_vm_proxy;
 
 /* ALU */
 void
-addi_i (jit_state * jit, int i, int j, int k)
+addi_i (jit_stack * jitStack, int i, int j, int k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addi_i (i, j, k);
 #undef _jit
 }
 
 void
-addr_i (jit_state * jit, char i, char j, char k)
+addr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addr_i (i, j, k);
 #undef _jit
 }
 
 void
-addci_i (jit_state * jit, char i, char j, char k)
+addci_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addci_i (i, j, k);
 #undef _jit
 }
 
 void
-addcr_i (jit_state * jit, char i, char j, char k)
+addcr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addcr_i (i, j, k);
 #undef _jit
 }
 
 void
-addxi_i (jit_state * jit, char i, char j, char k)
+addxi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addxi_i (i, j, k);
 #undef _jit
 }
 
 void
-addxr_i (jit_state * jit, char i, char j, char k)
+addxr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_addxr_i (i, j, k);
 #undef _jit
 }
 
 void
-andi_i (jit_state * jit, char i, char j, char k)
+andi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_andi_i (i, j, k);
 #undef _jit
 }
 
 void
-andr_i (jit_state * jit, char i, char j, char k)
+andr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_andr_i (i, j, k);
 #undef _jit
 }
 
 void
-orr_i (jit_state * jit, char i, char j, char k)
+orr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_orr_i (i, j, k);
 #undef _jit
 }
 
 void
-subr_i (jit_state * jit, char i, char j, char k)
+subr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_subr_i (i, j, k);
 #undef _jit
 }
 
 void
-subcr_i (jit_state * jit, char i, char j, char k)
+subcr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_subcr_i (i, j, k);
 #undef _jit
 }
 
 void
-subxr_i (jit_state * jit, char i, char j, char k)
+subxr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_subxr_i (i, j, k);
 #undef _jit
 }
 
 void
-subxi_i (jit_state * jit, char i, char j, char k)
+subxi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_subxi_i (i, j, k);
 #undef _jit
 }
 
 void
-xorr_i (jit_state * jit, char i, char j, char k)
+xorr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_xorr_i (i, j, k);
 #undef _jit
 }
 
 void
-ori_i (jit_state * jit, char i, char j, char k)
+ori_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ori_i (i, j, k);
 #undef _jit
 }
 
 void
-xori_i (jit_state * jit, char i, char j, char k)
+xori_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_xori_i (i, j, k);
 #undef _jit
 }
 
 void
-muli_i (jit_state * jit, char i, char j, char k)
+muli_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_muli_i (i, j, k);
 #undef _jit
 }
 
 void
-mulr_i (jit_state * jit, char i, char j, char k)
+mulr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_mulr_i (i, j, k);
 #undef _jit
 }
 
 void
-muli_ui (jit_state * jit, char i, char j, char k)
+muli_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_muli_ui (i, j, k);
 #undef _jit
 }
 
 void
-mulr_ui (jit_state * jit, char i, char j, char k)
+mulr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_mulr_ui (i, j, k);
 #undef _jit
 }
 
 void
-hmuli_i (jit_state * jit, char i, char j, char k)
+hmuli_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_hmuli_i (i, j, k);
 #undef _jit
 }
 
 void
-hmulr_i (jit_state * jit, char i, char j, char k)
+hmulr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_hmulr_i (i, j, k);
 #undef _jit
 }
 
 void
-hmuli_ui (jit_state * jit, char i, char j, char k)
+hmuli_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_hmuli_ui (i, j, k);
 #undef _jit
 }
 
 void
-hmulr_ui (jit_state * jit, char i, char j, char k)
+hmulr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_hmulr_ui (i, j, k);
 #undef _jit
 }
 
 void
-divi_i (jit_state * jit, char i, char j, char k)
+divi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_divi_i (i, j, k);
 #undef _jit
 }
 
 void
-divi_ui (jit_state * jit, char i, char j, char k)
+divi_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_divi_ui (i, j, k);
 #undef _jit
 }
 
 void
-modi_i (jit_state * jit, char i, char j, char k)
+modi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_modi_i (i, j, k);
 #undef _jit
 }
 
 void
-modi_ui (jit_state * jit, char i, char j, char k)
+modi_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_modi_ui (i, j, k);
 #undef _jit
 }
 
 void
-divr_i (jit_state * jit, char i, char j, char k)
+divr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_divr_i (i, j, k);
 #undef _jit
 }
 
 void
-divr_ui (jit_state * jit, char i, char j, char k)
+divr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_divr_ui (i, j, k);
 #undef _jit
 }
 
 void
-modr_i (jit_state * jit, char i, char j, char k)
+modr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_modr_i (i, j, k);
 #undef _jit
 }
 
 void
-modr_ui (jit_state * jit, char i, char j, char k)
+modr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_modr_ui (i, j, k);
 #undef _jit
 }
 
 /*void
-shift (jit_state *jit, char i, char j, char k, l)
-{ #define _jit (*jit)
+shift (jit_stack *jitStack, char i, char j, char k, l)
+{ #define _jit (jitStack->state)
 	jit_shift (i, j, k, l);
 #undef _jit 
 	} 
 */
 
 void
-lshi_i (jit_state * jit, char i, char j, char k)
+lshi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lshi_i (i, j, k);
 #undef _jit
 }
 
 void
-rshi_i (jit_state * jit, char i, char j, char k)
+rshi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_rshi_i (i, j, k);
 #undef _jit
 }
 
 void
-rshi_ui (jit_state * jit, char i, char j, char k)
+rshi_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_rshi_ui (i, j, k);
 #undef _jit
 }
 
 void
-lshr_i (jit_state * jit, char i, char j, char k)
+lshr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lshr_i (i, j, k);
 #undef _jit
 }
 
 void
-rshr_i (jit_state * jit, char i, char j, char k)
+rshr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_rshr_i (i, j, k);
 #undef _jit
 }
 
 void
-rshr_ui (jit_state * jit, char i, char j, char k)
+rshr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_rshr_ui (i, j, k);
 #undef _jit
 }
 
 void
-retval_i (jit_state * jit, char i)
+retval_i (jit_stack * jitStack, char i)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_retval_i (i);
 #undef _jit
 }
 
 void
-negr_i (jit_state * jit, char i, char j)
+negr_i (jit_stack * jitStack, char i, char j)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_negr_i (i, j);
 #undef _jit
 }
 
 void
-movr_i (jit_state * jit, char i, char j)
+movr_i (jit_stack * jitStack, char i, char j)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_movr_i (i, j);
 #undef _jit
 }
 
 void
-movi_i (jit_state * jit, char i, char j)
+movi_i (jit_stack * jitStack, char i, char j)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_movi_i (i, j);
 #undef _jit
 }
 
 void
-ntoh_ui (jit_state * jit, char i, char j)
+ntoh_ui (jit_stack * jitStack, char i, char j)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ntoh_ui (i, j);
 #undef _jit
 }
 
 void
-ntoh_us (jit_state * jit, char i, char j)
+ntoh_us (jit_stack * jitStack, char i, char j)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ntoh_us (i, j);
 #undef _jit
 }
@@ -366,621 +366,621 @@ ntoh_us (jit_state * jit, char i, char j)
 /* Boolean */
 
 void
-ltr_i (jit_state * jit, char i, char j, char k)
+ltr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ltr_i (i, j, k);
 #undef _jit
 }
 
 void
-ler_i (jit_state * jit, char i, char j, char k)
+ler_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ler_i (i, j, k);
 #undef _jit
 }
 
 void
-gtr_i (jit_state * jit, char i, char j, char k)
+gtr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gtr_i (i, j, k);
 #undef _jit
 }
 
 void
-ger_i (jit_state * jit, char i, char j, char k)
+ger_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ger_i (i, j, k);
 #undef _jit
 }
 
 void
-eqr_i (jit_state * jit, char i, char j, char k)
+eqr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_eqr_i (i, j, k);
 #undef _jit
 }
 
 void
-ner_i (jit_state * jit, char i, char j, char k)
+ner_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ner_i (i, j, k);
 #undef _jit
 }
 
 void
-ltr_ui (jit_state * jit, char i, char j, char k)
+ltr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ltr_ui (i, j, k);
 #undef _jit
 }
 
 void
-ler_ui (jit_state * jit, char i, char j, char k)
+ler_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ler_ui (i, j, k);
 #undef _jit
 }
 
 void
-gtr_ui (jit_state * jit, char i, char j, char k)
+gtr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gtr_ui (i, j, k);
 #undef _jit
 }
 
 void
-ger_ui (jit_state * jit, char i, char j, char k)
+ger_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ger_ui (i, j, k);
 #undef _jit
 }
 
 void
-lti_i (jit_state * jit, char i, char j, char k)
+lti_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lti_i (i, j, k);
 #undef _jit
 }
 
 void
-lei_i (jit_state * jit, char i, char j, char k)
+lei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lei_i (i, j, k);
 #undef _jit
 }
 
 void
-gti_i (jit_state * jit, char i, char j, char k)
+gti_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gti_i (i, j, k);
 #undef _jit
 }
 
 void
-gei_i (jit_state * jit, char i, char j, char k)
+gei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gei_i (i, j, k);
 #undef _jit
 }
 
 void
-eqi_i (jit_state * jit, char i, char j, char k)
+eqi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_eqi_i (i, j, k);
 #undef _jit
 }
 
 void
-nei_i (jit_state * jit, char i, char j, char k)
+nei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_nei_i (i, j, k);
 #undef _jit
 }
 
 void
-lti_ui (jit_state * jit, char i, char j, char k)
+lti_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lti_ui (i, j, k);
 #undef _jit
 }
 
 void
-lei_ui (jit_state * jit, char i, char j, char k)
+lei_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_lei_ui (i, j, k);
 #undef _jit
 }
 
 void
-gti_ui (jit_state * jit, char i, char j, char k)
+gti_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gti_ui (i, j, k);
 #undef _jit
 }
 
 void
-gei_ui (jit_state * jit, char i, char j, char k)
+gei_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_gei_ui (i, j, k);
 #undef _jit
 }
 
 /* Jump */
 void
-bltr_i (jit_state * jit, char i, char j, char k)
+bltr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bltr_i (i, j, k);
 #undef _jit
 }
 
 void
-bler_i (jit_state * jit, char i, char j, char k)
+bler_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bler_i (i, j, k);
 #undef _jit
 }
 
 void
-bgtr_i (jit_state * jit, char i, char j, char k)
+bgtr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgtr_i (i, j, k);
 #undef _jit
 }
 
 void
-bger_i (jit_state * jit, char i, char j, char k)
+bger_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bger_i (i, j, k);
 #undef _jit
 }
 
 void
-beqr_i (jit_state * jit, char i, char j, char k)
+beqr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_beqr_i (i, j, k);
 #undef _jit
 }
 
 void
-bner_i (jit_state * jit, char i, char j, char k)
+bner_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bner_i (i, j, k);
 #undef _jit
 }
 
 void
-bltr_ui (jit_state * jit, char i, char j, char k)
+bltr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bltr_ui (i, j, k);
 #undef _jit
 }
 
 void
-bler_ui (jit_state * jit, char i, char j, char k)
+bler_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bler_ui (i, j, k);
 #undef _jit
 }
 
 void
-bgtr_ui (jit_state * jit, char i, char j, char k)
+bgtr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgtr_ui (i, j, k);
 #undef _jit
 }
 
 void
-bger_ui (jit_state * jit, char i, char j, char k)
+bger_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bger_ui (i, j, k);
 #undef _jit
 }
 
 void
-bmsr_i (jit_state * jit, char i, char j, char k)
+bmsr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bmsr_i (i, j, k);
 #undef _jit
 }
 
 void
-bmcr_i (jit_state * jit, char i, char j, char k)
+bmcr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bmcr_i (i, j, k);
 #undef _jit
 }
 
 void
-boaddr_i (jit_state * jit, char i, char j, char k)
+boaddr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_boaddr_i (i, j, k);
 #undef _jit
 }
 
 void
-bosubr_i (jit_state * jit, char i, char j, char k)
+bosubr_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bosubr_i (i, j, k);
 #undef _jit
 }
 
 void
-boaddr_ui (jit_state * jit, char i, char j, char k)
+boaddr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_boaddr_ui (i, j, k);
 #undef _jit
 }
 
 void
-bosubr_ui (jit_state * jit, char i, char j, char k)
+bosubr_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bosubr_ui (i, j, k);
 #undef _jit
 }
 
 void
-blti_i (jit_state * jit, char i, char j, char k)
+blti_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_blti_i (i, j, k);
 #undef _jit
 }
 
 void
-blei_i (jit_state * jit, char i, char j, char k)
+blei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_blei_i (i, j, k);
 #undef _jit
 }
 
 void
-bgti_i (jit_state * jit, char i, char j, char k)
+bgti_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgti_i (i, j, k);
 #undef _jit
 }
 
 void
-bgei_i (jit_state * jit, char i, char j, char k)
+bgei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgei_i (i, j, k);
 #undef _jit
 }
 
 void
-beqi_i (jit_state * jit, char i, char j, char k)
+beqi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_beqi_i (i, j, k);
 #undef _jit
 }
 
 void
-bnei_i (jit_state * jit, char i, char j, char k)
+bnei_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bnei_i (i, j, k);
 #undef _jit
 }
 
 void
-blti_ui (jit_state * jit, char i, char j, char k)
+blti_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_blti_ui (i, j, k);
 #undef _jit
 }
 
 void
-blei_ui (jit_state * jit, char i, char j, char k)
+blei_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_blei_ui (i, j, k);
 #undef _jit
 }
 
 void
-bgti_ui (jit_state * jit, char i, char j, char k)
+bgti_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgti_ui (i, j, k);
 #undef _jit
 }
 
 void
-bgei_ui (jit_state * jit, char i, char j, char k)
+bgei_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bgei_ui (i, j, k);
 #undef _jit
 }
 
 void
-boaddi_i (jit_state * jit, char i, char j, char k)
+boaddi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_boaddi_i (i, j, k);
 #undef _jit
 }
 
 void
-bosubi_i (jit_state * jit, char i, char j, char k)
+bosubi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bosubi_i (i, j, k);
 #undef _jit
 }
 
 void
-boaddi_ui (jit_state * jit, char i, char j, char k)
+boaddi_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_boaddi_ui (i, j, k);
 #undef _jit
 }
 
 void
-bosubi_ui (jit_state * jit, char i, char j, char k)
+bosubi_ui (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bosubi_ui (i, j, k);
 #undef _jit
 }
 
 
 void
-bmsi_i (jit_state * jit, char i, char j, char k)
+bmsi_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bmsi_i (i, j, k);
 #undef _jit
 }
 
 void
-bmci_i (jit_state * jit, char i, char j, char k)
+bmci_i (jit_stack * jitStack, char i, char j, char k)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_bmci_i (i, j, k);
 #undef _jit
 }
 
 void
-jmpi (jit_state * jit, char i)
+jmpi (jit_stack * jitStack, char i)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_jmpi (i);
 #undef _jit
 }
 
 void
-jmpr (jit_state * jit, char i)
+jmpr (jit_stack * jitStack, char i)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_jmpr (i);
 #undef _jit
 }
 
 /* Common */
 jit_insn *
-get_label (jit_state * jit)
+get_label (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   return jit_get_label ();
 #undef _jit
 }
 
 jit_insn *
-forward (jit_state * jit)
+forward (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   return jit_forward ();
 #undef _jit
 }
 
 jit_code
-get_ip (jit_state * jit)
+get_ip (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   return jit_get_ip ();
 #undef _jit
 }
 
 void
-set_ip (jit_state * jit, jit_insn * ip)
+set_ip (jit_stack * jitStack, jit_insn * ip)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_set_ip (ip);
 #undef _jit
 }
 
 void
-leaf (jit_state * jit, size_t numargs)
+leaf (jit_stack * jitStack, size_t numargs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_leaf (numargs);
 #undef _jit
 }
 
 /* Args */
 int
-arg_c (jit_state * jit)
+arg_c (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   return jit_arg_c ();
 #undef _jit
 }
 
 int
-arg_uc (jit_state * jit)
+arg_uc (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   return jit_arg_uc ();
 #undef _jit
 }
 
 int
-arg_s (jit_state * jit)
+arg_s (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_s ();
+#define _jit (jitStack->state)
+  return jit_arg_s ();
 #undef _jit
 }
 
 int
-arg_us (jit_state * jit)
+arg_us (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_us ();
+#define _jit (jitStack->state)
+  return jit_arg_us ();
 #undef _jit
 }
 
 int
-arg_i (jit_state * jit)
+arg_i (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_i ();
+#define _jit (jitStack->state)
+  return jit_arg_i ();
 #undef _jit
 }
 
 int
-arg_ui (jit_state * jit)
+arg_ui (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_ui ();
+#define _jit (jitStack->state)
+  return jit_arg_ui ();
 #undef _jit
 }
 
 int
-arg_l (jit_state * jit)
+arg_l (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_arg_l ();
 #undef _jit
 }
 
 int
-arg_ul (jit_state * jit)
+arg_ul (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_ul ();
+#define _jit (jitStack->state)
+  return jit_arg_ul ();
 #undef _jit
 }
 
 int
-arg_p (jit_state * jit)
+arg_p (jit_stack * jitStack)
 {
-#define _jit (*jit)
-  jit_arg_p ();
+#define _jit (jitStack->state)
+  return jit_arg_p ();
 #undef _jit
 }
 
 void
-getarg_c (jit_state * jit, int reg, int ofs)
+getarg_c (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_c (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_uc (jit_state * jit, int reg, int ofs)
+getarg_uc (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_uc (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_s (jit_state * jit, int reg, int ofs)
+getarg_s (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_s (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_us (jit_state * jit, int reg, int ofs)
+getarg_us (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_us (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_i (jit_state * jit, int reg, int ofs)
+getarg_i (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_i (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_ui (jit_state * jit, int reg, int ofs)
+getarg_ui (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_ui (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_l (jit_state * jit, int reg, int ofs)
+getarg_l (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_l (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_ul (jit_state * jit, int reg, int ofs)
+getarg_ul (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_ul (reg, ofs);
 #undef _jit
 }
 
 void
-getarg_p (jit_state * jit, int reg, int ofs)
+getarg_p (jit_stack * jitStack, int reg, int ofs)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_getarg_p (reg, ofs);
 #undef _jit
 }
@@ -1005,6 +1005,25 @@ R2 ()
 }
 
 int
+V0 ()
+{
+  return JIT_V0;
+}
+
+int
+V1 ()
+{
+  return JIT_V1;
+}
+
+int
+V2 ()
+{
+  return JIT_V2;
+}
+
+
+int
 RET ()
 {
   return JIT_RET;
@@ -1012,47 +1031,52 @@ RET ()
 
 /* Stack manipulation */
 void
-retFct (jit_state * jit)
+retFct (jit_stack * jitStack)
 {
-#define _jit (*jit)
+#define _jit (jitStack->state)
   jit_ret ();
 #undef _jit
 }
 
-/* Evaluation */
-int
-value (jit_state * jit)
-{
-#define _jit (*jit)
-  typedef int (*pifi) ();
-  pifi fun = (pifi) (jit_get_ip ().iptr);
-  jit_flush_code (jit->x.pc, jit_get_ip ().ptr);
-  return fun ();
-#undef _jit
-}
-
-int
-valueWith (jit_state * jit, int arg1)
-{
-#define _jit (*jit)
-  typedef int (*pifi) (int);
-  jit_flush_code (jit->x.pc, jit_get_ip ().ptr);
-  pifi fun = (pifi) (jit_get_ip ().iptr);
-  fprintf (stderr, "%p\n", fun);
-  return fun (5);
-#undef _jit
-}
-
-/* Create a new jit_state used by gst
+/* Create a new jit_stack used by gst
  * It also allocate the code buffer of a insnSize bytes
  */
-jit_state *
+jit_stack *
 alloc_jit_state (size_t insnSize)
 {
-  jit_state *new_jit_state;
-  new_jit_state = calloc (1, sizeof (*new_jit_state));
-  new_jit_state->x.pc = calloc (insnSize, sizeof (*(new_jit_state->x.pc)));
-  return new_jit_state;
+  jit_stack *new_jit_stack;
+  new_jit_stack = calloc (1, sizeof (*new_jit_stack));
+  new_jit_stack->state.x.pc = new_jit_stack->codeBuffer =
+    calloc (insnSize, sizeof (*(new_jit_stack->codeBuffer)));
+  return new_jit_stack;
+}
+
+void
+flush_code (jit_stack * jitStack)
+{
+#define _jit (jitStack->state)
+  jit_flush_code (jitStack->codeBuffer, jit_get_ip ().ptr);
+#undef _jit
+}
+
+/* Evaluation */
+
+int
+value (jit_stack * jitStack)
+{
+#define _jit (jitStack->state)
+  pif fct = (pifi) jitStack->codeBuffer;
+  return fct ();
+#undef _jit
+}
+
+int
+valueWith (jit_stack * jitStack, int arg)
+{
+#define _jit (jitStack->state)
+  pifi fct = (pifi) jitStack->codeBuffer;
+  return fct (arg);
+#undef _jit
 }
 
 void
@@ -1060,12 +1084,32 @@ gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+  _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
+  _gst_vm_proxy->defineCFunc ("lightningArgC", arg_c);
+  _gst_vm_proxy->defineCFunc ("lightningArgUC", arg_uc);
+  _gst_vm_proxy->defineCFunc ("lightningArgS", arg_s);
+  _gst_vm_proxy->defineCFunc ("lightningArgUS", arg_us);
   _gst_vm_proxy->defineCFunc ("lightningArgI", arg_i);
+  _gst_vm_proxy->defineCFunc ("lightningArgUI", arg_ui);
+  _gst_vm_proxy->defineCFunc ("lightningArgL", arg_l);
+  _gst_vm_proxy->defineCFunc ("lightningArgUL", arg_ul);
+  _gst_vm_proxy->defineCFunc ("lightningArgP", arg_p);
+  _gst_vm_proxy->defineCFunc ("lightningGetargC", getarg_c);
+  _gst_vm_proxy->defineCFunc ("lightningGetargUC", getarg_uc);
+  _gst_vm_proxy->defineCFunc ("lightningGetargS", getarg_s);
+  _gst_vm_proxy->defineCFunc ("lightningGetargUS", getarg_us);
   _gst_vm_proxy->defineCFunc ("lightningGetargI", getarg_i);
+  _gst_vm_proxy->defineCFunc ("lightningGetargUI", getarg_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGetargL", getarg_l);
+  _gst_vm_proxy->defineCFunc ("lightningGetargUL", getarg_ul);
+  _gst_vm_proxy->defineCFunc ("lightningGetargP", getarg_p);
   _gst_vm_proxy->defineCFunc ("lightningR0", R0);
   _gst_vm_proxy->defineCFunc ("lightningR1", R1);
   _gst_vm_proxy->defineCFunc ("lightningR2", R2);
+  _gst_vm_proxy->defineCFunc ("lightningV0", V0);
+  _gst_vm_proxy->defineCFunc ("lightningV1", V1);
+  _gst_vm_proxy->defineCFunc ("lightningV2", V2);
   _gst_vm_proxy->defineCFunc ("lightningRET", RET);
   _gst_vm_proxy->defineCFunc ("lightningRetFct", retFct);
   _gst_vm_proxy->defineCFunc ("lightningValue", value);

@@ -5,6 +5,15 @@
 #include <gstpub.h>
 #include <lightning.h>
 
+typedef int (*pifi) (int);
+typedef int (*pif) ();
+
+typedef struct _jit_stack
+{
+  jit_state state;
+  jit_insn *codeBuffer;
+} jit_stack;
+
 #endif /* GST_LIGHTNING_H */
 
 /* Local Variables: */
@@ -12,4 +21,3 @@
 /* c-basic-offset:2 */
 /* tab-width:2      */
 /* End:             */
-
