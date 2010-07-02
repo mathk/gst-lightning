@@ -9,7 +9,7 @@ Eval [
         prolog: 1;
 	getargInt: Lightning.R2 from: jitState argInt;
         movI: Lightning.R1 fromUI: 1.
-    ref := jitState branch: jitState forward reg: Lightning.R2 lowerThanI: 2.
+    ref := jitState branch: jitState forward reg: Lightning.R2 lowerThanUI: 2.
     jitState movI: Lightning.R0 fromUI: 1.
     loop := jitState label.
     (jitState
