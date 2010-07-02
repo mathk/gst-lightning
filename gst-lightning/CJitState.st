@@ -283,6 +283,18 @@ CObject subclass: CJitState [
 	<category: 'dsl binary alu'>
 	self primAddI: regDst number to: regDst number int: val
     ]
+
+    addI: regDst to: regSrc uint: val [
+        "Add an integer to a register. Result is store in a register"
+        <category: 'dsl binary alu'>
+        self primAddI: regDst number to: regDst number uint: val
+    ]
+
+    addR: regDst to: regSrc uint: regVal [
+        "Add an integer to a register. Result is store in a register"
+        <category: 'dsl binary alu'>
+        self primAddR: regDst number to: regDst number uint: regVal number
+    ]
 	
     primAddI: regDstNumber to: regSrcNumber int: val [
 	"Add an integer to a register. Result is store in a register
@@ -291,11 +303,25 @@ CObject subclass: CJitState [
 	<cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
+    primAddI: regDstNumber to: regSrcNumber uint: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddI_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
     primAddR: regDstNumber to: regSrcNumber int: val [
         "Add an integer to a register. Result is store in a register
          This is a private primitive use #addInt:to:ont: instead"
         <category: 'private dsl binary alu'>
         <cCall: 'lightningAddR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    primAddR: regDstNumber to: regSrcNumber uint: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addInt:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
     primAddXI: regDstNumber to: regSrcNumber int: val [
@@ -330,6 +356,19 @@ CObject subclass: CJitState [
     primAddXR: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningAddXR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    subI: regDst to: regSrc uint: val [
+        "Add an integer to a register. Result is store in a register"
+        <category: 'dsl binary alu'>
+        self primSubI: regDst number to: regDst number uint: val
+    ]
+
+    primSubI: regDstNumber to: regSrcNumber uint: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningSubI_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
     primAndI: regDstNumber to: regSrcNumber int: val [
@@ -515,10 +554,78 @@ CObject subclass: CJitState [
 	self primMovI: reg number fromP: ptr
     ]
 
+    movI: reg fromUI: int [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovI: reg number fromUI: int
+    ]
+
     primMovI: regNumber fromP: ptr [
 	"Move pointer to a register
 	 This is a private primitive use #movI:fromP: instead"
 	<category: 'dsl transfer'>
 	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
+    ]
+
+    primMovI: regNumber fromUI: int [
+        "Move unsigned integer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'private-primitive'>
+        <cCall: 'lightningMovI_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+    movR: reg fromUI: regSrc [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovI: reg number fromUI: regSrc number
+    ]
+
+    primMovI: regNumber fromUI: int [
+        "Move pointer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'dsl transfer'>
+        <cCall: 'lightningMovR_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+    branch: dir reg: regNumber lowerThanI: int [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+	^ self primBranch: dir reg: regNumber number lowerThanI: int
+    ]
+
+    primBranch: dir reg: regNumber lowerThanI: int [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        <cCall: 'lightningBltI_I' returning: #int args: #(#self #int #int #int)>
+    ]
+
+    branch: dir reg: regNumber notEqualToUI: int [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        ^ self primBranch: dir reg: regNumber number lowerThanI: int
+    ]
+
+    primBranch: dir reg: regNumber notEqualToUI: int [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        <cCall: 'lightningBneI_UI' returning: #int args: #(#self #int #int #int)>
+    ]
+
+    forward [
+	"Jump to direction if reg < int "
+        <category: 'dsl jump'>
+        <cCall: 'lightningForward' returning: #int args: #(#self)>
+    ]
+
+    label [
+        "Return the label "
+        <category: 'dsl jump'>
+        <cCall: 'lightningGetLabel' returning: #int args: #(#self)>
+    ]
+
+    patch: int [
+        "Patch the forward jump "
+        <category: 'dsl jump'>
+        <cCall: 'lightningPatch' returning: #void args: #(#self #int)>
     ]
 ]
