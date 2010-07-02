@@ -1124,16 +1124,16 @@ valueWith (jit_stack * jitStack, int arg)
 {
 #define _jit (jitStack->state)
   pifi fct = (pifi) jitStack->codeBuffer;
-  printf ("%p\n", fct);
   return fct (arg);
 #undef _jit
 }
 
 /* Debugging */
+
 void *
 gst_printf ()
 {
-  return printf;
+  return puts;
 }
 
 void

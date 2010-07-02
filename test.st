@@ -11,14 +11,12 @@ Eval [
 
 	jitState := Lightning.CJitState new.
 	jitState 
-	    prolog: 1;
-	    getargInt: Lightning.R1 from: jitState argInt;
-	    movI: Lightning.R0 fromP: 'What ? %d \n';
-	    prepare: 2;
-	    pushargInt: Lightning.R1;
+	    prolog: 0;
+	    movI: Lightning.R0 fromP: 'Hello World!';
+	    prepare: 1;
 	    pushargPtr: Lightning.R0;
 	    finish: jitState printf;
 	    ret;
 	    assemble;
-	    value: 4
+	    value
 ]
