@@ -7,3 +7,12 @@ endif
 lib_LTLIBRARIES = libgstlightning.la
 libgstlightning_la_SOURCES = gst-lightning.c gst-lightning.h
 
+
+DISTCLEANFILES = pkgrules.tmp
+all-local:
+clean-local::
+install-data-hook::
+dist-hook::
+uninstall-local::
+
+@PACKAGE_RULES@
