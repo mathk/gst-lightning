@@ -1,3 +1,5 @@
+# build gst-lightning
+#
 AM_CPPFLAGS = -I$(INCLIGHTNING)
 
 if !HAVE_INSTALLED_LIGHTNING
