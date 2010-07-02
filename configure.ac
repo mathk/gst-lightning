@@ -1,6 +1,7 @@
 AC_CONFIG_MACRO_DIR([m4])
 
 m4_include([build-aux/lightning.m4])
+m4_include([build-aux/gst-package.m4])
 
 AC_INIT([package], [version])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
@@ -8,6 +9,8 @@ AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 
 LIGHTNING_CONFIGURE_IF_NOT_FOUND([], [])
+
+GST_PACKAGE_ENABLE([Lightning], [gst-lightning])
 
 AC_PROG_CC
 AC_CONFIG_FILES([Makefile])
