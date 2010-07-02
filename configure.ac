@@ -9,15 +9,15 @@ AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 
-
-
 LIGHTNING_CONFIGURE_IF_NOT_FOUND([], [])
+dnl GST_PACKAGE_PREFIX([.])
+GST_PACKAGE_ENABLE([Lightning], [gst-lightning])
 
 AM_PATH_GST([3.2])
 
 AC_PROG_CC
+
 AC_CONFIG_FILES([Makefile])
-dnl AC_CONFIG_FILES([gst], [chmod +x gst])
 
 AC_PROG_LIBTOOL
 AC_SUBST(LIBTOOL_DEPS)

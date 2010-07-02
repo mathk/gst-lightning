@@ -3,6 +3,9 @@
 AM_CPPFLAGS = -I$(INCLIGHTNING)
 ACLOCAL_AMFLAGS = -I m4 -I /usr/local/share/aclocal
 
+PACKAGE=smalltalk
+#gstdatadir=$(pkgdatadir)
+
 if !HAVE_INSTALLED_LIGHTNING
 AM_CPPFLAGS += -I$(top_srcdir)/lightning -I$(top_builddir)/lightning
 endif
