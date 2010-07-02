@@ -15,7 +15,7 @@ Eval [
 	    movI: Lightning.R0 fromP: 'Hello World!';
 	    prepare: 1;
 	    pushargPtr: Lightning.R0;
-	    finish: jitState pruts;
+	    finish: jitState puts;
 	    ret;
 	    assemble;
 	    value
