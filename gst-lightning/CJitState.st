@@ -16,14 +16,32 @@ CObject subclass: CJitState [
 
     leaf: numargs [
 	"Initialize the Jit and set the number of argument"
-	<category: 'dsl initialize'>
+	<category: 'dsl prolog'>
 	<cCall: 'lightningLeaf' returning: #void args: #(#self #ulong)>
     ]
 
     leaf [
 	"Initialize the Jit and set the number of argument to 0"
-	<category: 'dsl initialize'>
+	<category: 'dsl prolog'>
 	self leaf: 0.
+    ]
+
+    prolog: numargs [
+	"Add the function prolog with numargs arguments"
+	<category: 'dsl prolog'>
+	<cCall: 'lightningProlog' returning: #void args: #(#self #ulong)>
+    ]
+
+    prolog [
+	"Add the function prolog with 0 argument"
+	<category: 'dsl prolog'>
+	self prolog: 0.
+    ]
+
+    prepare: numarg [
+	"Prepare a call of n argument"
+	<category: 'dsl arguments'>
+	<cCall: 'lightningPrepare' returning: #void args: #(#self #int)>
     ]
 	
     argChar [
@@ -223,16 +241,52 @@ CObject subclass: CJitState [
 	<category: 'private dsl arguments'>
 	<cCall: 'lightningGetargP' returning: #void args: #(#self #int #int)>
     ]
+
+    pushargInt: reg [
+	"Push an int in the stack"
+	<category: 'dsl argument'>
+	self primPushargInt: reg number
+	
+    ]
+
+    primPushargInt: regNumber [
+	"Push an int in the stack
+	 This is a private primitive use #pushargInt: instead"
+	<category: 'dsl argument'>
+	<cCall: 'lightningPusharg_I' returning: #void args: #(#self #int)>
+	
+    ]
+
+    pushargPtr: reg [
+	"Push an pointer in the stack"
+	<category: 'dsl argument'>
+	self primPushargInt: reg number
+	
+    ]
+
+    primPushargPtr: regNumber [
+	"Push an pointer in the stack
+	 This is a private primitive use #pushargPtr: instead"
+	<category: 'dsl argument'>
+	<cCall: 'lightningPusharg_P' returning: #void args: #(#self #int)>
+	
+    ]
+
+    finish: fct [
+	"Call a function"
+	<category: 'dsl call'>
+	<cCall: 'lightningFinish' returning: #void args: #(#self #cObject) >
+    ]
     
-    addInt: regDst to: regSrc int: val [
+    addI: regDst to: regSrc int: val [
 	"Add an integer to a register. Result is store in a register"
 	<category: 'dsl binary alu'>
-	self primAddInt: regDst number to: regDst number int: val
+	self primAddI: regDst number to: regDst number int: val
     ]
 	
-    primAddInt: regDstNumber to: regSrcNumber int: val [
+    primAddI: regDstNumber to: regSrcNumber int: val [
 	"Add an integer to a register. Result is store in a register
-	 This is a private primitive use #addInt:to:ont: instead"
+	 This is a private primitive use #addI:to:ont: instead"
 	<category: 'private dsl binary alu'>
 	<cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
     ]
@@ -453,5 +507,24 @@ CObject subclass: CJitState [
         "call the generated method and return the result"
         <category: 'dsl stack'>
         <cCall: 'lightningValueWith' returning: #int args: #(#self #int)>
+    ]
+
+    movI: reg fromP: ptr [
+	"Move pointer to a register"
+	<category: 'dsl transfer'>
+	self primMovI: reg number fromP: ptr
+    ]
+
+    primMovI: regNumber fromP: ptr [
+	"Move pointer to a register
+	 This is a private primitive use #movI:fromP: instead"
+	<category: 'dsl transfer'>
+	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
+    ]
+
+    printf [
+	"Return the printf pointer function"
+	<category: 'debugging'>
+	<cCall: 'lightningDbgPrintf' returning: #{CPtr} args: #()>
     ]
 ]

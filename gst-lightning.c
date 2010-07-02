@@ -348,6 +348,14 @@ movi_i (jit_stack * jitStack, int i, int j)
 }
 
 void
+movi_p (jit_stack * jitStack, int i, void * j)
+{
+#define _jit (jitStack->state)
+	jit_movi_p (i, j);
+#undef _jit
+}
+
+void
 ntoh_ui (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
@@ -832,6 +840,7 @@ set_ip (jit_stack * jitStack, jit_insn * ip)
 #undef _jit
 }
 
+/* Function prolog */
 void
 leaf (jit_stack * jitStack, size_t numargs)
 {
@@ -840,7 +849,23 @@ leaf (jit_stack * jitStack, size_t numargs)
 #undef _jit
 }
 
+void
+prolog (jit_stack * jitStack, size_t numargs)
+{
+#define _jit (jitStack->state)
+	jit_prolog (numargs);
+#undef _jit
+}
+
 /* Args */
+void
+prepare (jit_stack * jitStack, int i)
+{
+#define _jit (jitStack->state)
+	jit_prepare (i);
+#undef _jit
+}
+
 int
 arg_c (jit_stack * jitStack)
 {
@@ -985,6 +1010,31 @@ getarg_p (jit_stack * jitStack, int reg, int ofs)
 #undef _jit
 }
 
+void
+pusharg_i (jit_stack *jitStack, int reg)
+{
+#define _jit (jitStack->state)
+  jit_pusharg_i (reg);
+#undef _jit
+}
+
+void
+pusharg_p (jit_stack *jitStack, int reg)
+{
+#define _jit (jitStack->state)
+  jit_pusharg_p (reg);
+#undef _jit
+}
+
+void
+finish (jit_stack *jitStack, void * fct)
+{
+#define _jit (jitStack->state)
+  printf ("ICI %p\n", fct);
+  jit_finish (fct);
+#undef _jit
+}
+
 /* Register access */
 int
 R0 ()
@@ -1075,8 +1125,16 @@ valueWith (jit_stack * jitStack, int arg)
 {
 #define _jit (jitStack->state)
   pifi fct = (pifi) jitStack->codeBuffer;
+  printf ("%p\n", fct);
   return fct (arg);
 #undef _jit
+}
+
+/* Debugging */
+void *
+gst_printf ()
+{
+  return printf;
 }
 
 void
@@ -1086,6 +1144,8 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
+  _gst_vm_proxy->defineCFunc ("lightningProlog", prolog);
+  _gst_vm_proxy->defineCFunc ("lightningPrepare", prepare);
   _gst_vm_proxy->defineCFunc ("lightningArgC", arg_c);
   _gst_vm_proxy->defineCFunc ("lightningArgUC", arg_uc);
   _gst_vm_proxy->defineCFunc ("lightningArgS", arg_s);
@@ -1104,6 +1164,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningGetargL", getarg_l);
   _gst_vm_proxy->defineCFunc ("lightningGetargUL", getarg_ul);
   _gst_vm_proxy->defineCFunc ("lightningGetargP", getarg_p);
+  _gst_vm_proxy->defineCFunc ("lightningPusharg_I", pusharg_i);
+  _gst_vm_proxy->defineCFunc ("lightningPusharg_P", pusharg_p);
+  _gst_vm_proxy->defineCFunc ("lightningFinish", finish);
   _gst_vm_proxy->defineCFunc ("lightningR0", R0);
   _gst_vm_proxy->defineCFunc ("lightningR1", R1);
   _gst_vm_proxy->defineCFunc ("lightningR2", R2);
@@ -1180,8 +1243,10 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningRetval_I", retval_i);
   _gst_vm_proxy->defineCFunc ("lightningMovR_I", movr_i);
   _gst_vm_proxy->defineCFunc ("lightningMovI_I", movi_i);
+  _gst_vm_proxy->defineCFunc ("lightningMovI_P", movi_p);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
+  _gst_vm_proxy->defineCFunc ("lightningDbgPrintf", gst_printf);
 }
 
 /* Local Variables: */
