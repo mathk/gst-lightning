@@ -522,9 +522,9 @@ CObject subclass: CJitState [
 	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
     ]
 
-    printf [
+    pruts [
 	"Return the printf pointer function"
 	<category: 'debugging'>
-	<cCall: 'lightningDbgPrintf' returning: #{CPtr} args: #()>
+	<cCall: 'lightningDbgPuts' returning: #{CPtr} args: #()>
     ]
 ]
