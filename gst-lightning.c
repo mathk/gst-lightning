@@ -324,6 +324,14 @@ negr_i (jit_stack * jitStack, int i, int j)
 }
 
 void
+notr_i (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_notr_i (i, j);
+#undef _jit
+}
+
+void
 movr_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
@@ -1112,6 +1120,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningAddCI_I", addci_i);
   _gst_vm_proxy->defineCFunc ("lightningAddXI_I", addxi_i);
   _gst_vm_proxy->defineCFunc ("lightningAddXR_I", addxr_i);
+
   _gst_vm_proxy->defineCFunc ("lightningAndI_I", andi_i);
   _gst_vm_proxy->defineCFunc ("lightningAndR_I", andr_i);
   _gst_vm_proxy->defineCFunc ("lightningOrR_I", orr_i);
@@ -1123,6 +1132,31 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningRshI_I", rshi_i);
   _gst_vm_proxy->defineCFunc ("lightningRshI_UI", rshi_ui);
   _gst_vm_proxy->defineCFunc ("lightningRshR_UI", rshr_ui);
+
+  _gst_vm_proxy->defineCFunc ("lightningNegR_I", negr_i);
+  _gst_vm_proxy->defineCFunc ("lightningNotR_I", notr_i);
+
+  _gst_vm_proxy->defineCFunc ("lightningLtR_I", ltr_i);
+  _gst_vm_proxy->defineCFunc ("lightningLeR_I", ler_i);
+  _gst_vm_proxy->defineCFunc ("lightningGtR_I", gtr_i);
+  _gst_vm_proxy->defineCFunc ("lightningGeR_I", ger_i);
+  _gst_vm_proxy->defineCFunc ("lightningEqR_I", eqr_i);
+  _gst_vm_proxy->defineCFunc ("lightningNeR_I", ner_i);
+  _gst_vm_proxy->defineCFunc ("lightningLtR_UI", ltr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLeR_UI", ler_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGtR_UI", gtr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGeR_UI", ger_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLtI_I", lti_i);
+  _gst_vm_proxy->defineCFunc ("lightningLeI_I", lei_i);
+  _gst_vm_proxy->defineCFunc ("lightningGtI_I", gti_i);
+  _gst_vm_proxy->defineCFunc ("lightningGeI_I", gei_i);
+  _gst_vm_proxy->defineCFunc ("lightningEqI_I", eqi_i);
+  _gst_vm_proxy->defineCFunc ("lightningNeI_I", nei_i);
+  _gst_vm_proxy->defineCFunc ("lightningLtI_UI", lti_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLeI_UI", lei_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGtI_UI", gti_ui);
+  _gst_vm_proxy->defineCFunc ("lightningGeI_UI", gei_ui);
+
   _gst_vm_proxy->defineCFunc ("lightningSubR_I", subr_i);
   _gst_vm_proxy->defineCFunc ("lightningSubCR_I", subcr_i);
   _gst_vm_proxy->defineCFunc ("lightningSubXR_I", subxr_i);
@@ -1144,31 +1178,10 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningModR_I", modr_i);
   _gst_vm_proxy->defineCFunc ("lightningModR_UI", modr_ui);
   _gst_vm_proxy->defineCFunc ("lightningRetval_I", retval_i);
-  _gst_vm_proxy->defineCFunc ("lightningNegR_I", negr_i);
   _gst_vm_proxy->defineCFunc ("lightningMovR_I", movr_i);
   _gst_vm_proxy->defineCFunc ("lightningMovI_I", movi_i);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
-  _gst_vm_proxy->defineCFunc ("lightningLtR_I", ltr_i);
-  _gst_vm_proxy->defineCFunc ("lightningLeR_I", ler_i);
-  _gst_vm_proxy->defineCFunc ("lightningGtR_I", gtr_i);
-  _gst_vm_proxy->defineCFunc ("lightningGeR_I", ger_i);
-  _gst_vm_proxy->defineCFunc ("lightningEqR_I", eqr_i);
-  _gst_vm_proxy->defineCFunc ("lightningNeR_I", ner_i);
-  _gst_vm_proxy->defineCFunc ("lightningLtR_UI", ltr_ui);
-  _gst_vm_proxy->defineCFunc ("lightningLeR_UI", ler_ui);
-  _gst_vm_proxy->defineCFunc ("lightningGtR_UI", gtr_ui);
-  _gst_vm_proxy->defineCFunc ("lightningGeR_UI", ger_ui);
-  _gst_vm_proxy->defineCFunc ("lightningLtI_I", lti_i);
-  _gst_vm_proxy->defineCFunc ("lightningLeI_I", lei_i);
-  _gst_vm_proxy->defineCFunc ("lightningGtI_I", gti_i);
-  _gst_vm_proxy->defineCFunc ("lightningGeI_I", gei_i);
-  _gst_vm_proxy->defineCFunc ("lightningEqI_I", eqi_i);
-  _gst_vm_proxy->defineCFunc ("lightningNeI_I", nei_i);
-  _gst_vm_proxy->defineCFunc ("lightningLtI_UI", lti_ui);
-  _gst_vm_proxy->defineCFunc ("lightningLeI_UI", lei_ui);
-  _gst_vm_proxy->defineCFunc ("lightningGtI_UI", gti_ui);
-  _gst_vm_proxy->defineCFunc ("lightningGeI_UI", gei_ui);
 }
 
 /* Local Variables: */

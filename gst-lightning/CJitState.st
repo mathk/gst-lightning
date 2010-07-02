@@ -333,6 +333,103 @@ CObject subclass: CJitState [
         <cCall: 'lightningRshR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
+    primNegR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningNegR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+    primNegR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningNegR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+    primLtR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLtR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+    primLeR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLeR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+    primGtR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGtR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primGeR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGeR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primNeR: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningNeR_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primLtRUI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLtR_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primLeRUI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLeR_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primGtRUI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGtR_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primGeRUI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGeR_UI' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primLtI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLtI_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primLeI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLeI_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primGtI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGtI_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primGeI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningGeI_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primEqI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningEqI_I' returning: #void args: #(#self #int #int)>
+    ]
+
+
+    primNeI: regDstNumber to: regSrcNumber int: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningNeI_I' returning: #void args: #(#self #int #int)>
+    ]
+
     ret [
 
 	"Return from a function instruction"
