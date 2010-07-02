@@ -1128,14 +1128,6 @@ valueWith (jit_stack * jitStack, int arg)
 #undef _jit
 }
 
-/* Debugging */
-
-void *
-gst_puts ()
-{
-  return puts;
-}
-
 void
 gst_initModule (VMProxy * proxy)
 {
@@ -1245,7 +1237,6 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningMovI_P", movi_p);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
-  _gst_vm_proxy->defineCFunc ("lightningDbgPuts", gst_puts);
 }
 
 /* Local Variables: */

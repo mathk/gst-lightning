@@ -521,10 +521,4 @@ CObject subclass: CJitState [
 	<category: 'dsl transfer'>
 	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
     ]
-
-    pruts [
-	"Return the printf pointer function"
-	<category: 'debugging'>
-	<cCall: 'lightningDbgPuts' returning: #{CPtr} args: #()>
-    ]
 ]
