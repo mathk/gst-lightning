@@ -22,5 +22,5 @@ Eval [
 	movR: Lightning.RET fromUI: Lightning.R1;
 	ret;
 	assemble;
-	value: 5) printNl.
+	value: 36) printNl.
 ]

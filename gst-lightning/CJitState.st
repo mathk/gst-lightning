@@ -279,9 +279,9 @@ CObject subclass: CJitState [
     ]
     
     addI: regDst to: regSrc int: val [
-    "Add an integer to a register. Result is store in a register"
-    <category: 'dsl binary alu'>
-    self primAddI: regDst number to: regDst number int: val
+	"Add an integer to a register. Result is store in a register"
+	<category: 'dsl binary alu'>
+	self primAddI: regDst number to: regDst number int: val
     ]
 
     addI: regDst to: regSrc uint: val [
@@ -297,10 +297,10 @@ CObject subclass: CJitState [
     ]
     
     primAddI: regDstNumber to: regSrcNumber int: val [
-    "Add an integer to a register. Result is store in a register
-     This is a private primitive use #addI:to:ont: instead"
-    <category: 'private dsl binary alu'>
-    <cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
+	"Add an integer to a register. Result is store in a register
+	 This is a private primitive use #addI:to:ont: instead"
+	<category: 'private dsl binary alu'>
+	<cCall: 'lightningAddI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
     primAddI: regDstNumber to: regSrcNumber uint: val [
@@ -614,7 +614,7 @@ CObject subclass: CJitState [
     branch: dir reg: regNumber notEqualToUI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        ^ self primBranch: dir reg: regNumber number lowerThanI: int
+        ^ self primBranch: dir reg: regNumber number notEqualToUI: int
     ]
 
     primBranch: dir reg: regNumber notEqualToUI: int [
