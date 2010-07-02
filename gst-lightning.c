@@ -1030,7 +1030,6 @@ void
 finish (jit_stack *jitStack, void * fct)
 {
 #define _jit (jitStack->state)
-  printf ("ICI %p\n", fct);
   jit_finish (fct);
 #undef _jit
 }
