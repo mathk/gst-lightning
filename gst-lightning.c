@@ -1171,7 +1171,6 @@ value (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
   pif fct = (pifi) jitStack->codeBuffer;
-  __asm__("int3");
   return fct ();
 #undef _jit
 }
@@ -1181,7 +1180,6 @@ valueWith (jit_stack * jitStack, int arg)
 {
 #define _jit (jitStack->state)
   pifi fct = (pifi) jitStack->codeBuffer;
-  __asm__("int3");
   return fct (arg);
 #undef _jit
 }

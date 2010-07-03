@@ -3,14 +3,15 @@ Eval [
 
     PackageLoader fileInPackage: 'Lightning'.
 
-    DLD addLibrary: 'libc'.
     jitState := Lightning.CJitState new.
     jitState
-        prolog: 1;
+        leaf: 1;
 	getargInt: Lightning.R2 from: jitState argInt;
         movI: Lightning.R1 fromUI: 1.
     ref := jitState branch: jitState forward reg: Lightning.R2 lowerThanUI: 2.
-    jitState movI: Lightning.R0 fromUI: 1.
+    jitState 
+	subI: Lightning.R2 to: Lightning.R2 uint: 1;
+	movI: Lightning.R0 fromUI: 1.
     loop := jitState label.
     (jitState
 	subI: Lightning.R2 to: Lightning.R2 uint: 1;
@@ -22,5 +23,5 @@ Eval [
 	movR: Lightning.RET fromUI: Lightning.R1;
 	ret;
 	assemble;
-	value: 36) printNl.
+	value: 36) printNl
 ]

@@ -281,19 +281,19 @@ CObject subclass: CJitState [
     addI: regDst to: regSrc int: val [
 	"Add an integer to a register. Result is store in a register"
 	<category: 'dsl binary alu'>
-	self primAddI: regDst number to: regDst number int: val
+	self primAddI: regDst number to: regSrc number int: val
     ]
 
     addI: regDst to: regSrc uint: val [
         "Add an integer to a register. Result is store in a register"
         <category: 'dsl binary alu'>
-        self primAddI: regDst number to: regDst number uint: val
+        self primAddI: regDst number to: regSrc number uint: val
     ]
 
     addR: regDst to: regSrc uint: regVal [
-        "Add an integer to a register. Result is store in a register"
+        "Add an register to a register. Result is store in a register"
         <category: 'dsl binary alu'>
-        self primAddR: regDst number to: regDst number uint: regVal number
+        self primAddR: regDst number to: regSrc number uint: regVal number
     ]
     
     primAddI: regDstNumber to: regSrcNumber int: val [
@@ -310,14 +310,14 @@ CObject subclass: CJitState [
         <cCall: 'lightningAddI_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primAddR: regDstNumber to: regSrcNumber int: val [
+    primAddR: regDstNumber to: regSrcNumber int: regNumber [
         "Add an integer to a register. Result is store in a register
          This is a private primitive use #addInt:to:ont: instead"
         <category: 'private dsl binary alu'>
         <cCall: 'lightningAddR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primAddR: regDstNumber to: regSrcNumber uint: val [
+    primAddR: regDstNumber to: regSrcNumber uint: regNumber [
         "Add an integer to a register. Result is store in a register
          This is a private primitive use #addInt:to:ont: instead"
         <category: 'private dsl binary alu'>
