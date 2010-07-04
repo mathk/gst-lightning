@@ -361,7 +361,7 @@ CObject subclass: CJitState [
     subI: regDst to: regSrc uint: val [
         "Add an integer to a register. Result is store in a register"
         <category: 'dsl binary alu'>
-        self primSubI: regDst number to: regDst number uint: val
+        self primSubI: regDst number to: regSrc number uint: val
     ]
 
     primSubI: regDstNumber to: regSrcNumber uint: val [
@@ -369,6 +369,57 @@ CObject subclass: CJitState [
          This is a private primitive use #addI:to:ont: instead"
         <category: 'private dsl binary alu'>
         <cCall: 'lightningSubI_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    subR: regDst to: regSrc uint: reg [
+        "Add an integer to a register. Result is store in a register"
+        <category: 'dsl binary alu'>
+        self primSubR: regDst number to: regSrc number uint: reg number
+    ]
+
+    primSubR: regDstNumber to: regSrcNumber uint: regNum [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningSubR_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    mulR: regDst to: regSrc int: regVal [
+        <category: 'dsl binary alu'>
+
+        self primMulR: regDst number to: regSrc number int: regVal number
+    ]
+
+    primMulR: regDstNumber to: regSrcNumber int: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningMulR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    mulR: regDst to: regSrc uint: regVal [
+        <category: 'dsl binary alu'>
+
+        self primMulR: regDst number to: regSrc number uint: regVal number
+    ]
+
+    primMulR: regDstNumber to: regSrcNumber uint: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningMulR_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    divR: regDst to: regSrc uint: regVal [
+        <category: 'dsl binary alu'>
+
+        self primDivR: regDst number to: regSrc number uint: regVal number
+    ]
+
+    primDivR: regDstNumber to: regSrcNumber uint: val [
+        <category: 'private dsl binary alu'>
+
+        <cCall: 'lightningDivR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
     primAndI: regDstNumber to: regSrcNumber int: val [

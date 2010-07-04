@@ -108,6 +108,14 @@ subr_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
+subr_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_subr_ui (i, j, k);
+#undef _jit
+}
+
+void
 subcr_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -1280,6 +1288,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningGeI_UI", gei_ui);
 
   _gst_vm_proxy->defineCFunc ("lightningSubR_I", subr_i);
+  _gst_vm_proxy->defineCFunc ("lightningSubR_UI", subr_ui);
   _gst_vm_proxy->defineCFunc ("lightningSubCR_I", subcr_i);
   _gst_vm_proxy->defineCFunc ("lightningSubXR_I", subxr_i);
   _gst_vm_proxy->defineCFunc ("lightningSubXI_I", subxi_i);
