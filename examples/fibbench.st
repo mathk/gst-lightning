@@ -1,5 +1,5 @@
 Eval [
-    | b1 b2 ref loop |
+    | b1 b2 ref loop fibfct |
 
     PackageLoader fileInPackage: 'Lightning'.
 
@@ -23,20 +23,19 @@ Eval [
         movR: Lightning.RET fromUI: Lightning.R1;
         ret;
         assemble.
-
-    b1 := Time millisecondsToRun: [ 100000 timesRepeat: [ jitState value: 36 ] ].
-    b2 := Time millisecondsToRun: [ 100000 timesRepeat: [ 
-    [ :each | |  r0 r1 r2 vo |
+	fibfct := [ :each | |  r0 r1 r2 vo |
         r2 := each.
         r1 := 1.
         (r2 := r2 - 1)  > 2 ifTrue: [
-        r0 := 1.
-        [ r2 = 0 ] whileFalse: [
+			r0 := 1.
+			[ r2 = 0 ] whileFalse: [
                     r2 := r2 - 1.
                     v0 := r0 + r1.
                     r0 := r1.
                     r1 := v0 + 1 ].
-        r1  ] ] value: 36  ] ].
+			r1  ] ].
+    b1 := Time millisecondsToRun: [ 100000 timesRepeat: [ jitState value: 36 ] ].
+    b2 := Time millisecondsToRun: [ 100000 timesRepeat: [ fibfct value: 36  ] ].
 
     'Fibonacci benchmark (results expressed in milli seconds) :' printNl.
     ('Time to run 100000 fib(36) with lightning: ', b1 asString) printNl.
