@@ -4,11 +4,9 @@
   <module>libgstlightning</module>
   <filein>Register.st</filein>
   <filein>CJitState.st</filein>
-  <filein>CJitInstN.st</filein>
   <filein>Reg.st</filein>
 
   <file>CJitState.st</file>
-  <file>CJitInstN.st</file>
   <file>Register.st</file>
   <file>Reg.st</file>
 </package>
