@@ -391,7 +391,7 @@ void
 movi_p (jit_stack * jitStack, int i, void * j)
 {
 #define _jit (jitStack->state)
-	jit_movi_p (i, j);
+  jit_movi_p (i, j);
 #undef _jit
 }
 
@@ -706,7 +706,7 @@ jit_insn *
 blti_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_blti_i (i, j, k);
+  return jit_blti_i (i, j, k);
 #undef _jit
 }
 
@@ -714,7 +714,7 @@ jit_insn *
 blei_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_blei_i (i, j, k);
+  return jit_blei_i (i, j, k);
 #undef _jit
 }
 
@@ -722,7 +722,7 @@ jit_insn *
 bgti_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bgti_i (i, j, k);
+  return jit_bgti_i (i, j, k);
 #undef _jit
 }
 
@@ -730,7 +730,7 @@ jit_insn *
 bgei_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bgei_i (i, j, k);
+  return jit_bgei_i (i, j, k);
 #undef _jit
 }
 
@@ -738,7 +738,7 @@ jit_insn *
 beqi_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_beqi_i (i, j, k);
+  return jit_beqi_i (i, j, k);
 #undef _jit
 }
 
@@ -746,7 +746,7 @@ jit_insn *
 bnei_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bnei_i (i, j, k);
+  return jit_bnei_i (i, j, k);
 #undef _jit
 }
 
@@ -754,7 +754,7 @@ jit_insn *
 bnei_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bnei_ui (i, j, k);
+  return jit_bnei_ui (i, j, k);
 #undef _jit
 }
 
@@ -762,7 +762,7 @@ jit_insn *
 blti_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_blti_ui (i, j, k);
+  return jit_blti_ui (i, j, k);
 #undef _jit
 }
 
@@ -770,7 +770,7 @@ jit_insn *
 blei_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_blei_ui (i, j, k);
+  return jit_blei_ui (i, j, k);
 #undef _jit
 }
 
@@ -778,7 +778,7 @@ jit_insn *
 bgti_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bgti_ui (i, j, k);
+  return jit_bgti_ui (i, j, k);
 #undef _jit
 }
 
@@ -786,7 +786,7 @@ jit_insn *
 bgei_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
-  jit_bgei_ui (i, j, k);
+  return jit_bgei_ui (i, j, k);
 #undef _jit
 }
 
@@ -1171,6 +1171,7 @@ value (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
   pif fct = (pifi) jitStack->codeBuffer;
+  __asm__("int3");
   return fct ();
 #undef _jit
 }
@@ -1180,6 +1181,7 @@ valueWith (jit_stack * jitStack, int arg)
 {
 #define _jit (jitStack->state)
   pifi fct = (pifi) jitStack->codeBuffer;
+  __asm__("int3");
   return fct (arg);
 #undef _jit
 }
@@ -1251,6 +1253,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningNotR_I", notr_i);
 
   _gst_vm_proxy->defineCFunc ("lightningBltI_I", blti_i);
+  _gst_vm_proxy->defineCFunc ("lightningBltI_UI", blti_ui);
   _gst_vm_proxy->defineCFunc ("lightningBneI_UI", bnei_ui);
 
   _gst_vm_proxy->defineCFunc ("lightningForward", forward);
