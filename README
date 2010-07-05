@@ -8,6 +8,19 @@ possible, so that the generated code can also be optimized
 easily. So far, it has been ported to the x86, SPARC and 
 PowerPC architecture.
 
+Installation from Source
+
+The git source is available at: http://github.com/MrGwen/gst-lightning
+  git clone git://github.com/MrGwen/gst-lightning.git
+
+Now you need to generate configuration files:
+  autoreconf -vi
+
+And proceed to the classic build:
+  ./configure
+  make
+  [sudo] make install
+
 Authors of the binding:
 
   - Gwenael Casaccio mrgwen@gmail.com
