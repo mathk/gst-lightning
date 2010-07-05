@@ -1,5 +1,5 @@
 
-AC_INIT([GST-GNU lightning], [0.0])
+AC_INIT([GST-GNU lightning], [0.1])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR([configure.ac])
