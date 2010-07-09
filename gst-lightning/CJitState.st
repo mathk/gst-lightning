@@ -840,6 +840,36 @@ CObject subclass: CJitState [
         <category: 'primitive store'>
 
         <cCall: 'lightningStxR_D' returning: #void args: #(#self #int #int #double)>
-    ]    
+    ]
+
+    storeIm: aRegister with: aIm2 fromI: in [
+        <category: 'store'>
+
+        <cCall: 'lightningStxI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    storeIm: aRegister with: aIm2 fromUI: in [
+        <category: 'store'>
+
+        <cCall: 'lightningStxI_UI' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    storeIm: aRegister with: aIm2 fromP: in [
+        <category: 'store'>
+
+        <cCall: 'lightningStxI_P' returning: #void args: #(#self #int #int #cObject)>
+    ]
+
+    storeIm: aRegister with: aIm2 fromF: in [
+        <category: 'store'>
+
+        <cCall: 'lightningStxI_F' returning: #void args: #(#self #int #int #float)>
+    ]
+
+    storeIm: aRegister with: aIm2 fromD: in [
+        <category: 'store'>
+
+        <cCall: 'lightningStxI_D' returning: #void args: #(#self #int #int #double)>
+    ]
 ]
 
