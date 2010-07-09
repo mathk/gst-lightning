@@ -691,5 +691,95 @@ CObject subclass: CJitState [
         <category: 'dsl jump'>
         <cCall: 'lightningPatch' returning: #void args: #(#self #int)>
     ]
+
+    storeReg: aRegister fromI: in [
+        <category: 'store'>
+
+	^ self primtStoreReg: aRegister number fromI: in
+    ]
+
+    primtStoreReg: aRegister fromI: in [
+	<category: 'primitive store'>
+   
+	<cCall: 'lightningStR_I' returning: #void args: #(#self #int #int)> 
+    ]
+
+    storeReg: aRegister fromUI: in [
+        <category: 'store'>
+
+	^ self primtStoreReg: aRegister number fromUI: in
+    ]
+
+    primtStoreReg: aRegister fromUI: in [
+	<category: 'primitive store'>
+    
+	<cCall: 'lightningStR_UI' returning: #void args: #(#self #int #uInt)> 
+    ]
+
+    storeReg: aRegister fromP: in [
+        <category: 'store'>
+
+	^ self primtStoreReg: aRegister number fromP: in
+    ]
+
+    primtStoreReg: aRegister fromP: in [
+	<category: 'primitive store'>
+    
+	<cCall: 'lightningStR_P' returning: #void args: #(#self #int #cObject)> 
+    ]
+
+    storeReg: aRegister fromF: in [
+        <category: 'store'>
+
+	^ self primtStoreReg: aRegister number fromF: in
+    ]
+
+    primtStoreReg: aRegister fromF: in [
+	<category: 'primitive store'>
+    
+	<cCall: 'lightningStR_F' returning: #void args: #(#self #int #float)> 
+    ]
+
+    storeReg: aRegister fromD: in [
+        <category: 'store'>
+
+	^ self primtStoreReg: aRegister number fromD: in
+    ]
+
+    primtStoreReg: aRegister fromD: in [
+	<category: 'primitive store'>
+    
+	<cCall: 'lightningStR_D' returning: #void args: #(#self #int #double)> 
+    ]
+
+    storeIm: aRegister fromI: in [
+	<category: 'store'>
+    
+	<cCall: 'lightningStI_I' returning: #void args: #(#self #int #int)> 
+    ]
+
+    storeIm: aRegister fromUI: in [
+	<category: 'store'>
+    
+	<cCall: 'lightningStI_UI' returning: #void args: #(#self #int #uInt)> 
+    ]
+
+    storeIm: aRegister fromP: in [
+	<category: 'store'>
+    
+	<cCall: 'lightningStI_P' returning: #void args: #(#self #int #cObject)> 
+    ]
+
+    storeIm: aRegister fromF: in [
+	<category: 'store'>
+    
+	<cCall: 'lightningStI_F' returning: #void args: #(#self #int #float)> 
+    ]
+
+    storeIm: aRegister fromD: in [
+	<category: 'store'>
+    
+	<cCall: 'lightningStI_D' returning: #void args: #(#self #int #double)> 
+    ]
 ]
 
