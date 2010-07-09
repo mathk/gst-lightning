@@ -1045,7 +1045,7 @@ void
 ldi_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-  jit_ldi_i (j, i);
+  jit_ldi_i (i, j);
 #undef _jit
 }
 
@@ -1150,6 +1150,134 @@ ldr_ul (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
   jit_ldr_ul (i, j);
+#undef _jit
+}
+
+void
+ldxi_c (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_c (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_s (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_s (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_i (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_i (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_l (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_l (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_uc (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_uc (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_us (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_us (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_ui (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_ul (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_ul (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_c (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_c (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_s (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_s (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_i (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_i (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_l (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_l (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_uc (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_uc (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_us (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_us (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_ui (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_ul (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_ul (i, j, k);
 #undef _jit
 }
 
@@ -1646,6 +1774,22 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLdR_US", ldr_us);
   _gst_vm_proxy->defineCFunc ("lightningLdR_UI", ldr_ui);
   _gst_vm_proxy->defineCFunc ("lightningLdR_UL", ldr_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_C", ldxi_c);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_S", ldxi_s);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_I", ldxi_i);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_L", ldxi_l);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_UC", ldxi_uc);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_US", ldxi_us);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_UI", ldxi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_UL", ldxi_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_C", ldxr_c);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_S", ldxr_s);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_I", ldxr_i);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_L", ldxr_l);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_UC", ldxr_uc);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_US", ldxr_us);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_UI", ldxr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_UL", ldxr_ul);
 }
 
 /* Local Variables: */
