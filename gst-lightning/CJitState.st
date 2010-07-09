@@ -781,5 +781,65 @@ CObject subclass: CJitState [
     
 	<cCall: 'lightningStI_D' returning: #void args: #(#self #int #double)> 
     ]
+
+    storeReg: aRegister with: aReg2 fromI: in [
+        <category: 'store'>
+
+        ^ self primtStoreReg: aRegister number with: aReg2 number fromI: in
+    ]
+
+    primtStoreReg: aRegister with: aReg2 fromI: in [
+        <category: 'primitive store'>
+
+        <cCall: 'lightningStxR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    storeReg: aRegister with: aReg2 fromUI: in [
+        <category: 'store'>
+
+        ^ self primtStoreReg: aRegister number with: aReg2 number fromUI: in
+    ]
+
+    primtStoreReg: aRegister with: aReg2 fromUI: in [
+        <category: 'primitive store'>
+
+        <cCall: 'lightningStxR_UI' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    storeReg: aRegister with: aReg2 fromP: in [
+        <category: 'store'>
+
+        ^ self primtStoreReg: aRegister number with: aReg2 number fromP: in
+    ]
+
+    primtStoreReg: aRegister with: aReg2 fromP: in [
+        <category: 'primitive store'>
+
+        <cCall: 'lightningStxR_P' returning: #void args: #(#self #int #int #cObject)>
+    ]
+
+    storeReg: aRegister with: aReg2 fromF: in [
+        <category: 'store'>
+
+        ^ self primtStoreReg: aRegister number with: aReg2 number fromF: in
+    ]
+
+    primtStoreReg: aRegister with: aReg2 fromF: in [
+        <category: 'primitive store'>
+
+        <cCall: 'lightningStxR_F' returning: #void args: #(#self #int #int #float)>
+    ]
+
+    storeReg: aRegister with: aReg2 fromD: in [
+        <category: 'store'>
+
+        ^ self primtStoreReg: aRegister number with: aReg2 number fromD: in
+    ]
+
+    primtStoreReg: aRegister with: aReg2 fromD: in [
+        <category: 'primitive store'>
+
+        <cCall: 'lightningStxR_D' returning: #void args: #(#self #int #int #double)>
+    ]    
 ]
 
