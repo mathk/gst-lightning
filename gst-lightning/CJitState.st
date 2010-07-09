@@ -581,10 +581,9 @@ CObject subclass: CJitState [
     ]
 
     ret [
-
-    "Return from a function instruction"
-    <category: 'dsl stack'>
-    <cCall: 'lightningRetFct' returning: #void args: #(#self)>
+	"Return from a function instruction"
+	<category: 'dsl stack'>
+	<cCall: 'lightningRetFct' returning: #void args: #(#self)>
     ]
 
     assemble [
@@ -594,9 +593,9 @@ CObject subclass: CJitState [
     ]
 
     value [
-    "call the generated method and return the result"
-    <category: 'dsl stack'>
-    <cCall: 'lightningValue' returning: #int args: #(#self)>
+	"call the generated method and return the result"
+	<category: 'dsl stack'>
+	<cCall: 'lightningValue' returning: #int args: #(#self)>
     ]
 
     value: anArg [
@@ -681,7 +680,7 @@ CObject subclass: CJitState [
     ]
 
     forward [
-    "Jump to direction if reg < int "
+	"Jump to direction if reg < int "
         <category: 'dsl jump'>
         <cCall: 'lightningForward' returning: #int args: #(#self)>
     ]
