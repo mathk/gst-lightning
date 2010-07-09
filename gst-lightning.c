@@ -863,6 +863,167 @@ jmpr (jit_stack * jitStack, int i)
 #undef _jit
 }
 
+/* Store */
+void
+str_i (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_i (i, j);
+#undef _jit
+}
+
+void
+str_ui (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_ui (i, j);
+#undef _jit
+}
+
+void
+str_p (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_p (i, j);
+#undef _jit
+}
+
+void
+str_f (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_f (i, j);
+#undef _jit
+}
+
+void
+str_d (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_d (i, j);
+#undef _jit
+}
+
+void
+sti_i (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_i (i, j);
+#undef _jit
+}
+
+void
+sti_ui (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_ui (i, j);
+#undef _jit
+}
+
+void
+sti_p (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_p (i, j);
+#undef _jit
+}
+
+void
+sti_f (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_f (i, j);
+#undef _jit
+}
+
+void
+sti_d (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_d (i, j);
+#undef _jit
+}
+
+void
+stxr_i (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_i (i, j, k);
+#undef _jit
+}
+
+void
+stxr_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_ui (i, j, k);
+#undef _jit
+}
+
+void
+stxr_p (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_p (i, j, k);
+#undef _jit
+}
+
+void
+stxr_f (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_f (i, j, k);
+#undef _jit
+}
+
+void
+stxr_d (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_d (i, j, k);
+#undef _jit
+}
+
+void
+stxi_i (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxi_i (i, j, k);
+#undef _jit
+}
+
+void
+stxi_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxi_ui (i, j, k);
+#undef _jit
+}
+
+void
+stxi_p (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxi_p (i, j, k);
+#undef _jit
+}
+
+void
+stxi_f (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxi_f (i, j, k);
+#undef _jit
+}
+
+void
+stxi_d (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxi_d (i, j, k);
+#undef _jit
+}
+
 /* Common */
 jit_insn *
 get_label (jit_stack * jitStack)
