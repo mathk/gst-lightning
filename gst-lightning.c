@@ -1045,7 +1045,7 @@ void
 ldi_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-  jit_ldi_i (j, i);
+  jit_ldi_i (i, j);
 #undef _jit
 }
 
