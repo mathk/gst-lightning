@@ -396,7 +396,7 @@ movi_ui (jit_stack * jitStack, int i, int j)
 }
 
 void
-movi_p (jit_stack * jitStack, int i, void * j)
+movi_p (jit_stack * jitStack, int i, void *j)
 {
 #define _jit (jitStack->state)
   jit_movi_p (i, j);
@@ -1028,24 +1028,24 @@ stxi_d (jit_stack * jitStack, int i, int j, int k)
 void
 ldi_c (jit_stack * jitStack, int i, int j)
 {
-#define _jit (jitStak->state)
-	jit_ldi_c(i, j);
+#define _jit (jitStack->state)
+  jit_ldi_c (i, j);
 #undef _jit
 }
 
 void
-ldi_s (jit_stack * jitStack, int i, int i)
+ldi_s (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_s(i, j);
-#undef _jit		
+  jit_ldi_s (i, j);
+#undef _jit
 }
 
 void
 ldi_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_i(j, i);
+  jit_ldi_i (j, i);
 #undef _jit
 }
 
@@ -1053,7 +1053,7 @@ void
 ldi_l (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_l(rd, is);
+  jit_ldi_l (i, j);
 #undef _jit
 }
 
@@ -1061,15 +1061,15 @@ void
 ldi_uc (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_uc(i, j);
+  jit_ldi_uc (i, j);
 #undef _jit
 }
 
-void		
+void
 ldi_us (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_us(i, j);
+  jit_ldi_us (i, j);
 #undef _jit
 }
 
@@ -1077,15 +1077,15 @@ void
 ldi_ui (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_ui(i, j);
+  jit_ldi_ui (i, j);
 #undef _jit
 }
 
-void	
+void
 ldi_ul (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldi_ul(i, j);
+  jit_ldi_ul (i, j);
 #undef _jit
 }
 
@@ -1093,7 +1093,7 @@ void
 ldr_c (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_c(i, j);
+  jit_ldr_c (i, j);
 #undef _jit
 }
 
@@ -1101,7 +1101,7 @@ void
 ldr_s (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_s(i, j);
+  jit_ldr_s (i, j);
 #undef _jit
 }
 
@@ -1109,7 +1109,7 @@ void
 ldr_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_i(i, j);
+  jit_ldr_i (i, j);
 #undef _jit
 }
 
@@ -1117,7 +1117,7 @@ void
 ldr_l (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_l(i, j);
+  jit_ldr_l (i, j);
 #undef _jit
 }
 
@@ -1125,7 +1125,7 @@ void
 ldr_uc (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_uc(i, j);
+  jit_ldr_uc (i, j);
 #undef _jit
 }
 
@@ -1133,7 +1133,7 @@ void
 ldr_us (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_us(i, j);
+  jit_ldr_us (i, j);
 #undef _jit
 }
 
@@ -1141,7 +1141,7 @@ void
 ldr_ui (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_ui(i, j);
+  jit_ldr_ui (i, j);
 #undef _jit
 }
 
@@ -1149,7 +1149,7 @@ void
 ldr_ul (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
-	jit_ldr_ul(i, j);
+  jit_ldr_ul (i, j);
 #undef _jit
 }
 
@@ -1171,7 +1171,7 @@ forward (jit_stack * jitStack)
 }
 
 void
-patch (jit_stack * jitStack, jit_insn *label)
+patch (jit_stack * jitStack, jit_insn * label)
 {
 #define _jit (jitStack->state)
   jit_patch (label);
@@ -1207,7 +1207,7 @@ void
 prolog (jit_stack * jitStack, size_t numargs)
 {
 #define _jit (jitStack->state)
-	jit_prolog (numargs);
+  jit_prolog (numargs);
 #undef _jit
 }
 
@@ -1216,7 +1216,7 @@ void
 prepare (jit_stack * jitStack, int i)
 {
 #define _jit (jitStack->state)
-	jit_prepare (i);
+  jit_prepare (i);
 #undef _jit
 }
 
@@ -1365,7 +1365,7 @@ getarg_p (jit_stack * jitStack, int reg, int ofs)
 }
 
 void
-pusharg_i (jit_stack *jitStack, int reg)
+pusharg_i (jit_stack * jitStack, int reg)
 {
 #define _jit (jitStack->state)
   jit_pusharg_i (reg);
@@ -1373,7 +1373,7 @@ pusharg_i (jit_stack *jitStack, int reg)
 }
 
 void
-pusharg_p (jit_stack *jitStack, int reg)
+pusharg_p (jit_stack * jitStack, int reg)
 {
 #define _jit (jitStack->state)
   jit_pusharg_p (reg);
@@ -1381,7 +1381,7 @@ pusharg_p (jit_stack *jitStack, int reg)
 }
 
 void
-finish (jit_stack *jitStack, void * fct)
+finish (jit_stack * jitStack, void *fct)
 {
 #define _jit (jitStack->state)
   jit_finish (fct);
@@ -1630,22 +1630,22 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningStxI_F", stxi_f);
   _gst_vm_proxy->defineCFunc ("lightningStxI_D", stxi_d);
 
-	_gst_vm_proxy->defineCFunc ("lightningLdI_C", ldi_c);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_S", ldi_s);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_I", ldi_i);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_L", ldi_l);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_UC", ldi_uc);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_US", ldi_us);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_UI", ldi_ui);
-	_gst_vm_proxy->defineCFunc ("lightningLdI_UL", ldi_ul);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_C", ldr_c);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_S", ldr_s);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_I", ldr_i);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_L", ldr_l);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_UC", ldr_uc);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_US", ldr_us);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_UI", ldr_ui);
-	_gst_vm_proxy->defineCFunc ("lightningLdR_UL", ldr_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_C", ldi_c);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_S", ldi_s);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_I", ldi_i);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_L", ldi_l);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_UC", ldi_uc);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_US", ldi_us);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_UI", ldi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_UL", ldi_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_C", ldr_c);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_S", ldr_s);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_I", ldr_i);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_L", ldr_l);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_UC", ldr_uc);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_US", ldr_us);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_UI", ldr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_UL", ldr_ul);
 }
 
 /* Local Variables: */

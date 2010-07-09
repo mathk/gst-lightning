@@ -2,6 +2,12 @@
 
 CObject subclass: CJitState [
 
+    CJitState class >> primGstThisContextOOP [
+	<category: 'primitive'>
+
+	<primitive: VMpr_GstThisContextOOP_ptr>
+    ]
+
     CJitState class >> primAlloc: nByte [
 	"Allocate a new jit_state that hold the assembly code"
 	<category: 'primitive allocation'>
