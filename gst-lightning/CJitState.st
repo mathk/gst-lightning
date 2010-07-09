@@ -877,5 +877,187 @@ CObject subclass: CJitState [
 
         <cCall: 'lightningStxI_D' returning: #void args: #(#self #int #int #double)>
     ]
+
+  // Load
+
+    loadReg: aRegister fromI: in [
+        <category: 'load'>
+
+	^ self primtLoadReg: aRegister number fromI: in
+    ]
+
+    primtLoadReg: aRegister fromI: in [
+	<category: 'primitive load'>
+   
+	<cCall: 'lightningLdR_I' returning: #void args: #(#self #int #int)> 
+    ]
+
+    loadReg: aRegister fromUI: in [
+        <category: 'load'>
+
+	^ self primtLoadReg: aRegister number fromUI: in
+    ]
+
+    primtLoadReg: aRegister fromUI: in [
+	<category: 'primitive load'>
+    
+	<cCall: 'lightningLdR_UI' returning: #void args: #(#self #int #uInt)> 
+    ]
+
+    loadReg: aRegister fromP: in [
+        <category: 'load'>
+
+	^ self primtLoadReg: aRegister number fromP: in
+    ]
+
+    primtLoadReg: aRegister fromP: in [
+	<category: 'primitive load'>
+    
+	<cCall: 'lightningLdR_P' returning: #void args: #(#self #int #cObject)> 
+    ]
+
+    loadReg: aRegister fromF: in [
+        <category: 'load'>
+
+	^ self primtLoadReg: aRegister number fromF: in
+    ]
+
+    primtLoadReg: aRegister fromF: in [
+	<category: 'primitive load'>
+    
+	<cCall: 'lightningLdR_F' returning: #void args: #(#self #int #float)> 
+    ]
+
+    loadReg: aRegister fromD: in [
+        <category: 'load'>
+
+	^ self primtLoadReg: aRegister number fromD: in
+    ]
+
+    primtLoadReg: aRegister fromD: in [
+	<category: 'primitive load'>
+    
+	<cCall: 'lightningLdR_D' returning: #void args: #(#self #int #double)> 
+    ]
+
+    loadIm: aRegister fromI: in [
+	<category: 'load'>
+    
+	<cCall: 'lightningLdI_I' returning: #void args: #(#self #int #int)> 
+    ]
+
+    loadIm: aRegister fromUI: in [
+	<category: 'load'>
+    
+	<cCall: 'lightningLdI_UI' returning: #void args: #(#self #int #uInt)> 
+    ]
+
+    loadIm: aRegister fromP: in [
+	<category: 'load'>
+    
+	<cCall: 'lightningLdI_P' returning: #void args: #(#self #int #cObject)> 
+    ]
+
+    loadIm: aRegister fromF: in [
+	<category: 'load'>
+    
+	<cCall: 'lightningLdI_F' returning: #void args: #(#self #int #float)> 
+    ]
+
+    loadIm: aRegister fromD: in [
+	<category: 'load'>
+    
+	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #double)> 
+    ]
+
+    loadReg: aRegister with: aReg2 fromI: in [
+        <category: 'load'>
+
+        ^ self primtLoadReg: aRegister number with: aReg2 number fromI: in
+    ]
+
+    primtLoadReg: aRegister with: aReg2 fromI: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadReg: aRegister with: aReg2 fromUI: in [
+        <category: 'load'>
+
+        ^ self primtLoadReg: aRegister number with: aReg2 number fromUI: in
+    ]
+
+    primtLoadReg: aRegister with: aReg2 fromUI: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_UI' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    loadReg: aRegister with: aReg2 fromP: in [
+        <category: 'load'>
+
+        ^ self primtLoadReg: aRegister number with: aReg2 number fromP: in
+    ]
+
+    primtLoadReg: aRegister with: aReg2 fromP: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_P' returning: #void args: #(#self #int #int #cObject)>
+    ]
+
+    loadReg: aRegister with: aReg2 fromF: in [
+        <category: 'load'>
+
+        ^ self primtLoadReg: aRegister number with: aReg2 number fromF: in
+    ]
+
+    primtLoadReg: aRegister with: aReg2 fromF: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_F' returning: #void args: #(#self #int #int #float)>
+    ]
+
+    loadReg: aRegister with: aReg2 fromD: in [
+        <category: 'load'>
+
+        ^ self primtLoadReg: aRegister number with: aReg2 number fromD: in
+    ]
+
+    primtLoadReg: aRegister with: aReg2 fromD: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_D' returning: #void args: #(#self #int #int #double)>
+    ]
+
+    loadIm: aRegister with: aIm2 fromI: in [
+        <category: 'load'>
+
+        <cCall: 'lightningLdxI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadIm: aRegister with: aIm2 fromUI: in [
+        <category: 'load'>
+
+        <cCall: 'lightningLdxI_UI' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    loadIm: aRegister with: aIm2 fromP: in [
+        <category: 'load'>
+
+        <cCall: 'lightningLdxI_P' returning: #void args: #(#self #int #int #cObject)>
+    ]
+
+    loadIm: aRegister with: aIm2 fromF: in [
+        <category: 'load'>
+
+        <cCall: 'lightningLdxI_F' returning: #void args: #(#self #int #int #float)>
+    ]
+
+    loadIm: aRegister with: aIm2 fromD: in [
+        <category: 'load'>
+
+        <cCall: 'lightningLdxI_D' returning: #void args: #(#self #int #int #double)>
+    ]
 ]
 
