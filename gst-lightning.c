@@ -1024,6 +1024,135 @@ stxi_d (jit_stack * jitStack, int i, int j, int k)
 #undef _jit
 }
 
+/* Load */
+void
+ldi_c (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStak->state)
+	jit_ldi_c(i, j);
+#undef _jit
+}
+
+void
+ldi_s (jit_stack * jitStack, int i, int i)
+{
+#define _jit (jitStack->state)
+	jit_ldi_s(i, j);
+#undef _jit		
+}
+
+void
+ldi_i (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_i(j, i);
+#undef _jit
+}
+
+void
+ldi_l (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_l(rd, is);
+#undef _jit
+}
+
+void
+ldi_uc (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_uc(i, j);
+#undef _jit
+}
+
+void		
+ldi_us (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_us(i, j);
+#undef _jit
+}
+
+void
+ldi_ui (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_ui(i, j);
+#undef _jit
+}
+
+void	
+ldi_ul (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldi_ul(i, j);
+#undef _jit
+}
+
+void
+ldr_c (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_c(i, j);
+#undef _jit
+}
+
+void
+ldr_s (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_s(i, j);
+#undef _jit
+}
+
+void
+ldr_i (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_i(i, j);
+#undef _jit
+}
+
+void
+ldr_l (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_l(i, j);
+#undef _jit
+}
+
+void
+ldr_uc (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_uc(i, j);
+#undef _jit
+}
+
+void
+ldr_us (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_us(i, j);
+#undef _jit
+}
+
+void
+ldr_ui (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_ui(i, j);
+#undef _jit
+}
+
+void
+ldr_ul (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+	jit_ldr_ul(i, j);
+#undef _jit
+}
+
 /* Common */
 jit_insn *
 get_label (jit_stack * jitStack)
