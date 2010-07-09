@@ -1479,6 +1479,27 @@ gst_initModule (VMProxy * proxy)
 
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
+
+  _gst_vm_proxy->defineCFunc ("lightningStR_I", str_i);
+  _gst_vm_proxy->defineCFunc ("lightningStR_UI", str_ui);
+  _gst_vm_proxy->defineCFunc ("lightningStR_P", str_p);
+  _gst_vm_proxy->defineCFunc ("lightningStR_F", str_f);
+  _gst_vm_proxy->defineCFunc ("lightningStR_D", str_d);
+  _gst_vm_proxy->defineCFunc ("lightningStI_I", sti_i);
+  _gst_vm_proxy->defineCFunc ("lightningStI_UI", sti_ui);
+  _gst_vm_proxy->defineCFunc ("lightningStI_P", sti_p);
+  _gst_vm_proxy->defineCFunc ("lightningStI_F", sti_f);
+  _gst_vm_proxy->defineCFunc ("lightningStI_D", sti_d);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_I", stxr_i);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_UI", stxr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_P", stxr_p);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_F", stxr_f);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_D", stxr_d);
+  _gst_vm_proxy->defineCFunc ("lightningStxI_I", stxi_i);
+  _gst_vm_proxy->defineCFunc ("lightningStxI_UI", stxi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningStxI_P", stxi_p);
+  _gst_vm_proxy->defineCFunc ("lightningStxI_F", stxi_f);
+  _gst_vm_proxy->defineCFunc ("lightningStxI_D", stxi_d);
 }
 
 /* Local Variables: */
