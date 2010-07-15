@@ -1,23 +1,38 @@
 " Hey Emacs, I want -*- tab-width: 8; -*- "
 
-CObject subclass: CJitState [
+CStruct subclass: CJitState [
+
+    <declaration: #( (#state (#ptr #long) )
+			 (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
 
-	<primitive: VMpr_GstThisContextOOP_ptr>
+	"<primitive: VMpr_GstThisContextOOP_ptr>"
     ]
 
     CJitState class >> primAlloc: nByte [
 	"Allocate a new jit_state that hold the assembly code"
 	<category: 'primitive allocation'>
+
 	<cCall: 'lightningAllocJitState' returning: #{CJitState} args: #(#ulong)>
     ]
     
     CJitState class >> new [
 	"Create a new instance that can hold 1024bytes of assembly code"
 	<category: 'instance creation'>
-	^self primAlloc: 1024
+
+	^ (self primAlloc: 1024)
+	    initialize;
+	    yourself
+    ]
+
+    | codeBuffer |
+
+    initialize [
+	<category: 'initialize'>
+
+	codeBuffer := self buffer
     ]
 
     leaf: numargs [
@@ -876,8 +891,6 @@ CObject subclass: CJitState [
 
         <cCall: 'lightningStxI_D' returning: #void args: #(#self #int #int #double)>
     ]
-
-  // Load
 
     loadReg: aRegister fromI: in [
         <category: 'load'>

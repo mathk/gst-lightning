@@ -3,10 +3,12 @@
   <namespace>Lightning</namespace>
   <module>libgstlightning</module>
   <filein>Register.st</filein>
+  <filein>CCodeBuffer.st</filein>
   <filein>CJitState.st</filein>
   <filein>Reg.st</filein>
 
   <file>CJitState.st</file>
+  <file>CCodeBuffer.st</file>
   <file>Register.st</file>
   <file>Reg.st</file>
 </package>
