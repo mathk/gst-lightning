@@ -8,7 +8,7 @@ CStruct subclass: CJitState [
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
 
-	"<primitive: VMpr_GstThisContextOOP_ptr>"
+	<primitive: VMpr_GstThisContextOOP_ptr>
     ]
 
     CJitState class >> primAlloc: nByte [
