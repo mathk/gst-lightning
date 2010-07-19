@@ -1,3 +1,4 @@
+
 #include "gst-lightning.h"
 
 static VMProxy *_gst_vm_proxy;
@@ -1611,10 +1612,48 @@ valueWith (jit_stack * jitStack, int arg)
 }
 
 void
+statePrint(jit_stack * jitStack)
+{
+#define _jit (jitStack->state)
+	int i;
+	char info[385];
+	unsigned char * current = jitStack->codeBuffer;
+	unsigned char * endBuffer = jit_get_ip ().ptr;
+	for (i = 0; i < 127 && current <= endBuffer; ++i, ++current)
+  {
+		snprintf(info + i*3, 3, "%02X", *current);
+		info[i*3 +2] = ' ';
+	}
+	if(i == 127)
+	{
+		snprintf(info + i*3 - 1, 3, "...");
+		i++;
+	}
+	info[i*3 - 1] = '\0';
+	OOP printInfo = _gst_vm_proxy->stringToOOP(info);
+	_gst_vm_proxy->strMsgSend(printInfo, "print", NULL);
+	
+#undef _jit
+}
+
+void
+stateDump(jit_stack * jitStack, char * fileName)
+{
+#define _jit (jitStack->state)
+	FILE * dump = fopen(fileName, "w");
+	printf("\nSize : %d\n", (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer);
+	fwrite((char *)jitStack->codeBuffer, 1,  (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer, dump);
+	fclose(dump);
+#undef _jit
+}
+
+void
 gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
-  _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+  _gst_vm_proxy->defineCFunc ("lightningPrint", statePrint);
+  _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
+	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningProlog", prolog);

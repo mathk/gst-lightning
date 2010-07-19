@@ -35,6 +35,18 @@ CStruct subclass: CJitState [
 	codeBuffer := self buffer
     ]
 
+    print [
+	"Print the state opcode"
+	<category: 'debugging'>
+	<cCall: 'lightningPrint' returning: #void args: #(#self)>
+    ]
+
+    dump: fileName [
+	"Print the state opcode"
+	<category: 'debugging'>
+	<cCall: 'lightningDump' returning: #void args: #(#self #string)>
+    ]
+
     leaf: numargs [
 	"Initialize the Jit and set the number of argument"
 	<category: 'dsl prolog'>
