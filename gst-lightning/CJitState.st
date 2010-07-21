@@ -1054,7 +1054,13 @@ CStruct subclass: CJitState [
         <cCall: 'lightningLdxR_D' returning: #void args: #(#self #int #int #double)>
     ]
 
-    loadIm: aRegister with: aIm2 fromI: in [
+    loadIm: aRegister with: aRegisterSrc fromI: in [
+        <category: 'load'>
+
+	self primLoadIm: aRegister number with: aRegisterSrc number fromI: in
+    ]
+
+    primLoadIm: aRegisterNumber with: aRegSrcNum fromI: in [
         <category: 'load'>
 
         <cCall: 'lightningLdxI_I' returning: #void args: #(#self #int #int #int)>
