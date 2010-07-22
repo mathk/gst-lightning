@@ -908,7 +908,7 @@ CStruct subclass: CJitState [
     loadC: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadC: aRegister number fromReg: in
+	^ self primLoadC: regDest number fromReg: regSrc
     ]
 
     primLoadC: regNumDest fromReg: regNumSrc [
@@ -920,7 +920,7 @@ CStruct subclass: CJitState [
     loadS: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadS: aRegister number fromReg: in
+	^ self primLoadS: regDest number fromReg: regSrc
     ]
 
     primLoadS: regNumDest fromReg: regNumSrc [
@@ -932,7 +932,7 @@ CStruct subclass: CJitState [
     loadI: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadI: aRegister number fromReg: in
+	^ self primLoadI: regDest number fromReg: regSrc
     ]
 
     primLoadI: regNumDest fromReg: regNumSrc [
@@ -944,7 +944,7 @@ CStruct subclass: CJitState [
     loadL: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadL: aRegister number fromReg: in
+	^ self primLoadL: regDest number fromReg: regSrc
     ]
 
     primLoadL: regNumDest fromReg: regNumSrc [
@@ -957,7 +957,7 @@ CStruct subclass: CJitState [
     loadUC: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUC: aRegister number fromReg: in
+	^ self primLoadUC: regDest number fromReg: regSrc
     ]
 
     primLoadUC: regNumDest fromReg: regNumSrc [
@@ -969,7 +969,7 @@ CStruct subclass: CJitState [
     loadUS: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUS: aRegister number fromReg: in
+	^ self primLoadUS: regDest number fromReg: regSrc
     ]
 
     primLoadUS: regNumDest fromReg: regNumSrc [
@@ -981,7 +981,7 @@ CStruct subclass: CJitState [
     loadUI: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUI: aRegister number fromReg: in
+	^ self primLoadUI: regDest number fromReg: regSrc
     ]
 
     primLoadUI: regNumDest fromReg: regNumSrc [
@@ -993,7 +993,7 @@ CStruct subclass: CJitState [
     loadUL: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUL: aRegister number fromReg: in
+	^ self primLoadUL: regDest number fromReg: regSrc
     ]
 
     primLoadUL: regNumDest fromReg: regNumSrc [
@@ -1005,7 +1005,7 @@ CStruct subclass: CJitState [
     loadP: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadP: aRegister number fromReg: in
+	^ self primLoadP: regDest number fromReg: regSrc
     ]
 
     primLoadP: regNumDest fromReg: regNumSrc [
@@ -1017,7 +1017,7 @@ CStruct subclass: CJitState [
     loadF: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadF: aRegister number fromReg: in
+	^ self primLoadF: regDest number fromReg: regSrc
     ]
 
     primLoadF: regNumDest fromReg: regNumSrc [
@@ -1029,7 +1029,7 @@ CStruct subclass: CJitState [
     loadD: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadD: aRegister number fromReg: in
+	^ self primLoadD: regDest number fromReg: regSrc
     ]
 
     primLoadD: regNumDest fromReg: regNumSrc [
