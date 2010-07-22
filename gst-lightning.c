@@ -1027,7 +1027,7 @@ stxi_d (jit_stack * jitStack, int i, int j, int k)
 
 /* Load */
 void
-ldi_c (jit_stack * jitStack, int i, int j)
+ldi_c (jit_stack * jitStack, int i, char j)
 {
 #define _jit (jitStack->state)
   jit_ldi_c (i, j);
@@ -1035,7 +1035,7 @@ ldi_c (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_s (jit_stack * jitStack, int i, int j)
+ldi_s (jit_stack * jitStack, int i, short j)
 {
 #define _jit (jitStack->state)
   jit_ldi_s (i, j);
@@ -1051,7 +1051,7 @@ ldi_i (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_l (jit_stack * jitStack, int i, int j)
+ldi_l (jit_stack * jitStack, int i, long j)
 {
 #define _jit (jitStack->state)
   jit_ldi_l (i, j);
@@ -1059,7 +1059,7 @@ ldi_l (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_uc (jit_stack * jitStack, int i, int j)
+ldi_uc (jit_stack * jitStack, int i, unsigned char j)
 {
 #define _jit (jitStack->state)
   jit_ldi_uc (i, j);
@@ -1067,7 +1067,7 @@ ldi_uc (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_us (jit_stack * jitStack, int i, int j)
+ldi_us (jit_stack * jitStack, int i, unsigned short j)
 {
 #define _jit (jitStack->state)
   jit_ldi_us (i, j);
@@ -1075,7 +1075,7 @@ ldi_us (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_ui (jit_stack * jitStack, int i, int j)
+ldi_ui (jit_stack * jitStack, int i, unsigned int j)
 {
 #define _jit (jitStack->state)
   jit_ldi_ui (i, j);
@@ -1083,12 +1083,38 @@ ldi_ui (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldi_ul (jit_stack * jitStack, int i, int j)
+ldi_ul (jit_stack * jitStack, int i, unsigned long j)
 {
 #define _jit (jitStack->state)
   jit_ldi_ul (i, j);
 #undef _jit
 }
+
+void
+ldi_p (jit_stack * jitStack, int i, void * j)
+{
+#define _jit (jitStack->state)
+  jit_ldi_p (i, j);
+#undef _jit
+}
+
+void
+ldi_f (jit_stack * jitStack, int i, float j)
+{
+#define _jit (jitStack->state)
+  jit_ldi_f (i, j);
+#undef _jit
+}
+
+void
+ldi_d (jit_stack * jitStack, int i, double j)
+{
+#define _jit (jitStack->state)
+  jit_ldi_d (i, j);
+#undef _jit
+}
+
+/* ldr */
 
 void
 ldr_c (jit_stack * jitStack, int i, int j)
@@ -1853,6 +1879,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLdI_US", ldi_us);
   _gst_vm_proxy->defineCFunc ("lightningLdI_UI", ldi_ui);
   _gst_vm_proxy->defineCFunc ("lightningLdI_UL", ldi_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_P", ldi_p);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_F", ldi_f);
+  _gst_vm_proxy->defineCFunc ("lightningLdI_D", ldi_d);
   _gst_vm_proxy->defineCFunc ("lightningLdR_C", ldr_c);
   _gst_vm_proxy->defineCFunc ("lightningLdR_S", ldr_s);
   _gst_vm_proxy->defineCFunc ("lightningLdR_I", ldr_i);
