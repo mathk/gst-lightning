@@ -1181,6 +1181,30 @@ ldr_ul (jit_stack * jitStack, int i, int j)
 }
 
 void
+ldr_p (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_ldr_p (i, j);
+#undef _jit
+}
+
+void
+ldr_f (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_ldr_f (i, j);
+#undef _jit
+}
+
+void
+ldr_d (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_ldr_d (i, j);
+#undef _jit
+}
+
+void
 ldxi_c (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -1890,6 +1914,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLdR_US", ldr_us);
   _gst_vm_proxy->defineCFunc ("lightningLdR_UI", ldr_ui);
   _gst_vm_proxy->defineCFunc ("lightningLdR_UL", ldr_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_P", ldr_p);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_F", ldr_f);
+  _gst_vm_proxy->defineCFunc ("lightningLdR_D", ldr_d);
   _gst_vm_proxy->defineCFunc ("lightningLdxI_C", ldxi_c);
   _gst_vm_proxy->defineCFunc ("lightningLdxI_S", ldxi_s);
   _gst_vm_proxy->defineCFunc ("lightningLdxI_I", ldxi_i);
