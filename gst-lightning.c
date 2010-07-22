@@ -1219,6 +1219,30 @@ ldxi_ul (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
+ldxi_p (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_p (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_f (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_f (i, j, k);
+#undef _jit
+}
+
+void
+ldxi_d (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxi_d (i, j, k);
+#undef _jit
+}
+
+void
 ldxr_c (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -1279,6 +1303,30 @@ ldxr_ul (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
   jit_ldxr_ul (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_p (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_p (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_f (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_f (i, j, k);
+#undef _jit
+}
+
+void
+ldxr_d (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_ldxr_d (i, j, k);
 #undef _jit
 }
 
@@ -1821,6 +1869,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLdxI_US", ldxi_us);
   _gst_vm_proxy->defineCFunc ("lightningLdxI_UI", ldxi_ui);
   _gst_vm_proxy->defineCFunc ("lightningLdxI_UL", ldxi_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_P", ldxi_p);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_F", ldxi_f);
+  _gst_vm_proxy->defineCFunc ("lightningLdxI_D", ldxi_d);
   _gst_vm_proxy->defineCFunc ("lightningLdxR_C", ldxr_c);
   _gst_vm_proxy->defineCFunc ("lightningLdxR_S", ldxr_s);
   _gst_vm_proxy->defineCFunc ("lightningLdxR_I", ldxr_i);
@@ -1829,6 +1880,9 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLdxR_US", ldxr_us);
   _gst_vm_proxy->defineCFunc ("lightningLdxR_UI", ldxr_ui);
   _gst_vm_proxy->defineCFunc ("lightningLdxR_UL", ldxr_ul);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_P", ldxi_p);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_F", ldxi_f);
+  _gst_vm_proxy->defineCFunc ("lightningLdxR_D", ldxi_d);
 }
 
 /* Local Variables: */

@@ -994,136 +994,270 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #double)> 
     ]
 
-    loadReg: aRegister with: aReg2 fromI: in [
+"LxR"
+
+    loadC: regDest fromReg: regSrc1 and: regSrc2 [
         <category: 'load'>
 
-        ^ self primtLoadReg: aRegister number with: aReg2 number fromI: in
+        ^ self primLoadC: regDest number fromReg: regSrc1 number and: regSrc2 number
     ]
 
-    primtLoadReg: aRegister with: aReg2 fromI: in [
-        <category: 'primitive load'>
-
-        <cCall: 'lightningLdxR_I' returning: #void args: #(#self #int #int #int)>
-    ]
-
-    loadReg: aRegister with: aReg2 fromUI: in [
-        <category: 'load'>
-
-        ^ self primtLoadReg: aRegister number with: aReg2 number fromUI: in
-    ]
-
-    primtLoadReg: aRegister with: aReg2 fromUI: in [
-        <category: 'primitive load'>
-
-        <cCall: 'lightningLdxR_UI' returning: #void args: #(#self #int #int #uInt)>
-    ]
-
-    loadReg: aRegister with: aReg2 fromP: in [
-        <category: 'load'>
-
-        ^ self primtLoadReg: aRegister number with: aReg2 number fromP: in
-    ]
-
-    primtLoadReg: aRegister with: aReg2 fromP: in [
-        <category: 'primitive load'>
-
-        <cCall: 'lightningLdxR_P' returning: #void args: #(#self #int #int #cObject)>
-    ]
-
-    loadReg: aRegister with: aReg2 fromF: in [
-        <category: 'load'>
-
-        ^ self primtLoadReg: aRegister number with: aReg2 number fromF: in
-    ]
-
-    primtLoadReg: aRegister with: aReg2 fromF: in [
-        <category: 'primitive load'>
-
-        <cCall: 'lightningLdxR_F' returning: #void args: #(#self #int #int #float)>
-    ]
-
-"Stop HERE"
-
-    load: regDest fromCReg: regSrc1 and: regSrc2 [
-        <category: 'load'>
-
-        ^ self primtLoad: regDest number fromCReg: regSrc1 number and: regSrc2 number
-    ]
-
-    primLoad: regNumDest fromCReg: regNumSrc1 and: regNumSrc2 [
+    primLoadC: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
         <category: 'primitive load'>
 
         <cCall: 'lightningLdxR_C' returning: #void args: #(#self #int #int #int)>
     ]
 
-    load: regDest fromDReg: regSrc1 and: regSrc2 [
+    loadS: regDest fromReg: regSrc1 and: regSrc2 [
         <category: 'load'>
 
-        ^ self primtLoad: regDest number fromDReg: regSrc1 number and: regSrc2 number
+        ^ self primLoadS: regDest number fromReg: regSrc1 number and: regSrc2 number
     ]
 
-    primLoad: regNumDest fromDReg: regNumSrc1 and: regNumSrc2 [
+    primLoadS: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_S' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadI: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadI: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadI: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadL: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadI: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadL: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_L' returning: #void args: #(#self #int #int #int)>
+    ]
+
+"LxR Unsigned"
+
+    loadUC: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadUC: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadUC: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_UC' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadUS: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadS: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadUS: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_US' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadUI: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadUI: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadUI: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_UI' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadUL: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadUI: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadUL: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_UL' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadP: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadP: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadP: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_P' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadF: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadF: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadF: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxR_F' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadD: regDest fromReg: regSrc1 and: regSrc2 [
+        <category: 'load'>
+
+        ^ self primLoadD: regDest number fromReg: regSrc1 number and: regSrc2 number
+    ]
+
+    primLoadD: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
         <category: 'primitive load'>
 
         <cCall: 'lightningLdxR_D' returning: #void args: #(#self #int #int #int)>
     ]
 
-    load: regNumDest fromReg: regNumSrc imI: in [
+"Lxi"
+    loadC: regNumDest fromReg: regNumSrc im: in [
         <category: 'load'>
 
-	self primLoad: aRegister number fromReg: aRegisterSrc number imI: in
+	self primLoadC: regNumDest number fromReg: regNumSrc number im: in
     ]
 
-    primLoad: regNumDest fromReg: regNumSrc imI: in [
+    primLoadC: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxI_C' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadS: regNumDest fromReg: regNumSrc im: in [
+        <category: 'load'>
+
+	self primLoadS: regNumDest number fromReg: regNumSrc number im: in
+    ]
+
+    primLoadS: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxI_S' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadI: regNumDest fromReg: regNumSrc im: in [
+        <category: 'load'>
+
+	self primLoadI: regNumDest number fromReg: regNumSrc number im: in
+    ]
+
+    primLoadI: regNumDest fromReg: regNumSrc im: in [
         <category: 'primitive load'>
 
         <cCall: 'lightningLdxI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    load: regDest fromReg: regSrc imUI: in [
+    loadL: regNumDest fromReg: regNumSrc im: in [
         <category: 'load'>
 
-        self load: regDest number fromReg: regSrc number imUI: in
+	self primLoadL: regNumDest number fromReg: regNumSrc number im: in
     ]
 
-    primLoad: regNumDest fromReg: regNumSrc imUI: in [
+    primLoadL: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+        <cCall: 'lightningLdxI_L' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    loadUC: regDest fromReg: regSrc im: in [
+        <category: 'load'>
+
+        self primLoadUC: regDest number fromReg: regSrc number im: in
+    ]
+
+    primLoadUC: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+	<cCall: 'lightningLdxI_UC' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    loadUS: regDest fromReg: regSrc im: in [
+        <category: 'load'>
+
+        self primLoadUS: regDest number fromReg: regSrc number im: in
+    ]
+
+    primLoadUS: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+	<cCall: 'lightningLdxI_US' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    loadUI: regDest fromReg: regSrc im: in [
+        <category: 'load'>
+
+        self primLoadUI: regDest number fromReg: regSrc number im: in
+    ]
+
+    primLoadUI: regNumDest fromReg: regNumSrc im: in [
         <category: 'primitive load'>
 
 	<cCall: 'lightningLdxI_UI' returning: #void args: #(#self #int #int #uInt)>
     ]
 
+    loadUL: regDest fromReg: regSrc im: in [
+        <category: 'load'>
 
-    load: regDest fromReg: regSrc imP: in [
-	<category: 'load'>
-	
-	self primLoad: regDest number fromReg: regSrc number imP: in 
+        self primLoadUL: regDest number fromReg: regSrc number im: in
     ]
 
-    primLoad: regNumDest fromReg: regNumSrc imP: in [
+    primLoadUL: regNumDest fromReg: regNumSrc im: in [
+        <category: 'primitive load'>
+
+	<cCall: 'lightningLdxI_UL' returning: #void args: #(#self #int #int #uInt)>
+    ]
+
+    loadP: regDest fromReg: regSrc im: in [
+	<category: 'load'>
+	
+	self primLoadP: regDest number fromReg: regSrc number im: in 
+    ]
+
+    primLoadP: regNumDest fromReg: regNumSrc im: in [
         <category: 'primitive load'>
 
         <cCall: 'lightningLdxI_P' returning: #void args: #(#self #int #int #cObject)>
     ]
 
-    load: regDest fromReg: regSrc imF: in [
+    loadF: regDest fromReg: regSrc im: in [
 	<category: 'load'>
 	
-	self primLoad: regDest number fromReg: regSrc number imF: in 
+	self primLoadF: regDest number fromReg: regSrc number im: in 
     ]
     
-    primLoad: regNumDest fromReg: reggNumSrc imF: in [
+    primLoadF: regNumDest fromReg: reggNumSrc im: in [
         <category: 'private load'>
 
         <cCall: 'lightningLdxI_F' returning: #void args: #(#self #int #int #float)>
     ]
     
-    load: regDest fromReg: regSrc imD: in [
+    loadD: regDest fromReg: regSrc im: in [
 	<category: 'load'>
 
-	self primLoad: regDest number fromReg reSrc number imD: i
+	self primLoadD: regDest number fromReg: reSrc number im: in
     ]
 
-    primLoad: regNumDest fromReg: regNumSrc imD: in [
+    primLoadD: regNumDest fromReg: regNumSrc im: in [
         <category: 'private load'>
 
         <cCall: 'lightningLdxI_D' returning: #void args: #(#self #int #int #double)>
