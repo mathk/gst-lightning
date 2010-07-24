@@ -632,9 +632,9 @@ CStruct subclass: CJitState [
     ]
 
     movI: reg fromP: ptr [
-    "Move pointer to a register"
-    <category: 'dsl transfer'>
-    self primMovI: reg number fromP: ptr
+	"Move pointer to a register"
+	<category: 'dsl transfer'>
+	self primMovI: reg number fromP: ptr
     ]
 
     movI: reg fromUI: int [
