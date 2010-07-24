@@ -631,6 +631,15 @@ CStruct subclass: CJitState [
         <cCall: 'lightningValueWith' returning: #int args: #(#self #int)>
     ]
 
+    value: anArg argType: argType returningType: retType [
+	| cFunc |
+	cFunc := CFunctionDescriptor 
+            for: 'lightningValueWith' 
+	    returning: retType 
+	    withArgs: (Array with: #self with: argType).
+	^(cFunc callInto: ValueHolder new) value.
+    ] 
+
     valueObject: anArg [
         "call the generated method and return the result"
         <category: 'dsl stack'>
@@ -1449,8 +1458,8 @@ CStruct subclass: CJitState [
     fetchOop: regDest fromReg: regSrc at: offset [
 	<category: 'oop load'>
 	self 
-	    loadP: regSrc fromReg: regsrc;
-	    loadP: regDest fromReg: regsrc im: offset * 4
+	    loadP: regSrc fromReg: regSrc;
+	    loadP: regDest fromReg: regSrc im: offset * 4
     ]
 ]
 

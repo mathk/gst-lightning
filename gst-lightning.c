@@ -1713,7 +1713,7 @@ int
 valueWithPtr (jit_stack * jitStack, void * arg)
 {
 #define _jit (jitStack->state)
-  pifp fct = (pifp) jitStack->codeBuffer;
+  pifp  fct = (pifp) jitStack->codeBuffer;
   return fct (arg);
 #undef _jit
 }
@@ -1748,7 +1748,7 @@ stateDump(jit_stack * jitStack, char * fileName)
 {
 #define _jit (jitStack->state)
 	FILE * dump = fopen(fileName, "w");
-	printf("\nSize : %d\n", (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer);
+	printf("Dump size : %d\n", (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer);
 	fwrite((char *)jitStack->codeBuffer, 1,  (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer, dump);
 	fclose(dump);
 #undef _jit
