@@ -6,6 +6,7 @@
 #include <lightning.h>
 
 typedef int (*pifi) (int);
+typedef int (*pifp) (void *);
 typedef int (*pif) ();
 
 typedef struct _jit_stack

@@ -1709,6 +1709,15 @@ valueWith (jit_stack * jitStack, int arg)
 #undef _jit
 }
 
+int
+valueWithPtr (jit_stack * jitStack, void * arg)
+{
+#define _jit (jitStack->state)
+  pifp fct = (pifp) jitStack->codeBuffer;
+  return fct (arg);
+#undef _jit
+}
+
 void
 statePrint(jit_stack * jitStack)
 {
@@ -1787,6 +1796,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningRetFct", retFct);
   _gst_vm_proxy->defineCFunc ("lightningValue", value);
   _gst_vm_proxy->defineCFunc ("lightningValueWith", valueWith);
+  _gst_vm_proxy->defineCFunc ("lightningValueWithPtr", valueWithPtr);
 
   _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
   _gst_vm_proxy->defineCFunc ("lightningAddI_UI", addi_ui);

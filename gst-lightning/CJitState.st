@@ -631,6 +631,12 @@ CStruct subclass: CJitState [
         <cCall: 'lightningValueWith' returning: #int args: #(#self #int)>
     ]
 
+    valueObject: anArg [
+        "call the generated method and return the result"
+        <category: 'dsl stack'>
+        <cCall: 'lightningValueWithPtr' returning: #int args: #(#self #smalltalk)>
+    ]
+
     movI: reg fromP: ptr [
 	"Move pointer to a register"
 	<category: 'dsl transfer'>
@@ -908,7 +914,7 @@ CStruct subclass: CJitState [
     loadC: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadC: regDest number fromReg: regSrc
+	^ self primLoadC: regDest number fromReg: regSrc number
     ]
 
     primLoadC: regNumDest fromReg: regNumSrc [
@@ -920,7 +926,7 @@ CStruct subclass: CJitState [
     loadS: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadS: regDest number fromReg: regSrc
+	^ self primLoadS: regDest number fromReg: regSrc number
     ]
 
     primLoadS: regNumDest fromReg: regNumSrc [
@@ -932,7 +938,7 @@ CStruct subclass: CJitState [
     loadI: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadI: regDest number fromReg: regSrc
+	^ self primLoadI: regDest number fromReg: regSrc number
     ]
 
     primLoadI: regNumDest fromReg: regNumSrc [
@@ -944,7 +950,7 @@ CStruct subclass: CJitState [
     loadL: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadL: regDest number fromReg: regSrc
+	^ self primLoadL: regDest number fromReg: regSrc number
     ]
 
     primLoadL: regNumDest fromReg: regNumSrc [
@@ -957,7 +963,7 @@ CStruct subclass: CJitState [
     loadUC: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUC: regDest number fromReg: regSrc
+	^ self primLoadUC: regDest number fromReg: regSrc number
     ]
 
     primLoadUC: regNumDest fromReg: regNumSrc [
@@ -969,7 +975,7 @@ CStruct subclass: CJitState [
     loadUS: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUS: regDest number fromReg: regSrc
+	^ self primLoadUS: regDest number fromReg: regSrc number
     ]
 
     primLoadUS: regNumDest fromReg: regNumSrc [
@@ -981,7 +987,7 @@ CStruct subclass: CJitState [
     loadUI: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUI: regDest number fromReg: regSrc
+	^ self primLoadUI: regDest number fromReg: regSrc number
     ]
 
     primLoadUI: regNumDest fromReg: regNumSrc [
@@ -993,7 +999,7 @@ CStruct subclass: CJitState [
     loadUL: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadUL: regDest number fromReg: regSrc
+	^ self primLoadUL: regDest number fromReg: regSrc number
     ]
 
     primLoadUL: regNumDest fromReg: regNumSrc [
@@ -1005,7 +1011,7 @@ CStruct subclass: CJitState [
     loadP: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadP: regDest number fromReg: regSrc
+	^ self primLoadP: regDest number fromReg: regSrc number
     ]
 
     primLoadP: regNumDest fromReg: regNumSrc [
@@ -1017,7 +1023,7 @@ CStruct subclass: CJitState [
     loadF: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadF: regDest number fromReg: regSrc
+	^ self primLoadF: regDest number fromReg: regSrc number
     ]
 
     primLoadF: regNumDest fromReg: regNumSrc [
@@ -1029,7 +1035,7 @@ CStruct subclass: CJitState [
     loadD: regDest fromReg: regSrc [
         <category: 'load'>
 
-	^ self primLoadD: regDest number fromReg: regSrc
+	^ self primLoadD: regDest number fromReg: regSrc number
     ]
 
     primLoadD: regNumDest fromReg: regNumSrc [
@@ -1438,6 +1444,13 @@ CStruct subclass: CJitState [
         <category: 'private load'>
 
         <cCall: 'lightningLdxI_D' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    fetchOop: regDest fromReg: regSrc at: offset [
+	<category: 'oop load'>
+	self 
+	    loadP: regSrc fromReg: regsrc;
+	    loadP: regDest fromReg: regsrc im: offset * 4
     ]
 ]
 

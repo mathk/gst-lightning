@@ -2,6 +2,15 @@
   <name>Lightning</name>
   <namespace>Lightning</namespace>
   <module>libgstlightning</module>
+
+  <test>
+    <filein>tests/StateTest.st</filein>
+    <file>tests/StateTest.st</file>
+    <sunit>
+      Lightning.CJitStateTest
+    </sunit>
+  </test>
+
   <filein>Register.st</filein>
   <filein>CCodeBuffer.st</filein>
   <filein>CJitState.st</filein>
