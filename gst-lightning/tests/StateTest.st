@@ -9,40 +9,8 @@ Object subclass: IntHolder [
 
 TestCase subclass: CJitStateTest [
     
-    testLoadUI [
-	| state arg |
-
-	state := CJitState new.
-	state 
-	    leaf: 1;
-	    getargPtr: Lightning.R1 from: state argPtr;
-	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    loadUI: Lightning.R0 fromReg: Lightning.R0 im: 8;
-	    movR: Lightning.RET fromUI: Lightning.R0;
-	    ret;
-	    assemble.
-
-	arg := IntHolder new anInt: 1; yourself.
-	self assert: (state valueObject: arg) = 3. "0b..0011, the way smalltalk encode int"
-
-	arg := IntHolder new anInt: -1; yourself.
-	self assert: (state valueObject: arg) = -1. "0b..1111"
-
-	arg := IntHolder new anInt: -2; yourself.
-	self assert: (state valueObject: arg) = -3. "0b..1101"
-
-	arg := IntHolder new anInt: -3; yourself.
-	self assert: (state valueObject: arg) = -5. "0b..1011"
-
-	arg := IntHolder new anInt: -4; yourself.
-	self assert: (state valueObject: arg) = -7. "0b..1001"
-
-	arg := IntHolder new anInt: -4; yourself.
-	self assert: (state value: arg argType: #smalltalk returningType: #uint) = 16rFFFFFFF9 "0b..1001"
-    ]
-
     testLoadC [
-	| arg state |
+	| state |
 	state := CJitState new.
 	state 
 	    leaf: 1;
@@ -80,7 +48,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUC [
-	| arg state |
+	| state |
 	state := CJitState new.
 	state 
 	    leaf: 1;
@@ -118,7 +86,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadS [
-	| arg state |
+	| state |
 	state := CJitState new.
 	state 
 	    leaf: 1;
@@ -156,7 +124,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUS [
-	| arg state |
+	| state |
 	state := CJitState new.
 	state 
 	    leaf: 1;
@@ -191,5 +159,138 @@ TestCase subclass: CJitStateTest [
 
 	arg := IntHolder new anInt: -4; yourself.
 	self assert: (state value: arg argType: #smalltalk returningType: #uint) = 16rFFF9
+    ]
+
+    testLoadI [
+	| state |
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    loadI: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
+	    loadI: Lightning.R0 fromReg: Lightning.R0;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state
+    ]
+
+    loadIAssert: state [
+	| arg |
+	arg := IntHolder new anInt: 1; yourself.
+	self assert: (state value: arg argType: #smalltalk returningType: #int) = 3.
+
+	arg := IntHolder new anInt: -1; yourself.
+	self assert: (state value: arg argType: #smalltalk returningType: #int) = -1.
+
+	arg := IntHolder new anInt: -4; yourself.
+	self assert: (state value: arg argType: #smalltalk returningType: #uint) = 16rFFFFFFF9
+    ]
+
+    testLoadUI [
+	| state |
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    loadUI: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
+	    loadUI: Lightning.R0 fromReg: Lightning.R0;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state
+	
+    ]
+    
+    loadUIAssert: state [
+	| arg |
+	arg := IntHolder new anInt: 1; yourself.
+	self assert: (state valueObject: arg) = 3. "0b..0011, the way smalltalk encode int"
+
+	arg := IntHolder new anInt: -1; yourself.
+	self assert: (state valueObject: arg) = -1. "0b..1111"
+
+	arg := IntHolder new anInt: -4; yourself.
+	self assert: (state value: arg argType: #smalltalk returningType: #uint) = 16rFFFFFFF9 "0b..1001"
+    ]
+
+    testLoadL [
+	| state |
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    loadL: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
+	    loadL: Lightning.R0 fromReg: Lightning.R0;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state
+    ]
+
+    testLoadUL [
+	| state |
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    loadUL: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
+	    loadUL: Lightning.R0 fromReg: Lightning.R0;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state
     ]
 ]
