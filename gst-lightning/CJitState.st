@@ -1466,7 +1466,7 @@ CStruct subclass: CJitState [
 	<category: 'oop load'>
 	self 
 	    loadP: regSrc fromReg: regSrc;
-	    loadP: regDest fromReg: regSrc im: (1 * self sizeOfOop)
+	    loadP: regDest fromReg: regSrc im: self sizeOfOop
     ]
 
     sizeOfOop [
