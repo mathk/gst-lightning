@@ -1754,12 +1754,26 @@ stateDump(jit_stack * jitStack, char * fileName)
 #undef _jit
 }
 
+unsigned int
+sizeOfOop()
+{
+	return sizeof(OOP);
+}
+
+unsigned int
+sizeOfHeader()
+{
+	return sizeof(gst_object_header);
+}
+
 void
 gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningPrint", statePrint);
   _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
+	_gst_vm_proxy->defineCFunc ("lightningSizeOfOop", sizeOfOop);
+	_gst_vm_proxy->defineCFunc ("lightningSizeOfHeader", sizeOfHeader);
 	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);

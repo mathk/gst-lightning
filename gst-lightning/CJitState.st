@@ -1459,7 +1459,24 @@ CStruct subclass: CJitState [
 	<category: 'oop load'>
 	self 
 	    loadP: regSrc fromReg: regSrc;
-	    loadP: regDest fromReg: regSrc im: offset * 4
+	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+    ]
+
+    fetchClassOop: regDest fromReg: regSrc [
+	<category: 'oop load'>
+	self 
+	    loadP: regSrc fromReg: regSrc;
+	    loadP: regDest fromReg: regSrc im: (1 * self sizeOfOop)
+    ]
+
+    sizeOfOop [
+	<category: 'accessing'>
+	<cCall: 'lightningSizeOfOop' returning: #uint args: #()>
+    ]
+
+    sizeOfOfHeader [
+	<category: 'accessing'>
+	<cCall: 'lightningSizeOfHeader' returning: #uint args: #()>
     ]
 ]
 
