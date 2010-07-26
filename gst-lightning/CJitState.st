@@ -739,48 +739,6 @@ CStruct subclass: CJitState [
         <cCall: 'lightningPatch' returning: #void args: #(#self #int)>
     ]
 
-    storeReg: aRegister fromI: in [
-        <category: 'store'>
-
-	^ self primtStoreReg: aRegister number fromI: in number
-    ]
-
-    primtStoreReg: aRegister fromI: in [
-	<category: 'primitive store'>
-   
-	<cCall: 'lightningStR_I' returning: #void args: #(#self #int #int)> 
-    ]
-
-    storeIm: aRegister fromI: in [
-	<category: 'store'>
-    
-	<cCall: 'lightningStI_I' returning: #void args: #(#self #int #int)> 
-    ]
-
-    storeIm: aRegister fromUI: in [
-	<category: 'store'>
-    
-	<cCall: 'lightningStI_UI' returning: #void args: #(#self #int #uInt)> 
-    ]
-
-    storeIm: aRegister fromP: in [
-	<category: 'store'>
-    
-	<cCall: 'lightningStI_P' returning: #void args: #(#self #int #cObject)> 
-    ]
-
-    storeIm: aRegister fromF: in [
-	<category: 'store'>
-    
-	<cCall: 'lightningStI_F' returning: #void args: #(#self #int #float)> 
-    ]
-
-    storeIm: aRegister fromD: in [
-	<category: 'store'>
-    
-	<cCall: 'lightningStI_D' returning: #void args: #(#self #int #double)> 
-    ]
-
     storeReg: aRegister with: aReg2 fromI: in [
         <category: 'store'>
 
@@ -841,36 +799,6 @@ CStruct subclass: CJitState [
         <cCall: 'lightningStxR_D' returning: #void args: #(#self #int #int #double)>
     ]
 
-    storeIm: aRegister with: aIm2 fromI: in [
-        <category: 'store'>
-
-        <cCall: 'lightningStxI_I' returning: #void args: #(#self #int #int #int)>
-    ]
-
-    storeIm: aRegister with: aIm2 fromUI: in [
-        <category: 'store'>
-
-        <cCall: 'lightningStxI_UI' returning: #void args: #(#self #int #int #uInt)>
-    ]
-
-    storeIm: aRegister with: aIm2 fromP: in [
-        <category: 'store'>
-
-        <cCall: 'lightningStxI_P' returning: #void args: #(#self #int #int #cObject)>
-    ]
-
-    storeIm: aRegister with: aIm2 fromF: in [
-        <category: 'store'>
-
-        <cCall: 'lightningStxI_F' returning: #void args: #(#self #int #int #float)>
-    ]
-
-    storeIm: aRegister with: aIm2 fromD: in [
-        <category: 'store'>
-
-        <cCall: 'lightningStxI_D' returning: #void args: #(#self #int #int #double)>
-    ]
-
 "sti"
     storeImC: im fromReg: regSrc [
 	<category: 'store'>
@@ -880,6 +808,16 @@ CStruct subclass: CJitState [
     primStoreImC: im fromReg: regSrc [
 	<category: 'primitive store'>
 	<cCall: 'lightningStI_C' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImS: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImS: im fromReg: regSrc number
+    ]
+
+    primStoreImS: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_S' returning: #void args: #(#self #uint #int)>
     ]
 
     storeImI: im fromReg: regSrc [
@@ -892,6 +830,85 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningStI_I' returning: #void args: #(#self #uint #int)>
     ]
 
+    storeImL: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImL: im fromReg: regSrc number
+    ]
+
+    primStoreImL: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_L' returning: #void args: #(#self #uint #int)>
+    ]
+"sti unsigned"
+    storeImUC: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImUC: im fromReg: regSrc number
+    ]
+
+    primStoreImUC: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_UC' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImUS: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImUS: im fromReg: regSrc number
+    ]
+
+    primStoreImUS: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_US' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImUI: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImUI: im fromReg: regSrc number
+    ]
+
+    primStoreImUI: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_UI' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImUL: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImUL: im fromReg: regSrc number
+    ]
+
+    primStoreImUL: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_UL' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImP: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImP: im fromReg: regSrc number
+    ]
+
+    primStoreImP: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_P' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImF: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImF: im fromReg: regSrc number
+    ]
+
+    primStoreImF: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_F' returning: #void args: #(#self #uint #int)>
+    ]
+
+    storeImD: im fromReg: regSrc [
+	<category: 'store'>
+	self primStoreImD: im fromReg: regSrc number
+    ]
+
+    primStoreImD: im fromReg: regSrc [
+	<category: 'primitive store'>
+	<cCall: 'lightningStI_D' returning: #void args: #(#self #uint #int)>
+    ]
 "str"
     storeC: regDest fromReg: regSrc [
 	<category: 'store'>
@@ -1003,8 +1020,139 @@ CStruct subclass: CJitState [
 	<category: 'primitive store'>
 	<cCall: 'lightningStR_D' returning: #void args: #(#self #int #int)>
     ]
-"stxr"
+"stxi"
+    storeImC: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
 
+        self primStoreImC: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImC: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_C' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImS: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImS: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImS: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_S' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImI: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImI: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImI: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_I' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImL: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImL: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImL: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_L' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+"stxi unsigned"
+    storeImUC: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImUC: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImUC: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_UC' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImUS: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImUS: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImUS: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_US' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImUI: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImUI: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImUI: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_UI' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImUL: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImUL: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImUL: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_UL' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImP: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImP: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImP: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_P' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImF: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImF: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImF: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_F' returning: #void args: #(#self #uint #int #int)>
+    ]
+
+    storeImD: iDest and: regDest fromReg: regSrc  [
+        <category: 'store'>
+
+        self primStoreImD: iDest and: regDest number fromReg: regSrc number
+    ]
+
+    primStoreImD: iDest and: regNumDest fromReg: regNumSrc [
+	<category: 'primitive store'>
+
+        <cCall: 'lightningStxI_D' returning: #void args: #(#self #uint #int #int)>
+    ]
 "ldr"
     loadC: regDest fromReg: regSrc [
         <category: 'load'>
