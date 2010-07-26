@@ -293,4 +293,13 @@ TestCase subclass: CJitStateTest [
 	    assemble.
 	self loadUIAssert: state
     ]
+
+    testStore [
+	| state |
+	state := CJitState new.
+	state
+	    storeImI: 220 fromReg: Lightning.R0;
+	    dump: 'assemblyTest'.
+	
+    ]
 ]

@@ -906,6 +906,14 @@ str_d (jit_stack * jitStack, int i, int j)
 }
 
 void
+sti_c (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_sti_c (i, j);
+#undef _jit
+}
+
+void
 sti_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
@@ -1903,6 +1911,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningStR_P", str_p);
   _gst_vm_proxy->defineCFunc ("lightningStR_F", str_f);
   _gst_vm_proxy->defineCFunc ("lightningStR_D", str_d);
+  _gst_vm_proxy->defineCFunc ("lightningStI_C", sti_c);
   _gst_vm_proxy->defineCFunc ("lightningStI_I", sti_i);
   _gst_vm_proxy->defineCFunc ("lightningStI_UI", sti_ui);
   _gst_vm_proxy->defineCFunc ("lightningStI_P", sti_p);
