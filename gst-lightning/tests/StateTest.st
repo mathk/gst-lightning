@@ -298,7 +298,7 @@ TestCase subclass: CJitStateTest [
 	| state |
 	state := CJitState new.
 	state
-	    storeImI: 220 and: Lightning.R0 fromReg: Lightning.R1;
+	    storeRegI: Lightning.R2 and: Lightning.R0 fromReg: Lightning.R1;
 	    dump: 'assemblyTest'.
 	
     ]

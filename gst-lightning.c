@@ -994,6 +994,22 @@ sti_d (jit_stack * jitStack, int i, int j)
 }
 
 void
+stxr_c (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_c (i, j, k);
+#undef _jit
+}
+
+void
+stxr_s (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_s (i, j, k);
+#undef _jit
+}
+
+void
 stxr_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -1002,10 +1018,42 @@ stxr_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
+stxr_l (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_l (i, j, k);
+#undef _jit
+}
+
+void
+stxr_uc (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_uc (i, j, k);
+#undef _jit
+}
+
+void
+stxr_us (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_us (i, j, k);
+#undef _jit
+}
+
+void
 stxr_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
   jit_stxr_ui (i, j, k);
+#undef _jit
+}
+
+void
+stxr_ul (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_stxr_ul (i, j, k);
 #undef _jit
 }
 
@@ -2010,8 +2058,14 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningStI_P", sti_p);
   _gst_vm_proxy->defineCFunc ("lightningStI_F", sti_f);
   _gst_vm_proxy->defineCFunc ("lightningStI_D", sti_d);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_C", stxr_c);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_S", stxr_s);
   _gst_vm_proxy->defineCFunc ("lightningStxR_I", stxr_i);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_L", stxr_l);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_UC", stxr_uc);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_US", stxr_us);
   _gst_vm_proxy->defineCFunc ("lightningStxR_UI", stxr_ui);
+  _gst_vm_proxy->defineCFunc ("lightningStxR_UL", stxr_ul);
   _gst_vm_proxy->defineCFunc ("lightningStxR_P", stxr_p);
   _gst_vm_proxy->defineCFunc ("lightningStxR_F", stxr_f);
   _gst_vm_proxy->defineCFunc ("lightningStxR_D", stxr_d);
