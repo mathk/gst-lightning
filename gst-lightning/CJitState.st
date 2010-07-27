@@ -1379,7 +1379,7 @@ CStruct subclass: CJitState [
     primLoadC: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_S' returning: #void args: #(#self #int #char)>
+	<cCall: 'lightningLdI_S' returning: #void args: #(#self #int #uint)>
     ]
 
     loadS: regDest im: in [
@@ -1391,7 +1391,7 @@ CStruct subclass: CJitState [
     primLoadS: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_S' returning: #void args: #(#self #int #short)>
+	<cCall: 'lightningLdI_S' returning: #void args: #(#self #int #uint)>
     ]
 
     loadI: regDest im: in [
@@ -1403,7 +1403,7 @@ CStruct subclass: CJitState [
     primLoadI: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_I' returning: #void args: #(#self #int #int)>
+	<cCall: 'lightningLdI_I' returning: #void args: #(#self #int #uint)>
     ]
 
     loadL: regDest im: in [
@@ -1415,7 +1415,7 @@ CStruct subclass: CJitState [
     primLoadL: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_L' returning: #void args: #(#self #int #long)>
+	<cCall: 'lightningLdI_L' returning: #void args: #(#self #int #uint)>
     ]
 
 "ldi unsigned"
@@ -1428,7 +1428,7 @@ CStruct subclass: CJitState [
     primLoadUC: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #uchar)>
+	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #uint)>
     ]
 
     loadUS: regDest im: in [
@@ -1440,7 +1440,7 @@ CStruct subclass: CJitState [
     primLoadUS: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #ushort)>
+	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #uint)>
     ]
 
     loadUI: regDest im: in [
@@ -1476,7 +1476,7 @@ CStruct subclass: CJitState [
     primLoadP: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_P' returning: #void args: #(#self #int #float)>
+	<cCall: 'lightningLdI_P' returning: #void args: #(#self #int #uint)>
     ]
 
     loadF: regDest im: in [
@@ -1488,7 +1488,7 @@ CStruct subclass: CJitState [
     primLoadF: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_F' returning: #void args: #(#self #int #float)>
+	<cCall: 'lightningLdI_F' returning: #void args: #(#self #int #uint)>
     ]
 
     loadD: regDest im: in [
@@ -1500,7 +1500,7 @@ CStruct subclass: CJitState [
     primLoadD: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #double)>
+	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #uint)>
     ]
 
 "LxR"
