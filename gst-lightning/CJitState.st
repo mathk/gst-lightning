@@ -625,6 +625,17 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningValue' returning: #int args: #(#self)>
     ]
 
+    valueReturningType: retType [
+	"call the generated method and return the result"
+	<category: 'dsl stack'>
+	| cFunc |
+	cFunc := CFunctionDescriptor 
+            for: 'lightningValue' 
+	    returning: retType 
+	    withArgs: #(#self).
+	^(cFunc callInto: ValueHolder new) value.
+    ]
+
     value: anArg [
         "call the generated method and return the result"
         <category: 'dsl stack'>
@@ -1453,7 +1464,7 @@ CStruct subclass: CJitState [
     primLoadUL: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_UL' returning: #void args: #(#self #int #float)>
+	<cCall: 'lightningLdI_UL' returning: #void args: #(#self #int #uint)>
     ]
 
     loadP: regDest im: in [
@@ -1559,7 +1570,7 @@ CStruct subclass: CJitState [
     loadUS: regDest fromReg: regSrc1 and: regSrc2 [
         <category: 'load'>
 
-        ^ self primLoadS: regDest number fromReg: regSrc1 number and: regSrc2 number
+        ^ self primLoadUS: regDest number fromReg: regSrc1 number and: regSrc2 number
     ]
 
     primLoadUS: regNumDest fromReg: regNumSrc1 and: regNumSrc2 [
@@ -1760,6 +1771,13 @@ CStruct subclass: CJitState [
 
         <cCall: 'lightningLdxI_D' returning: #void args: #(#self #int #int #int)>
     ]
+    
+    testStaticInt [
+	"Only for test don't use it"
+	<category: 'testes'>
+
+	<cCall: 'lightningTestStaticInt' returning: #uint args: #()>
+    ]
 
     fetchOop: regDest fromReg: regSrc at: offset [
 	<category: 'oop load'>
@@ -1783,6 +1801,11 @@ CStruct subclass: CJitState [
     sizeOfOfHeader [
 	<category: 'accessing'>
 	<cCall: 'lightningSizeOfHeader' returning: #uint args: #()>
+    ]
+
+    breakpoint [
+	<category: 'debugging'>
+	<cCall: 'lightningBreakpoint' returning: #void args: #(#self)>
     ]
 ]
 

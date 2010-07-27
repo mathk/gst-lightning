@@ -27,6 +27,18 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadC: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadCAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
 	    loadC: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
@@ -55,6 +67,18 @@ TestCase subclass: CJitStateTest [
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    loadUC: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUCAssert: state.
+
+		state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadUC: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -103,6 +127,18 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadS: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadSAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
 	    loadS: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
@@ -131,6 +167,18 @@ TestCase subclass: CJitStateTest [
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    loadUS: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUSAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadUS: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -180,6 +228,18 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadI: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
 	    loadI: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
@@ -209,6 +269,18 @@ TestCase subclass: CJitStateTest [
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    loadUI: Lightning.R0 fromReg: Lightning.R0 im: 8;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadUI: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -259,6 +331,18 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadL: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
 	    loadL: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
@@ -286,6 +370,18 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
+	    movI: Lightning.R1 fromUI: 8;
+	    loadUL: Lightning.R0 fromReg: Lightning.R0 and: Lightning.R1;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self loadUIAssert: state.
+
+	state := CJitState new.
+	state 
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R0 fromReg: Lightning.R1;
 	    addI: Lightning.R0 to: Lightning.R0 uint: 8;
 	    loadUL: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
@@ -294,12 +390,27 @@ TestCase subclass: CJitStateTest [
 	self loadUIAssert: state
     ]
 
+    testImLoadUL [
+	| state |
+	state := CJitState new.
+	state 
+	    leaf;
+	   " breakpoint;"
+	    loadUL: Lightning.R0 im: state testStaticInt;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble;
+	    dump: 'assemblyTest'.
+
+	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF
+    ]
+
     testStore [
 	| state |
 	state := CJitState new.
 	state
-	    storeRegI: Lightning.R2 and: Lightning.R0 fromReg: Lightning.R1;
-	    dump: 'assemblyTest'.
+	    storeRegI: Lightning.R2 and: Lightning.R0 fromReg: Lightning.R1.
+	    "dump: 'assemblyTest'."
 	
     ]
 ]

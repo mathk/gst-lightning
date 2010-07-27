@@ -1,7 +1,7 @@
-
 #include "gst-lightning.h"
 
 static VMProxy *_gst_vm_proxy;
+static long testInt = -1;
 
 /* ALU */
 void
@@ -1759,6 +1759,14 @@ finish (jit_stack * jitStack, void *fct)
 #undef _jit
 }
 
+void
+breakpoint(jit_stack * jitStack)
+{
+#define _jit (jitStack->state)
+	_jit_B(0xcc);
+#undef _jit
+}
+
 /* Register access */
 int
 R0 ()
@@ -1910,12 +1918,20 @@ sizeOfHeader()
 	return sizeof(gst_object_header);
 }
 
+long *
+testStaticInt()
+{
+	return &testInt;
+}
+
 void
 gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningPrint", statePrint);
+	_gst_vm_proxy->defineCFunc ("lightningBreakpoint", breakpoint);
   _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
+  _gst_vm_proxy->defineCFunc ("lightningTestStaticInt", testStaticInt);
 	_gst_vm_proxy->defineCFunc ("lightningSizeOfOop", sizeOfOop);
 	_gst_vm_proxy->defineCFunc ("lightningSizeOfHeader", sizeOfHeader);
 	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
