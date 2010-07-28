@@ -1428,7 +1428,7 @@ CStruct subclass: CJitState [
     primLoadUC: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_UC' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadUS: regDest im: in [
@@ -1440,7 +1440,7 @@ CStruct subclass: CJitState [
     primLoadUS: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_US' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadUI: regDest im: in [
@@ -1452,7 +1452,7 @@ CStruct subclass: CJitState [
     primLoadUI: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_UI' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_UI' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadUL: regDest im: in [
@@ -1464,7 +1464,7 @@ CStruct subclass: CJitState [
     primLoadUL: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_UL' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_UL' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadP: regDest im: in [
@@ -1476,7 +1476,7 @@ CStruct subclass: CJitState [
     primLoadP: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_P' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_P' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadF: regDest im: in [
@@ -1488,7 +1488,7 @@ CStruct subclass: CJitState [
     primLoadF: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_F' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_F' returning: #void args: #(#self #int #ulong)>
     ]
 
     loadD: regDest im: in [
@@ -1500,7 +1500,7 @@ CStruct subclass: CJitState [
     primLoadD: regNumDest im: in [
 	<category: 'primitive load'>
 
-	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #uint)>
+	<cCall: 'lightningLdI_D' returning: #void args: #(#self #int #ulong)>
     ]
 
 "LxR"

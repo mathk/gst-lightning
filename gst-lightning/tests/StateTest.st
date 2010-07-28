@@ -390,19 +390,43 @@ TestCase subclass: CJitStateTest [
 	self loadUIAssert: state
     ]
 
-    testImLoadUL [
+    testImLoadUnsigned [
 	| state |
 	state := CJitState new.
 	state 
 	    leaf;
-	   " breakpoint;"
 	    loadUL: Lightning.R0 im: state testStaticInt;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
-	    assemble;
-	    dump: 'assemblyTest'.
+	    assemble.
+	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF.
 
-	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF
+	state := CJitState new.
+	state 
+	    leaf;
+	    loadUI: Lightning.R0 im: state testStaticInt;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self assert: (state valueReturningType: #ulong) = 16rFFFFFFFF.
+
+	state := CJitState new.
+	state 
+	    leaf;
+	    loadUS: Lightning.R0 im: state testStaticInt;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self assert: (state valueReturningType: #uint) = 16rFFFF.
+
+	state := CJitState new.
+	state 
+	    leaf;
+	    loadUC: Lightning.R0 im: state testStaticInt;
+	    movR: Lightning.RET fromUI: Lightning.R0;
+	    ret;
+	    assemble.
+	self assert: (state valueReturningType: #uint) = 16rFF
     ]
 
     testStore [
