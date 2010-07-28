@@ -1108,7 +1108,7 @@ CStruct subclass: CJitState [
     storeRegC: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegC: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegC: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegC: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1120,7 +1120,7 @@ CStruct subclass: CJitState [
     storeRegS: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegS: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegS: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegS: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1132,7 +1132,7 @@ CStruct subclass: CJitState [
     storeRegI: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegI: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegI: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegI: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1144,7 +1144,7 @@ CStruct subclass: CJitState [
     storeRegL: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegL: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegL: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegL: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1156,7 +1156,7 @@ CStruct subclass: CJitState [
     storeRegUC: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegUC: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegUC: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegUC: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1168,7 +1168,7 @@ CStruct subclass: CJitState [
     storeRegUS: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegUS: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegUS: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegUS: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1180,7 +1180,7 @@ CStruct subclass: CJitState [
     storeRegUI: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegUI: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegUI: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegUI: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1192,7 +1192,7 @@ CStruct subclass: CJitState [
     storeRegUL: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegUL: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegUL: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegUL: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1204,7 +1204,7 @@ CStruct subclass: CJitState [
     storeRegP: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegP: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegP: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegP: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1216,7 +1216,7 @@ CStruct subclass: CJitState [
     storeRegF: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegF: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegF: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegF: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1228,7 +1228,7 @@ CStruct subclass: CJitState [
     storeRegD: regDest1 and: regDest2 fromReg: regSrc  [
         <category: 'store'>
 
-        self primStoreRegD: regDest2 number and: regDest2 number fromReg: regSrc number
+        self primStoreRegD: regDest1 number and: regDest2 number fromReg: regSrc number
     ]
 
     primStoreRegD: regNumDest1 and: regNumDest2 fromReg: regNumSrc [
@@ -1798,7 +1798,7 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningSizeOfOop' returning: #uint args: #()>
     ]
 
-    sizeOfOfHeader [
+    sizeOfHeader [
 	<category: 'accessing'>
 	<cCall: 'lightningSizeOfHeader' returning: #uint args: #()>
     ]

@@ -866,10 +866,34 @@ jmpr (jit_stack * jitStack, int i)
 
 /* Store */
 void
+str_c (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_c (i, j);
+#undef _jit
+}
+
+void
+str_s (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_s (i, j);
+#undef _jit
+}
+
+void
 str_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
   jit_str_i (i, j);
+#undef _jit
+}
+
+void
+str_l (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_str_l (i, j);
 #undef _jit
 }
 
@@ -2058,7 +2082,10 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);
   _gst_vm_proxy->defineCFunc ("lightningNtoH_US", ntoh_us);
 
+  _gst_vm_proxy->defineCFunc ("lightningStR_C", str_c);
+  _gst_vm_proxy->defineCFunc ("lightningStR_S", str_s);
   _gst_vm_proxy->defineCFunc ("lightningStR_I", str_i);
+  _gst_vm_proxy->defineCFunc ("lightningStR_L", str_l);
   _gst_vm_proxy->defineCFunc ("lightningStR_UI", str_ui);
   _gst_vm_proxy->defineCFunc ("lightningStR_P", str_p);
   _gst_vm_proxy->defineCFunc ("lightningStR_F", str_f);
