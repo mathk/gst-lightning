@@ -589,4 +589,59 @@ TestCase subclass: CJitStateTest [
 	state value: arg argType: #smalltalk returningType: #void.
 	self assert: arg anInt = (16r11 bitShift: -1)
     ]
+
+    testStxI [
+	| state arg |
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeImI: state sizeOfHeader and: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r01010101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeImL: state sizeOfHeader and: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r01010101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeImS: state sizeOfHeader and: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r0101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    movI: Lightning.R0 fromUI: 16r01010111;
+	    storeImC: state sizeOfHeader and: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r11 bitShift: -1)
+    ]
 ]
