@@ -10,10 +10,10 @@ Object subclass: IntHolder [
     ]
 ]
 
-
 TestCase subclass: CJitStateTest [
     
     testLoadC [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -64,6 +64,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUC [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -114,6 +115,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadS [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -164,6 +166,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUS [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -214,6 +217,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadI [
+	<category: 'test'>
 	| state |
 
 	state := CJitState new.
@@ -265,6 +269,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUI [
+	<category: 'test'>
 	| state |
 
 	state := CJitState new.
@@ -317,6 +322,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadL [
+	<category: 'test'>
 	| state |
 
 	state := CJitState new.
@@ -356,6 +362,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testLoadUL [
+	<category: 'test'>
 	| state |
 
 	state := CJitState new.
@@ -395,6 +402,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testImLoadUnsigned [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -434,6 +442,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testImload [
+	<category: 'test'>
 	| state |
 	state := CJitState new.
 	state 
@@ -472,7 +481,69 @@ TestCase subclass: CJitStateTest [
 	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF
     ]
 
+    testStI [
+	<category: 'test'>
+	| state arg |
+"	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeI: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r01010101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeL: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r01010101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    movI: Lightning.R0 fromUI: 16r01010101;
+	    storeS: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r0101 bitShift: -1).
+
+	state := CJitState new.
+	state
+	    leaf: 1;
+	    getargPtr: Lightning.R1 from: state argPtr;
+	    loadP: Lightning.R1 fromReg: Lightning.R1;
+	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    movI: Lightning.R0 fromUI: 16r01010111;
+	    storeC: Lightning.R1 fromReg: Lightning.R0;
+	    ret;
+	    assemble.
+	arg := IntHolder new anInt: 0; yourself.
+	state value: arg argType: #smalltalk returningType: #void.
+	self assert: arg anInt = (16r11 bitShift: -1)"
+    ]
+
+
     testStR [
+	<category: 'test'>
 	| state arg |
 	state := CJitState new.
 	state
@@ -532,6 +603,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testStxR [
+	<category: 'test'>
 	| state arg |
 	state := CJitState new.
 	state
@@ -591,6 +663,7 @@ TestCase subclass: CJitStateTest [
     ]
 
     testStxI [
+	<category: 'test'>
 	| state arg |
 	state := CJitState new.
 	state
