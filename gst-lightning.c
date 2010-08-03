@@ -397,7 +397,7 @@ movi_ui (jit_stack * jitStack, int i, int j)
 }
 
 void
-movi_p (jit_stack * jitStack, int i, void *j)
+movi_p (jit_stack * jitStack, int i, unsigned long j)
 {
 #define _jit (jitStack->state)
   jit_movi_p (i, j);

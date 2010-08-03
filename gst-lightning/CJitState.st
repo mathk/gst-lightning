@@ -673,7 +673,7 @@ CStruct subclass: CJitState [
 	"Move pointer to a register
 	 This is a private primitive use #movI:fromP: instead"
 	<category: 'dsl transfer'>
-	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
+	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #ulong)>
     ]
 
     primMovI: regNumber fromUI: int [
