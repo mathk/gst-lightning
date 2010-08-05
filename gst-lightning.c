@@ -1877,10 +1877,10 @@ value (jit_stack * jitStack)
 }
 
 int
-valueWith (jit_stack * jitStack, int arg)
+valueWith (jit_stack * jitStack, long arg)
 {
 #define _jit (jitStack->state)
-  pifi fct = (pifi) jitStack->codeBuffer;
+  pifl fct = (pifl) jitStack->codeBuffer;
   return fct (arg);
 #undef _jit
 }

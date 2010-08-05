@@ -640,7 +640,7 @@ CStruct subclass: CJitState [
     value: anArg [
         "call the generated method and return the result"
         <category: 'dsl stack'>
-        <cCall: 'lightningValueWith' returning: #int args: #(#self #int)>
+        <cCall: 'lightningValueWith' returning: #int args: #(#self #long)>
     ]
 
     value: anArg argType: argType returningType: retType [

@@ -1,3 +1,4 @@
+
 #ifndef GST_LIGHTNING_H
 #define GST_LIGHTNING_H
 
@@ -6,6 +7,7 @@
 #include <lightning.h>
 
 typedef int (*pifi) (int);
+typedef int (*pifl) (long);
 typedef int (*pifp) (void *);
 typedef int (*pif) ();
 
