@@ -324,6 +324,12 @@ CStruct subclass: CJitState [
         self primAddI: regDst number to: regSrc number uint: val
     ]
 
+    addI: regDst to: regSrc ulong: val [
+        "Add an integer to a register. Result is store in a register"
+        <category: 'dsl binary alu'>
+        self primAddI: regDst number to: regSrc number ulong: val
+    ]
+
     addR: regDst to: regSrc uint: regVal [
         "Add an register to a register. Result is store in a register"
         <category: 'dsl binary alu'>
@@ -341,7 +347,14 @@ CStruct subclass: CJitState [
         "Add an integer to a register. Result is store in a register
          This is a private primitive use #addI:to:ont: instead"
         <category: 'private dsl binary alu'>
-        <cCall: 'lightningAddI_UI' returning: #void args: #(#self #int #int #int)>
+        <cCall: 'lightningAddI_UI' returning: #void args: #(#self #int #int #uint)>
+    ]
+
+    primAddI: regDstNumber to: regSrcNumber ulong: val [
+        "Add an integer to a register. Result is store in a register
+         This is a private primitive use #addI:to:ont: instead"
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAddI_UL' returning: #void args: #(#self #int #int #ulong)>
     ]
 
     primAddR: regDstNumber to: regSrcNumber int: regNumber [

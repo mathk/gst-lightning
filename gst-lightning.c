@@ -13,10 +13,18 @@ addi_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-addi_ui (jit_stack * jitStack, int i, int j, int k)
+addi_ui (jit_stack * jitStack, int i, int j, unsigned int k)
 {
 #define _jit (jitStack->state)
   jit_addi_ui (i, j, k);
+#undef _jit
+}
+
+void
+addi_ul (jit_stack * jitStack, int i, int j, unsigned long k)
+{
+#define _jit (jitStack->state)
+  jit_addi_ul (i, j, k);
 #undef _jit
 }
 
@@ -1998,6 +2006,7 @@ gst_initModule (VMProxy * proxy)
 
   _gst_vm_proxy->defineCFunc ("lightningAddI_I", addi_i);
   _gst_vm_proxy->defineCFunc ("lightningAddI_UI", addi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningAddI_UL", addi_ul);
   _gst_vm_proxy->defineCFunc ("lightningAddR_I", addr_i);
   _gst_vm_proxy->defineCFunc ("lightningAddR_UI", addr_ui);
   _gst_vm_proxy->defineCFunc ("lightningAddCR_I", addcr_i);

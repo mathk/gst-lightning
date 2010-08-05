@@ -43,7 +43,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadC: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -94,7 +94,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadUC: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -145,7 +145,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadS: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -196,7 +196,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadUS: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -248,7 +248,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadI: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -300,7 +300,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadUI: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -353,7 +353,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadL: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
@@ -393,7 +393,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R0 fromReg: Lightning.R1;
-	    addI: Lightning.R0 to: Lightning.R0 uint: 2 * state sizeOfOop;
+	    addI: Lightning.R0 to: Lightning.R0 ulong: 2 * state sizeOfOop;
 	    loadUL: Lightning.R0 fromReg: Lightning.R0;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
