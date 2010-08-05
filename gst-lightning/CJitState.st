@@ -3,6 +3,7 @@
 CStruct subclass: CJitState [
 
     <declaration: #( (#state (#ptr #long) )
+
 			 (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
@@ -1779,10 +1780,16 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningTestStaticInt' returning: #uint args: #()>
     ]
 
-    fetchOop: regDest fromReg: regSrc at: offset [
+    fetchOop: regDest fromOopReg: regSrc at: offset [
 	<category: 'oop load'>
 	self 
 	    loadP: regSrc fromReg: regSrc;
+	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+    ]
+
+    fetchOop: regDest fromObjectReg: regSrc at: offset [
+	<category: 'oop load'>
+	self 
 	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
     ]
 
