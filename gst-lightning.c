@@ -1381,7 +1381,7 @@ ldr_d (jit_stack * jitStack, int i, int j)
 }
 
 void
-ldxi_c (jit_stack * jitStack, int i, int j, int k)
+ldxi_c (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_c (i, j, k);
@@ -1389,7 +1389,7 @@ ldxi_c (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_s (jit_stack * jitStack, int i, int j, int k)
+ldxi_s (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_s (i, j, k);
@@ -1397,7 +1397,7 @@ ldxi_s (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_i (jit_stack * jitStack, int i, int j, int k)
+ldxi_i (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_i (i, j, k);
@@ -1405,7 +1405,7 @@ ldxi_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_l (jit_stack * jitStack, int i, int j, int k)
+ldxi_l (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_l (i, j, k);
@@ -1413,7 +1413,7 @@ ldxi_l (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_uc (jit_stack * jitStack, int i, int j, int k)
+ldxi_uc (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_uc (i, j, k);
@@ -1421,7 +1421,7 @@ ldxi_uc (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_us (jit_stack * jitStack, int i, int j, int k)
+ldxi_us (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_us (i, j, k);
@@ -1429,7 +1429,7 @@ ldxi_us (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_ui (jit_stack * jitStack, int i, int j, int k)
+ldxi_ui (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_ui (i, j, k);
@@ -1437,7 +1437,7 @@ ldxi_ui (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_ul (jit_stack * jitStack, int i, int j, int k)
+ldxi_ul (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_ul (i, j, k);
@@ -1445,7 +1445,7 @@ ldxi_ul (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_p (jit_stack * jitStack, int i, int j, int k)
+ldxi_p (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_p (i, j, k);
@@ -1453,7 +1453,7 @@ ldxi_p (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_f (jit_stack * jitStack, int i, int j, int k)
+ldxi_f (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_f (i, j, k);
@@ -1461,7 +1461,7 @@ ldxi_f (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
-ldxi_d (jit_stack * jitStack, int i, int j, int k)
+ldxi_d (jit_stack * jitStack, int i, int j, unsigned long k)
 {
 #define _jit (jitStack->state)
   jit_ldxi_d (i, j, k);

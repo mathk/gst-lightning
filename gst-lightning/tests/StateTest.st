@@ -410,7 +410,8 @@ TestCase subclass: CJitStateTest [
 	    loadUL: Lightning.R0 im: state testStaticInt;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
-	    assemble.
+	    assemble;
+	    dump:'assemblyTest'.
 	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF.
 
 	state := CJitState new.
@@ -550,7 +551,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R1 fromReg: Lightning.R1;
-	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    addI: Lightning.R1 to: Lightning.R1 ulong: state sizeOfHeader;
 	    movI: Lightning.R0 fromUI: 16r01010101;
 	    storeI: Lightning.R1 fromReg: Lightning.R0;
 	    ret;
@@ -564,7 +565,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R1 fromReg: Lightning.R1;
-	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    addI: Lightning.R1 to: Lightning.R1 ulong: state sizeOfHeader;
 	    movI: Lightning.R0 fromUI: 16r01010101;
 	    storeL: Lightning.R1 fromReg: Lightning.R0;
 	    ret;
@@ -578,7 +579,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R1 fromReg: Lightning.R1;
-	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    addI: Lightning.R1 to: Lightning.R1 ulong: state sizeOfHeader;
 	    movI: Lightning.R0 fromUI: 16r01010101;
 	    storeS: Lightning.R1 fromReg: Lightning.R0;
 	    ret;
@@ -592,7 +593,7 @@ TestCase subclass: CJitStateTest [
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
 	    loadP: Lightning.R1 fromReg: Lightning.R1;
-	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    addI: Lightning.R1 to: Lightning.R1 ulong: state sizeOfHeader;
 	    movI: Lightning.R0 fromUI: 16r01010111;
 	    storeC: Lightning.R1 fromReg: Lightning.R0;
 	    ret;
