@@ -410,8 +410,7 @@ TestCase subclass: CJitStateTest [
 	    loadUL: Lightning.R0 im: state testStaticInt;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
-	    assemble;
-	    dump:'assemblyTest'.
+	    assemble.
 	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF.
 
 	state := CJitState new.
@@ -442,7 +441,7 @@ TestCase subclass: CJitStateTest [
 	self assert: (state valueReturningType: #uint) = 16rFF
     ]
 
-    testImload [
+    testImLoad [
 	<category: 'test'>
 	| state |
 	state := CJitState new.
