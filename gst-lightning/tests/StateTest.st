@@ -461,7 +461,7 @@ TestCase subclass: CJitStateTest [
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
-	self assert: (state valueReturningType: #ulong) = 16rFFFFFFFF.
+	self assert: (state valueReturningType: #uint) = 16rFFFFFFFF.
 
 	state := CJitState new.
 	state 
