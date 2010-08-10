@@ -1951,9 +1951,15 @@ sizeOfHeader()
 }
 
 long *
-testStaticInt()
+testStaticIntAddress()
 {
 	return &testInt;
+}
+
+long
+testStaticInt()
+{
+	return testInt;
 }
 
 void
@@ -1964,6 +1970,7 @@ gst_initModule (VMProxy * proxy)
 	_gst_vm_proxy->defineCFunc ("lightningBreakpoint", breakpoint);
   _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
   _gst_vm_proxy->defineCFunc ("lightningTestStaticInt", testStaticInt);
+  _gst_vm_proxy->defineCFunc ("lightningTestStaticIntAddress", testStaticIntAddress);
 	_gst_vm_proxy->defineCFunc ("lightningSizeOfOop", sizeOfOop);
 	_gst_vm_proxy->defineCFunc ("lightningSizeOfHeader", sizeOfHeader);
 	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);

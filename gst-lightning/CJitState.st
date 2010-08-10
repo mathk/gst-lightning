@@ -1786,6 +1786,13 @@ CStruct subclass: CJitState [
         <cCall: 'lightningLdxI_D' returning: #void args: #(#self #int #int #ulong)>
     ]
     
+    testStaticIntAddress [
+	"Only for test don't use it"
+	<category: 'testes'>
+
+	<cCall: 'lightningTestStaticIntAddress' returning: #ulong args: #()>
+    ]
+
     testStaticInt [
 	"Only for test don't use it"
 	<category: 'testes'>

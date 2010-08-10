@@ -407,7 +407,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadUL: Lightning.R0 im: state testStaticInt;
+	    loadUL: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -416,7 +416,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadUI: Lightning.R0 im: state testStaticInt;
+	    loadUI: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -425,7 +425,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadUS: Lightning.R0 im: state testStaticInt;
+	    loadUS: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -434,7 +434,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadUC: Lightning.R0 im: state testStaticInt;
+	    loadUC: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -447,7 +447,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadL: Lightning.R0 im: state testStaticInt;
+	    loadL: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -456,7 +456,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadI: Lightning.R0 im: state testStaticInt;
+	    loadI: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -465,7 +465,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadS: Lightning.R0 im: state testStaticInt;
+	    loadS: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -474,7 +474,7 @@ TestCase subclass: CJitStateTest [
 	state := CJitState new.
 	state 
 	    leaf;
-	    loadC: Lightning.R0 im: state testStaticInt;
+	    loadC: Lightning.R0 im: state testStaticIntAddress;
 	    movR: Lightning.RET fromUI: Lightning.R0;
 	    ret;
 	    assemble.
@@ -484,21 +484,18 @@ TestCase subclass: CJitStateTest [
     testStI [
 	<category: 'test'>
 	| state arg |
-"	state := CJitState new.
+	state := CJitState new.
 	state
-	    leaf: 1;
-	    getargPtr: Lightning.R1 from: state argPtr;
-	    loadP: Lightning.R1 fromReg: Lightning.R1;
-	    addI: Lightning.R1 to: Lightning.R1 uint: state sizeOfHeader;
+	    leaf;
 	    movI: Lightning.R0 fromUI: 16r01010101;
-	    storeI: Lightning.R1 fromReg: Lightning.R0;
+	    storeImI: state testStaticIntAddress fromReg: Lightning.R0;
 	    ret;
 	    assemble.
-	arg := IntHolder new anInt: 0; yourself.
-	state value: arg argType: #smalltalk returningType: #void.
-	self assert: arg anInt = (16r01010101 bitShift: -1).
 
-	state := CJitState new.
+	state  valueReturningType: #void.
+	self assert: state testStaticInt = 16r01010101.
+
+"	state := CJitState new.
 	state
 	    leaf: 1;
 	    getargPtr: Lightning.R1 from: state argPtr;
