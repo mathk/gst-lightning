@@ -938,7 +938,7 @@ str_d (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_c (jit_stack * jitStack, int i, int j)
+sti_c (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_c (i, j);
@@ -946,7 +946,7 @@ sti_c (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_s (jit_stack * jitStack, int i, int j)
+sti_s (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_s (i, j);
@@ -954,7 +954,7 @@ sti_s (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_i (jit_stack * jitStack, int i, int j)
+sti_i (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_i (i, j);
@@ -962,7 +962,7 @@ sti_i (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_l (jit_stack * jitStack, int i, int j)
+sti_l (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_l (i, j);
@@ -970,7 +970,7 @@ sti_l (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_uc (jit_stack * jitStack, int i, int j)
+sti_uc (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_uc (i, j);
@@ -978,7 +978,7 @@ sti_uc (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_us (jit_stack * jitStack, int i, int j)
+sti_us (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_us (i, j);
@@ -986,7 +986,7 @@ sti_us (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_ui (jit_stack * jitStack, int i, int j)
+sti_ui (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_ui (i, j);
@@ -994,7 +994,7 @@ sti_ui (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_ul (jit_stack * jitStack, int i, int j)
+sti_ul (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_ul (i, j);
@@ -1002,7 +1002,7 @@ sti_ul (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_p (jit_stack * jitStack, int i, int j)
+sti_p (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_p (i, j);
@@ -1010,7 +1010,7 @@ sti_p (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_f (jit_stack * jitStack, int i, int j)
+sti_f (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_f (i, j);
@@ -1018,7 +1018,7 @@ sti_f (jit_stack * jitStack, int i, int j)
 }
 
 void
-sti_d (jit_stack * jitStack, int i, int j)
+sti_d (jit_stack * jitStack, unsigned long i, int j)
 {
 #define _jit (jitStack->state)
   jit_sti_d (i, j);

@@ -772,7 +772,7 @@ CStruct subclass: CJitState [
 
     primStoreImC: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_C' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_C' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImS: im fromReg: regSrc [
@@ -782,7 +782,7 @@ CStruct subclass: CJitState [
 
     primStoreImS: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_S' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_S' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImI: im fromReg: regSrc [
@@ -792,7 +792,7 @@ CStruct subclass: CJitState [
 
     primStoreImI: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_I' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_I' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImL: im fromReg: regSrc [
@@ -802,7 +802,7 @@ CStruct subclass: CJitState [
 
     primStoreImL: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_L' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_L' returning: #void args: #(#self #ulong #int)>
     ]
 "sti unsigned"
     storeImUC: im fromReg: regSrc [
@@ -812,7 +812,7 @@ CStruct subclass: CJitState [
 
     primStoreImUC: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_UC' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_UC' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImUS: im fromReg: regSrc [
@@ -822,7 +822,7 @@ CStruct subclass: CJitState [
 
     primStoreImUS: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_US' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_US' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImUI: im fromReg: regSrc [
@@ -832,7 +832,7 @@ CStruct subclass: CJitState [
 
     primStoreImUI: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_UI' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_UI' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImUL: im fromReg: regSrc [
@@ -842,7 +842,7 @@ CStruct subclass: CJitState [
 
     primStoreImUL: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_UL' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_UL' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImP: im fromReg: regSrc [
@@ -852,7 +852,7 @@ CStruct subclass: CJitState [
 
     primStoreImP: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_P' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_P' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImF: im fromReg: regSrc [
@@ -862,7 +862,7 @@ CStruct subclass: CJitState [
 
     primStoreImF: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_F' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_F' returning: #void args: #(#self #ulong #int)>
     ]
 
     storeImD: im fromReg: regSrc [
@@ -872,7 +872,7 @@ CStruct subclass: CJitState [
 
     primStoreImD: im fromReg: regSrc [
 	<category: 'primitive store'>
-	<cCall: 'lightningStI_D' returning: #void args: #(#self #uint #int)>
+	<cCall: 'lightningStI_D' returning: #void args: #(#self #ulong #int)>
     ]
 "str"
     storeC: regDest fromReg: regSrc [
