@@ -491,9 +491,10 @@ TestCase subclass: CJitStateTest [
 	    storeImI: state testStaticIntAddress fromReg: Lightning.R0;
 	    ret;
 	    assemble.
-
+	
 	state  valueReturningType: #void.
-	self assert: state testStaticInt = 16r01010101.
+	self assert: (state testStaticInt = (16rFFFFFFFF01010101 
+	                bitAnd: (2 raisedTo: 8 * state sizeOfOop) - 1)).
 
 "	state := CJitState new.
 	state
