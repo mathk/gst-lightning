@@ -1792,10 +1792,10 @@ finish (jit_stack * jitStack, void *fct)
 }
 
 void
-breakpoint(jit_stack * jitStack)
+breakpoint (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
-	_jit_B(0xcc);
+  _jit_B (0xcc);
 #undef _jit
 }
 
@@ -1894,72 +1894,76 @@ valueWith (jit_stack * jitStack, long arg)
 }
 
 int
-valueWithPtr (jit_stack * jitStack, void * arg)
+valueWithPtr (jit_stack * jitStack, void *arg)
 {
 #define _jit (jitStack->state)
-  pifp  fct = (pifp) jitStack->codeBuffer;
+  pifp fct = (pifp) jitStack->codeBuffer;
   return fct (arg);
 #undef _jit
 }
 
 void
-statePrint(jit_stack * jitStack)
+statePrint (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
-	int i;
-	char info[385];
-	unsigned char * current = jitStack->codeBuffer;
-	unsigned char * endBuffer = jit_get_ip ().ptr;
-	for (i = 0; i < 127 && current <= endBuffer; ++i, ++current)
-  {
-		snprintf(info + i*3, 3, "%02X", *current);
-		info[i*3 +2] = ' ';
-	}
-	if(i == 127)
-	{
-		snprintf(info + i*3 - 1, 3, "...");
-		i++;
-	}
-	info[i*3 - 1] = '\0';
-	OOP printInfo = _gst_vm_proxy->stringToOOP(info);
-	_gst_vm_proxy->strMsgSend(printInfo, "print", NULL);
-	
+  int i;
+  char info[385];
+  unsigned char *current = jitStack->codeBuffer;
+  unsigned char *endBuffer = jit_get_ip ().ptr;
+  for (i = 0; i < 127 && current <= endBuffer; ++i, ++current)
+    {
+      snprintf (info + i * 3, 3, "%02X", *current);
+      info[i * 3 + 2] = ' ';
+    }
+  if (i == 127)
+    {
+      snprintf (info + i * 3 - 1, 3, "...");
+      i++;
+    }
+  info[i * 3 - 1] = '\0';
+  OOP printInfo = _gst_vm_proxy->stringToOOP (info);
+  _gst_vm_proxy->strMsgSend (printInfo, "print", NULL);
+
 #undef _jit
 }
 
 void
-stateDump(jit_stack * jitStack, char * fileName)
+stateDump (jit_stack * jitStack, char *fileName)
 {
 #define _jit (jitStack->state)
-	FILE * dump = fopen(fileName, "w");
-	printf("Dump size : %d\n", (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer);
-	fwrite((char *)jitStack->codeBuffer, 1,  (unsigned int)jit_get_ip ().ptr - (unsigned int)jitStack->codeBuffer, dump);
-	fclose(dump);
+  FILE *dump = fopen (fileName, "w");
+  printf ("Dump size : %d\n",
+	  (unsigned int) jit_get_ip ().ptr -
+	  (unsigned int) jitStack->codeBuffer);
+  fwrite ((char *) jitStack->codeBuffer, 1,
+	  (unsigned int) jit_get_ip ().ptr -
+	  (unsigned int) jitStack->codeBuffer, dump);
+  fclose (dump);
 #undef _jit
 }
 
 unsigned int
-sizeOfOop()
+sizeOfOop ()
 {
-	return sizeof(OOP);
+  return sizeof (OOP);
 }
 
 unsigned int
-sizeOfHeader()
+sizeOfHeader ()
 {
-	return sizeof(gst_object_header);
+  return sizeof (gst_object_header);
 }
 
 long *
-testStaticIntAddress()
+testStaticIntAddress ()
 {
-	return &testInt;
+  return &testInt;
 }
 
 long
-testStaticInt()
+testStaticInt ()
 {
-	return testInt;
+  return testInt;
 }
 
 void
@@ -1967,13 +1971,14 @@ gst_initModule (VMProxy * proxy)
 {
   _gst_vm_proxy = proxy;
   _gst_vm_proxy->defineCFunc ("lightningPrint", statePrint);
-	_gst_vm_proxy->defineCFunc ("lightningBreakpoint", breakpoint);
+  _gst_vm_proxy->defineCFunc ("lightningBreakpoint", breakpoint);
   _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
   _gst_vm_proxy->defineCFunc ("lightningTestStaticInt", testStaticInt);
-  _gst_vm_proxy->defineCFunc ("lightningTestStaticIntAddress", testStaticIntAddress);
-	_gst_vm_proxy->defineCFunc ("lightningSizeOfOop", sizeOfOop);
-	_gst_vm_proxy->defineCFunc ("lightningSizeOfHeader", sizeOfHeader);
-	_gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
+  _gst_vm_proxy->defineCFunc ("lightningTestStaticIntAddress",
+			      testStaticIntAddress);
+  _gst_vm_proxy->defineCFunc ("lightningSizeOfOop", sizeOfOop);
+  _gst_vm_proxy->defineCFunc ("lightningSizeOfHeader", sizeOfHeader);
+  _gst_vm_proxy->defineCFunc ("lightningAllocJitState", alloc_jit_state);
   _gst_vm_proxy->defineCFunc ("lightningFlushCode", flush_code);
   _gst_vm_proxy->defineCFunc ("lightningLeaf", leaf);
   _gst_vm_proxy->defineCFunc ("lightningProlog", prolog);
