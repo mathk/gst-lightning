@@ -1817,13 +1817,13 @@ CStruct subclass: CJitState [
 	<category: 'oop load'>
 	self 
 	    loadP: regSrc fromReg: regSrc;
-	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+	    loadP: regDest fromReg: regSrc im: ((offset - 1) * self sizeOfOop) + self sizeOfHeader
     ]
 
     fetchOop: regDest fromObjectReg: regSrc at: offset [
 	<category: 'oop load'>
 	self 
-	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+	    loadP: regDest fromReg: regSrc im: ((offset - 1) * self sizeOfOop) + self sizeOfHeader
     ]
 
     fetchClassOop: regDest fromReg: regSrc [
