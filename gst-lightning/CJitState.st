@@ -310,6 +310,12 @@ CStruct subclass: CJitState [
 	<category: 'dsl call'>
 	<cCall: 'lightningFinish' returning: #void args: #(#self #cObject) >
     ]
+
+    finishUL: fct [
+	"Call a function"
+	<category: 'dsl call'>
+	<cCall: 'lightningFinish' returning: #void args: #(#self #ulong) >
+    ]
     
     addI: regDst to: regSrc int: val [
 	"Add an integer to a register. Result is store in a register"
