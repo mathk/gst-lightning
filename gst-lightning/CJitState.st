@@ -3,8 +3,7 @@
 CStruct subclass: CJitState [
 
     <declaration: #( (#state (#ptr #long) )
-
-			 (#buffer #{CCodeBuffer} ) )>
+			     (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
@@ -310,6 +309,12 @@ CStruct subclass: CJitState [
 	"Call a function"
 	<category: 'dsl call'>
 	<cCall: 'lightningFinish' returning: #void args: #(#self #cObject) >
+    ]
+
+    finishUL: fct [
+	"Call a function"
+	<category: 'dsl call'>
+	<cCall: 'lightningFinish' returning: #void args: #(#self #ulong) >
     ]
     
     addI: regDst to: regSrc int: val [
@@ -684,9 +689,17 @@ CStruct subclass: CJitState [
         <cCall: 'lightningValueWithPtr' returning: #int args: #(#self #smalltalk)>
     ]
 
+    movI: reg fromString: aString [
+	"Move string to a register"
+	<category: 'dsl transfer'>
+
+	self primMovI: reg number fromString: aString
+    ]
+
     movI: reg fromP: ptr [
 	"Move pointer to a register"
 	<category: 'dsl transfer'>
+
 	self primMovI: reg number fromP: ptr
     ]
 
@@ -694,6 +707,14 @@ CStruct subclass: CJitState [
         "Move unsigned integer to a register"
         <category: 'dsl transfer'>
         self primMovI: reg number fromUI: int
+    ]
+
+    primMovI: regNumber fromString: ptr [
+        "Move string to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'dsl transfer'>
+
+        <cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
     ]
 
     primMovI: regNumber fromP: ptr [
@@ -1817,13 +1838,13 @@ CStruct subclass: CJitState [
 	<category: 'oop load'>
 	self 
 	    loadP: regSrc fromReg: regSrc;
-	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+	    loadP: regDest fromReg: regSrc im: ((offset - 1) * self sizeOfOop) + self sizeOfHeader
     ]
 
     fetchOop: regDest fromObjectReg: regSrc at: offset [
 	<category: 'oop load'>
 	self 
-	    loadP: regDest fromReg: regSrc im: (offset * self sizeOfOop) + self sizeOfHeader
+	    loadP: regDest fromReg: regSrc im: ((offset - 1) * self sizeOfOop) + self sizeOfHeader
     ]
 
     fetchClassOop: regDest fromReg: regSrc [
