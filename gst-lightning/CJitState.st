@@ -428,7 +428,7 @@ CStruct subclass: CJitState [
         "Add an integer to a register. Result is store in a register
          This is a private primitive use #addI:to:ont: instead"
         <category: 'private dsl binary alu'>
-        <cCall: 'lightningSubI_UI' returning: #void args: #(#self #int #int #ulong)>
+        <cCall: 'lightningSubI_UL' returning: #void args: #(#self #int #int #ulong)>
     ]
 
     subR: regDst to: regSrc uint: reg [
