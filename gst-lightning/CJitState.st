@@ -3,8 +3,7 @@
 CStruct subclass: CJitState [
 
     <declaration: #( (#state (#ptr #long) )
-
-			 (#buffer #{CCodeBuffer} ) )>
+			     (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
@@ -684,9 +683,17 @@ CStruct subclass: CJitState [
         <cCall: 'lightningValueWithPtr' returning: #int args: #(#self #smalltalk)>
     ]
 
+    movI: reg fromString: aString [
+	"Move string to a register"
+	<category: 'dsl transfer'>
+
+	self primMovI: reg number fromString: aString
+    ]
+
     movI: reg fromP: ptr [
 	"Move pointer to a register"
 	<category: 'dsl transfer'>
+
 	self primMovI: reg number fromP: ptr
     ]
 
@@ -694,6 +701,14 @@ CStruct subclass: CJitState [
         "Move unsigned integer to a register"
         <category: 'dsl transfer'>
         self primMovI: reg number fromUI: int
+    ]
+
+    primMovI: regNumber fromString: ptr [
+        "Move string to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'dsl transfer'>
+
+        <cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
     ]
 
     primMovI: regNumber fromP: ptr [
