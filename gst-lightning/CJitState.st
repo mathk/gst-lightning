@@ -41,6 +41,12 @@ CStruct subclass: CJitState [
 	<cCall: 'lightningPrint' returning: #void args: #(#self)>
     ]
 
+    printAddr [
+	"Print the addresse opcode"
+	<category: 'debugging'>
+	<cCall: 'lightningPrintAddr' returning: #void args: #(#self)>
+    ]
+
     dump: fileName [
 	"Print the state opcode"
 	<category: 'debugging'>

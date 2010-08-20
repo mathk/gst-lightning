@@ -1950,6 +1950,13 @@ stateDump (jit_stack * jitStack, char *fileName)
 #undef _jit
 }
 
+void
+statePrintAddr (jit_stack * jitStack)
+{
+	printf ("Stack addr: %x\n", (unsigned int)jitStack);
+	printf ("Code buffer addr: %x\n", (unsigned int)jitStack->codeBuffer);
+}
+
 unsigned int
 sizeOfOop ()
 {
@@ -1981,6 +1988,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningPrint", statePrint);
   _gst_vm_proxy->defineCFunc ("lightningBreakpoint", breakpoint);
   _gst_vm_proxy->defineCFunc ("lightningDump", stateDump);
+	_gst_vm_proxy->defineCFunc ("lightningPrintAddr", statePrintAddr);
   _gst_vm_proxy->defineCFunc ("lightningTestStaticInt", testStaticInt);
   _gst_vm_proxy->defineCFunc ("lightningTestStaticIntAddress",
 			      testStaticIntAddress);
