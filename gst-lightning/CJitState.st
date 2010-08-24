@@ -1,9 +1,17 @@
 " Hey Emacs, I want -*- tab-width: 8; -*- "
+CStruct subclass: CStructJitState [
+     <declaration: #( (#x #ulong)
+		      (#fp (#ptr #char))
+                      (#nextargGet #int)
+                      (#nextargPut #int)
+                      (#delay  #uLong) )>
+]
+
 
 CStruct subclass: CJitState [
 
-    <declaration: #( (#state (#ptr #long) )
-			     (#buffer #{CCodeBuffer} ) )>
+    <declaration: #( (#state #{CStructJitState})
+		     (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
