@@ -2053,6 +2053,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningLshI_I", lshi_i);
   _gst_vm_proxy->defineCFunc ("lightningLshR_I", lshr_i);
   _gst_vm_proxy->defineCFunc ("lightningRshI_I", rshi_i);
+  _gst_vm_proxy->defineCFunc ("lightningRshR_I", rshr_i);
   _gst_vm_proxy->defineCFunc ("lightningRshI_UI", rshi_ui);
   _gst_vm_proxy->defineCFunc ("lightningRshR_UI", rshr_ui);
 

@@ -1,6 +1,6 @@
 " Hey Emacs, I want -*- tab-width: 8; -*- "
 CStruct subclass: CStructJitState [
-     <declaration: #( (#x #ulong)
+     <declaration: #( (#x #uLong)
 		      (#fp (#ptr #char))
                       (#nextargGet #int)
                       (#nextargPut #int)
@@ -531,17 +531,32 @@ CStruct subclass: CJitState [
         <cCall: 'lightningXorR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
+    lshI: regDst to: regSrc int: val [
+	<category: 'dsl binary alu'>
+	self primLshI: regDst number to: regSrc number int: val
+    ]
+
     primLshI: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningLshI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primLshR: regDstNumber to: regSrcNumber int: val [
+    lshR: regDst to: regSrc1 and: regSrc2 [
+	<category: 'dsl binary alu'>
+	self primLshR: regDst number to: regSrc1 number and: regSrc2 number
+    ]
+
+    primLshR: regDstNumber to: regSrcNum1 and: regSrcNum2 [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningLshR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primRshISigned: regDstNumber to: regSrcNumber int: val [
+    rshI: regDst to: regSrc int: val [
+	<category: 'dsl binary alu'>
+	self primRshI: regDst number to: regSrc number int: val
+    ]
+
+    primRshI: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningRshI_I' returning: #void args: #(#self #int #int #int)>
     ]
@@ -551,9 +566,14 @@ CStruct subclass: CJitState [
         <cCall: 'lightningRshI_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primRshR: regDstNumber to: regSrcNumber int: val [
+    rshR: regDst to: regSrc1 and: regSrc2 [
+	<category: 'private dsl binary alu'>
+	self primRshR: regDst number to: regSrc1 number and: regSrc2 number
+    ]
+
+    primRshR: regDstNumber to: regSrcNum1 and: regSrcNum2 [
         <category: 'private dsl binary alu'>
-        <cCall: 'lightningRshR_UI' returning: #void args: #(#self #int #int #int)>
+        <cCall: 'lightningRshR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
     primNegR: regDstNumber to: regSrcNumber int: val [
@@ -1866,6 +1886,10 @@ CStruct subclass: CJitState [
 	self 
 	    loadP: regSrc fromReg: regSrc;
 	    loadP: regDest fromReg: regSrc im: self sizeOfOop
+    ]
+
+    fromInt: reg [
+	self "To be continue"
     ]
 
     sizeOfOop [
