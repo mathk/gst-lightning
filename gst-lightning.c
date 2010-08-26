@@ -317,6 +317,14 @@ lshi_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
+lshi_ui (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_lshi_ui (i, j, k);
+#undef _jit
+}
+
+void
 rshi_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -409,6 +417,14 @@ movi_ui (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
   jit_movi_ui (i, j);
+#undef _jit
+}
+
+void
+movi_ul (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_movi_ul (i, j);
 #undef _jit
 }
 
@@ -2051,6 +2067,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningXorR_I", xorr_i);
   _gst_vm_proxy->defineCFunc ("lightningXorI_I", xori_i);
   _gst_vm_proxy->defineCFunc ("lightningLshI_I", lshi_i);
+  _gst_vm_proxy->defineCFunc ("lightningLshI_UI", lshi_ui);
   _gst_vm_proxy->defineCFunc ("lightningLshR_I", lshr_i);
   _gst_vm_proxy->defineCFunc ("lightningRshI_I", rshi_i);
   _gst_vm_proxy->defineCFunc ("lightningRshR_I", rshr_i);
@@ -2116,6 +2133,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningMovR_UI", movr_ui);
   _gst_vm_proxy->defineCFunc ("lightningMovI_I", movi_i);
   _gst_vm_proxy->defineCFunc ("lightningMovI_UI", movi_ui);
+  _gst_vm_proxy->defineCFunc ("lightningMovI_UL", movi_ul);
   _gst_vm_proxy->defineCFunc ("lightningMovI_P", movi_p);
 
   _gst_vm_proxy->defineCFunc ("lightningNtoH_UI", ntoh_ui);

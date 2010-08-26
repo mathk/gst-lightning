@@ -463,6 +463,26 @@ CStruct subclass: CJitState [
         <cCall: 'lightningSubR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
+    mulI: regDst to: regSrc int:val [
+	<category: 'dsl binary alu'>
+	self primMulI: regDst number to: regSrc number int: val
+    ]
+
+    primMulI: regDstNum to: regSrcNum int: val [
+	<category: 'private dsl binary alu'>
+	<cCall: 'lightningMulI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    mulI: regDst to: regSrc uint:val [
+	<category: 'dsl binary alu'>
+	self primMulI: regDst number to: regSrc number uint: val
+    ]
+
+    primMulI: regDstNum to: regSrcNum uint: val [
+	<category: 'private dsl binary alu'>
+	<cCall: 'lightningMulI_UI' returning: #void args: #(#self #int #int #uint)>
+    ]
+
     mulR: regDst to: regSrc int: regVal [
         <category: 'dsl binary alu'>
 
@@ -529,6 +549,16 @@ CStruct subclass: CJitState [
     primXorR: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningXorR_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    lshI: regDst to: regSrc uint: val [
+	<category: 'dsl binary alu'>
+	self primLshI: regDst number to: regSrc number uint: val
+    ]
+
+    primLshI: regDstNumber to: regSrcNumber uint: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLshI_UI' returning: #void args: #(#self #int #int #uint)>
     ]
 
     lshI: regDst to: regSrc int: val [
@@ -743,6 +773,12 @@ CStruct subclass: CJitState [
         self primMovI: reg number fromUI: int
     ]
 
+    movI: reg fromUL: int [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovI: reg number fromUL: int
+    ]
+
     primMovI: regNumber fromString: ptr [
         "Move string to a register
          This is a private primitive use #movI:fromP: instead"
@@ -762,7 +798,14 @@ CStruct subclass: CJitState [
         "Move unsigned integer to a register
          This is a private primitive use #movI:fromP: instead"
         <category: 'private-primitive'>
-        <cCall: 'lightningMovI_UI' returning: #void args: #(#self #int #int)>
+        <cCall: 'lightningMovI_UI' returning: #void args: #(#self #int #uint)>
+    ]
+
+    primMovI: regNumber fromUL: int [
+        "Move unsigned integer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'private-primitive'>
+        <cCall: 'lightningMovI_UL' returning: #void args: #(#self #int #ulong)>
     ]
 
     movR: reg fromUI: regSrc [
@@ -1888,8 +1931,13 @@ CStruct subclass: CJitState [
 	    loadP: regDest fromReg: regSrc im: self sizeOfOop
     ]
 
-    fromInt: reg [
-	self "To be continue"
+    fromInt: regInt [
+	self lshI: regInt to: regInt uint: 1.
+	self addI: regInt to: regInt ulong: 1
+    ]
+
+    toInt: regOop [
+	self rshI: regOop to: regOop int: 1
     ]
 
     sizeOfOop [
