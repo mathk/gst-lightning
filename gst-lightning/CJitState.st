@@ -35,12 +35,12 @@ CStruct subclass: CJitState [
 	    yourself
     ]
 
-    | codeBuffer |
+    | codeBuffer jumpMap |
 
     initialize [
 	<category: 'initialize'>
-
-	codeBuffer := self buffer
+	codeBuffer := self buffer.
+	jumpMap := Dictionary new
     ]
 
     print [
@@ -791,7 +791,7 @@ CStruct subclass: CJitState [
 	"Move pointer to a register
 	 This is a private primitive use #movI:fromP: instead"
 	<category: 'dsl transfer'>
-	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #ulong)>
+	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #smalltalk)>
     ]
 
     primMovI: regNumber fromUI: int [
@@ -855,6 +855,18 @@ CStruct subclass: CJitState [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
         <cCall: 'lightningBneI_UI' returning: #int args: #(#self #int #int #int)>
+    ]
+
+    branch: dir reg: reg1 regEqualToUL: reg2 [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        ^ self primBranch: dir reg: reg1 number regEqualToUL: reg2 number
+    ]
+
+    primBranch: dir reg: regNumber1 regEqualToUL: regNumber2 [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        <cCall: 'lightningBeqR_UL' returning: #int args: #(#self #int #int #int)>
     ]
 
     forward [
@@ -1932,12 +1944,28 @@ CStruct subclass: CJitState [
     ]
 
     fromInt: regInt [
+	<category: 'oop load'>
 	self lshI: regInt to: regInt uint: 1.
 	self addI: regInt to: regInt ulong: 1
     ]
 
     toInt: regOop [
+	<category: 'oop load'>
 	self rshI: regOop to: regOop int: 1
+    ]
+
+    jumpTo: label if: reg1 equal: reg2 [
+	| ip |
+	ip := jumpMap at: label ifAbsentPut: [self forward].
+	self branch: ip reg: reg1 regEqualToUL: reg2 
+    ]
+
+    jumpLabel: label [
+	| forward |
+	forward := jumpMap at: label ifAbsent:[
+	    ^jumpMap at: label put: self label
+	].
+	self patch: forward
     ]
 
     sizeOfOop [

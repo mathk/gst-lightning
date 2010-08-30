@@ -664,6 +664,14 @@ bner_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 jit_insn *
+beqr_ul (jit_stack * jitStack, int i, int j, int k)
+{
+#define _jit (jitStack->state)
+  jit_beqr_ul (i, j, k);
+#undef _jit
+}
+
+jit_insn *
 bltr_ui (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -2080,6 +2088,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningBltI_I", blti_i);
   _gst_vm_proxy->defineCFunc ("lightningBltI_UI", blti_ui);
   _gst_vm_proxy->defineCFunc ("lightningBneI_UI", bnei_ui);
+  _gst_vm_proxy->defineCFunc ("lightningBeqR_UL", beqr_ul);
 
   _gst_vm_proxy->defineCFunc ("lightningForward", forward);
   _gst_vm_proxy->defineCFunc ("lightningGetLabel", get_label);
