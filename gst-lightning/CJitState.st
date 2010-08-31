@@ -821,28 +821,33 @@ CStruct subclass: CJitState [
         <cCall: 'lightningMovR_UI' returning: #void args: #(#self #int #int)>
     ]
 
+    branch: label [
+	<category: 'dsl branch'>
+	<cCall: 'lightningJmpi' returning: #ulong args: #(#self #ulong)>
+    ]
+
     branch: dir reg: regNumber lowerThanI: int [
         "Jump to direction if reg < int "
-        <category: 'private-primitive'>
+        <category: 'dsl branch'>
 	^ self primBranch: dir reg: regNumber number lowerThanI: int
     ]
 
     primBranch: dir reg: regNumber lowerThanI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBltI_I' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBltI_I' returning: #ulong args: #(#self #int #int #int)>
     ]
 
     branch: dir reg: regNumber lowerThanUI: int [
         "Jump to direction if reg < int "
-        <category: 'private-primitive'>
+        <category: 'dsl branch'>
 	^ self primBranch: dir reg: regNumber number lowerThanUI: int
     ]
 
     primBranch: dir reg: regNumber lowerThanUI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBltI_UI' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBltI_UI' returning: #ulong args: #(#self #int #int #int)>
     ]
 
     branch: dir reg: regNumber notEqualToUI: int [
@@ -854,7 +859,7 @@ CStruct subclass: CJitState [
     primBranch: dir reg: regNumber notEqualToUI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBneI_UI' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBneI_UI' returning: #ulong args: #(#self #int #int #int)>
     ]
 
     branch: dir reg: reg1 regEqualToUL: reg2 [
@@ -866,25 +871,25 @@ CStruct subclass: CJitState [
     primBranch: dir reg: regNumber1 regEqualToUL: regNumber2 [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBeqR_UL' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBeqR_UL' returning: #ulong args: #(#self #ulong #int #int)>
     ]
 
     forward [
 	"Jump to direction if reg < int "
         <category: 'dsl jump'>
-        <cCall: 'lightningForward' returning: #int args: #(#self)>
+        <cCall: 'lightningForward' returning: #ulong args: #(#self)>
     ]
 
     label [
         "Return the label "
         <category: 'dsl jump'>
-        <cCall: 'lightningGetLabel' returning: #int args: #(#self)>
+        <cCall: 'lightningGetLabel' returning: #ulong args: #(#self)>
     ]
 
-    patch: int [
+    patch: long [
         "Patch the forward jump "
         <category: 'dsl jump'>
-        <cCall: 'lightningPatch' returning: #void args: #(#self #int)>
+        <cCall: 'lightningPatch' returning: #void args: #(#self #ulong)>
     ]
 
 "sti"
@@ -1954,18 +1959,33 @@ CStruct subclass: CJitState [
 	self rshI: regOop to: regOop int: 1
     ]
 
+    jumpTo: label [
+	self branchToLabel: label 
+	     withInstruction:  [:ip | self branch: ip]
+    ]
+
     jumpTo: label if: reg1 equal: reg2 [
-	| ip |
-	ip := jumpMap at: label ifAbsentPut: [self forward].
-	self branch: ip reg: reg1 regEqualToUL: reg2 
+	self branchToLabel: label 
+	     withInstruction:  [:ip | self branch: ip reg: reg1 regEqualToUL: reg2]
     ]
 
     jumpLabel: label [
 	| forward |
+
 	forward := jumpMap at: label ifAbsent:[
 	    ^jumpMap at: label put: self label
 	].
 	self patch: forward
+    ]
+
+    branchToLabel: label withInstruction: block [
+	| ip |
+	ip := jumpMap at: label ifAbsent: [
+	    ^jumpMap 
+                at: label
+		put: (block value: self forward)
+	].
+	block value: ip
     ]
 
     sizeOfOop [
