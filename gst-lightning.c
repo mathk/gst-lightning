@@ -405,6 +405,14 @@ movr_ui (jit_stack * jitStack, int i, int j)
 }
 
 void
+movr_ul (jit_stack * jitStack, int i, int j)
+{
+#define _jit (jitStack->state)
+  jit_movr_ul (i, j);
+#undef _jit
+}
+
+void
 movi_i (jit_stack * jitStack, int i, int j)
 {
 #define _jit (jitStack->state)
@@ -2141,6 +2149,7 @@ gst_initModule (VMProxy * proxy)
 
   _gst_vm_proxy->defineCFunc ("lightningMovR_I", movr_i);
   _gst_vm_proxy->defineCFunc ("lightningMovR_UI", movr_ui);
+	  _gst_vm_proxy->defineCFunc ("lightningMovR_UL", movr_ul);
   _gst_vm_proxy->defineCFunc ("lightningMovI_I", movi_i);
   _gst_vm_proxy->defineCFunc ("lightningMovI_UI", movi_ui);
   _gst_vm_proxy->defineCFunc ("lightningMovI_UL", movi_ul);

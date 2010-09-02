@@ -821,6 +821,19 @@ CStruct subclass: CJitState [
         <cCall: 'lightningMovR_UI' returning: #void args: #(#self #int #int)>
     ]
 
+    movR: reg fromUL: regSrc [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovR: reg number fromUI: regSrc number
+    ]
+
+    primMovR: regNumber fromUL: int [
+        "Move pointer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'dsl transfer'>
+        <cCall: 'lightningMovR_UL' returning: #void args: #(#self #int #int)>
+    ]
+
     branch: label [
 	<category: 'dsl branch'>
 	<cCall: 'lightningJmpi' returning: #ulong args: #(#self #ulong)>
