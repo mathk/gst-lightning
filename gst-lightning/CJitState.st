@@ -1,9 +1,17 @@
 " Hey Emacs, I want -*- tab-width: 8; -*- "
+CStruct subclass: CStructJitState [
+     <declaration: #( (#x #uLong)
+		      (#fp (#ptr #char))
+                      (#nextargGet #int)
+                      (#nextargPut #int)
+                      (#delay  #uLong) )>
+]
+
 
 CStruct subclass: CJitState [
 
-    <declaration: #( (#state (#ptr #long) )
-			     (#buffer #{CCodeBuffer} ) )>
+    <declaration: #( (#state #{CStructJitState})
+		     (#buffer #{CCodeBuffer} ) )>
 
     CJitState class >> primGstThisContextOOP [
 	<category: 'primitive'>
@@ -27,18 +35,24 @@ CStruct subclass: CJitState [
 	    yourself
     ]
 
-    | codeBuffer |
+    | codeBuffer jumpMap |
 
     initialize [
 	<category: 'initialize'>
-
-	codeBuffer := self buffer
+	codeBuffer := self buffer.
+	jumpMap := Dictionary new
     ]
 
     print [
 	"Print the state opcode"
 	<category: 'debugging'>
 	<cCall: 'lightningPrint' returning: #void args: #(#self)>
+    ]
+
+    printAddr [
+	"Print the addresse opcode"
+	<category: 'debugging'>
+	<cCall: 'lightningPrintAddr' returning: #void args: #(#self)>
     ]
 
     dump: fileName [
@@ -449,6 +463,26 @@ CStruct subclass: CJitState [
         <cCall: 'lightningSubR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
+    mulI: regDst to: regSrc int:val [
+	<category: 'dsl binary alu'>
+	self primMulI: regDst number to: regSrc number int: val
+    ]
+
+    primMulI: regDstNum to: regSrcNum int: val [
+	<category: 'private dsl binary alu'>
+	<cCall: 'lightningMulI_I' returning: #void args: #(#self #int #int #int)>
+    ]
+
+    mulI: regDst to: regSrc uint:val [
+	<category: 'dsl binary alu'>
+	self primMulI: regDst number to: regSrc number uint: val
+    ]
+
+    primMulI: regDstNum to: regSrcNum uint: val [
+	<category: 'private dsl binary alu'>
+	<cCall: 'lightningMulI_UI' returning: #void args: #(#self #int #int #uint)>
+    ]
+
     mulR: regDst to: regSrc int: regVal [
         <category: 'dsl binary alu'>
 
@@ -517,17 +551,42 @@ CStruct subclass: CJitState [
         <cCall: 'lightningXorR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
+    lshI: regDst to: regSrc uint: val [
+	<category: 'dsl binary alu'>
+	self primLshI: regDst number to: regSrc number uint: val
+    ]
+
+    primLshI: regDstNumber to: regSrcNumber uint: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningLshI_UI' returning: #void args: #(#self #int #int #uint)>
+    ]
+
+    lshI: regDst to: regSrc int: val [
+	<category: 'dsl binary alu'>
+	self primLshI: regDst number to: regSrc number int: val
+    ]
+
     primLshI: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningLshI_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primLshR: regDstNumber to: regSrcNumber int: val [
+    lshR: regDst to: regSrc1 and: regSrc2 [
+	<category: 'dsl binary alu'>
+	self primLshR: regDst number to: regSrc1 number and: regSrc2 number
+    ]
+
+    primLshR: regDstNumber to: regSrcNum1 and: regSrcNum2 [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningLshR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primRshISigned: regDstNumber to: regSrcNumber int: val [
+    rshI: regDst to: regSrc int: val [
+	<category: 'dsl binary alu'>
+	self primRshI: regDst number to: regSrc number int: val
+    ]
+
+    primRshI: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningRshI_I' returning: #void args: #(#self #int #int #int)>
     ]
@@ -537,9 +596,14 @@ CStruct subclass: CJitState [
         <cCall: 'lightningRshI_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
-    primRshR: regDstNumber to: regSrcNumber int: val [
+    rshR: regDst to: regSrc1 and: regSrc2 [
+	<category: 'private dsl binary alu'>
+	self primRshR: regDst number to: regSrc1 number and: regSrc2 number
+    ]
+
+    primRshR: regDstNumber to: regSrcNum1 and: regSrcNum2 [
         <category: 'private dsl binary alu'>
-        <cCall: 'lightningRshR_UI' returning: #void args: #(#self #int #int #int)>
+        <cCall: 'lightningRshR_I' returning: #void args: #(#self #int #int #int)>
     ]
 
     primNegR: regDstNumber to: regSrcNumber int: val [
@@ -709,6 +773,12 @@ CStruct subclass: CJitState [
         self primMovI: reg number fromUI: int
     ]
 
+    movI: reg fromUL: int [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovI: reg number fromUL: int
+    ]
+
     primMovI: regNumber fromString: ptr [
         "Move string to a register
          This is a private primitive use #movI:fromP: instead"
@@ -721,14 +791,21 @@ CStruct subclass: CJitState [
 	"Move pointer to a register
 	 This is a private primitive use #movI:fromP: instead"
 	<category: 'dsl transfer'>
-	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #ulong)>
+	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #smalltalk)>
     ]
 
     primMovI: regNumber fromUI: int [
         "Move unsigned integer to a register
          This is a private primitive use #movI:fromP: instead"
         <category: 'private-primitive'>
-        <cCall: 'lightningMovI_UI' returning: #void args: #(#self #int #int)>
+        <cCall: 'lightningMovI_UI' returning: #void args: #(#self #int #uint)>
+    ]
+
+    primMovI: regNumber fromUL: int [
+        "Move unsigned integer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'private-primitive'>
+        <cCall: 'lightningMovI_UL' returning: #void args: #(#self #int #ulong)>
     ]
 
     movR: reg fromUI: regSrc [
@@ -744,28 +821,46 @@ CStruct subclass: CJitState [
         <cCall: 'lightningMovR_UI' returning: #void args: #(#self #int #int)>
     ]
 
+    movR: reg fromUL: regSrc [
+        "Move unsigned integer to a register"
+        <category: 'dsl transfer'>
+        self primMovR: reg number fromUI: regSrc number
+    ]
+
+    primMovR: regNumber fromUL: int [
+        "Move pointer to a register
+         This is a private primitive use #movI:fromP: instead"
+        <category: 'dsl transfer'>
+        <cCall: 'lightningMovR_UL' returning: #void args: #(#self #int #int)>
+    ]
+
+    branch: label [
+	<category: 'dsl branch'>
+	<cCall: 'lightningJmpi' returning: #ulong args: #(#self #ulong)>
+    ]
+
     branch: dir reg: regNumber lowerThanI: int [
         "Jump to direction if reg < int "
-        <category: 'private-primitive'>
+        <category: 'dsl branch'>
 	^ self primBranch: dir reg: regNumber number lowerThanI: int
     ]
 
     primBranch: dir reg: regNumber lowerThanI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBltI_I' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBltI_I' returning: #ulong args: #(#self #int #int #int)>
     ]
 
     branch: dir reg: regNumber lowerThanUI: int [
         "Jump to direction if reg < int "
-        <category: 'private-primitive'>
+        <category: 'dsl branch'>
 	^ self primBranch: dir reg: regNumber number lowerThanUI: int
     ]
 
     primBranch: dir reg: regNumber lowerThanUI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBltI_UI' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBltI_UI' returning: #ulong args: #(#self #int #int #int)>
     ]
 
     branch: dir reg: regNumber notEqualToUI: int [
@@ -777,25 +872,37 @@ CStruct subclass: CJitState [
     primBranch: dir reg: regNumber notEqualToUI: int [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
-        <cCall: 'lightningBneI_UI' returning: #int args: #(#self #int #int #int)>
+        <cCall: 'lightningBneI_UI' returning: #ulong args: #(#self #int #int #int)>
+    ]
+
+    branch: dir reg: reg1 regEqualToUL: reg2 [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        ^ self primBranch: dir reg: reg1 number regEqualToUL: reg2 number
+    ]
+
+    primBranch: dir reg: regNumber1 regEqualToUL: regNumber2 [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        <cCall: 'lightningBeqR_UL' returning: #ulong args: #(#self #ulong #int #int)>
     ]
 
     forward [
 	"Jump to direction if reg < int "
         <category: 'dsl jump'>
-        <cCall: 'lightningForward' returning: #int args: #(#self)>
+        <cCall: 'lightningForward' returning: #ulong args: #(#self)>
     ]
 
     label [
         "Return the label "
         <category: 'dsl jump'>
-        <cCall: 'lightningGetLabel' returning: #int args: #(#self)>
+        <cCall: 'lightningGetLabel' returning: #ulong args: #(#self)>
     ]
 
-    patch: int [
+    patch: long [
         "Patch the forward jump "
         <category: 'dsl jump'>
-        <cCall: 'lightningPatch' returning: #void args: #(#self #int)>
+        <cCall: 'lightningPatch' returning: #void args: #(#self #ulong)>
     ]
 
 "sti"
@@ -1852,6 +1959,46 @@ CStruct subclass: CJitState [
 	self 
 	    loadP: regSrc fromReg: regSrc;
 	    loadP: regDest fromReg: regSrc im: self sizeOfOop
+    ]
+
+    fromInt: regInt [
+	<category: 'oop load'>
+	self lshI: regInt to: regInt uint: 1.
+	self addI: regInt to: regInt ulong: 1
+    ]
+
+    toInt: regOop [
+	<category: 'oop load'>
+	self rshI: regOop to: regOop int: 1
+    ]
+
+    jumpTo: label [
+	self branchToLabel: label 
+	     withInstruction:  [:ip | self branch: ip]
+    ]
+
+    jumpTo: label if: reg1 equal: reg2 [
+	self branchToLabel: label 
+	     withInstruction:  [:ip | self branch: ip reg: reg1 regEqualToUL: reg2]
+    ]
+
+    jumpLabel: label [
+	| forward |
+
+	forward := jumpMap at: label ifAbsent:[
+	    ^jumpMap at: label put: self label
+	].
+	self patch: forward
+    ]
+
+    branchToLabel: label withInstruction: block [
+	| ip |
+	ip := jumpMap at: label ifAbsent: [
+	    ^jumpMap 
+                at: label
+		put: (block value: self forward)
+	].
+	block value: ip
     ]
 
     sizeOfOop [
