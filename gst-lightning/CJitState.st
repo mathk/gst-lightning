@@ -307,7 +307,7 @@ CStruct subclass: CJitState [
     pushargPtr: reg [
 	"Push an pointer in the stack"
 	<category: 'dsl argument'>
-	self primPushargInt: reg number
+	self primPushargPtr: reg number
     
     ]
 
@@ -1973,12 +1973,19 @@ CStruct subclass: CJitState [
     ]
 
     jumpTo: label [
-	self branchToLabel: label 
+	self label: label 
 	     withInstruction:  [:ip | self branch: ip]
     ]
 
+    movI: reg fromIp: label [
+        "Move instruction address to a register"
+        <category: 'dsl transfer'>
+	self label: label
+	     withInstruction:  [:ip | self primMovI: reg number fromUL: ip ]
+    ]
+
     jumpTo: label if: reg1 equal: reg2 [
-	self branchToLabel: label 
+	self label: label 
 	     withInstruction:  [:ip | self branch: ip reg: reg1 regEqualToUL: reg2]
     ]
 
@@ -1991,7 +1998,7 @@ CStruct subclass: CJitState [
 	self patch: forward
     ]
 
-    branchToLabel: label withInstruction: block [
+    label: label withInstruction: block [
 	| ip |
 	ip := jumpMap at: label ifAbsent: [
 	    ^jumpMap 
