@@ -436,11 +436,11 @@ movi_ul (jit_stack * jitStack, int i, unsigned long j)
 #undef _jit
 }
 
-void
+jit_insn *
 movi_p (jit_stack * jitStack, int i, unsigned long j)
 {
 #define _jit (jitStack->state)
-  jit_movi_p (i, j);
+  return jit_movi_p (i, j);
 #undef _jit
 }
 
@@ -1816,6 +1816,14 @@ pusharg_i (jit_stack * jitStack, int reg)
 }
 
 void
+pusharg_ul (jit_stack * jitStack, int reg)
+{
+#define _jit (jitStack->state)
+  jit_pusharg_ul (reg);
+#undef _jit
+}
+
+void
 pusharg_p (jit_stack * jitStack, int reg)
 {
 #define _jit (jitStack->state)
@@ -2051,6 +2059,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningGetargP", getarg_p);
   _gst_vm_proxy->defineCFunc ("lightningPusharg_I", pusharg_i);
   _gst_vm_proxy->defineCFunc ("lightningPusharg_P", pusharg_p);
+  _gst_vm_proxy->defineCFunc ("lightningPusharg_UL", pusharg_ul);
   _gst_vm_proxy->defineCFunc ("lightningFinish", finish);
   _gst_vm_proxy->defineCFunc ("lightningR0", R0);
   _gst_vm_proxy->defineCFunc ("lightningR1", R1);

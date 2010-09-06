@@ -301,7 +301,20 @@ CStruct subclass: CJitState [
 	 This is a private primitive use #pushargInt: instead"
 	<category: 'dsl argument'>
 	<cCall: 'lightningPusharg_I' returning: #void args: #(#self #int)>
+    ]
+
+    pushargUL: reg [
+	"Push an int in the stack"
+	<category: 'dsl argument'>
+	self primPushargUL: reg number
     
+    ]
+
+    primPushargUL: regNumber [
+	"Push an int in the stack
+	 This is a private primitive use #pushargInt: instead"
+	<category: 'dsl argument'>
+	<cCall: 'lightningPusharg_UL' returning: #void args: #(#self #int)>
     ]
 
     pushargPtr: reg [
@@ -760,11 +773,18 @@ CStruct subclass: CJitState [
 	self primMovI: reg number fromString: aString
     ]
 
-    movI: reg fromP: ptr [
+    movI: reg fromObjectP: ptr [
 	"Move pointer to a register"
 	<category: 'dsl transfer'>
 
-	self primMovI: reg number fromP: ptr
+	self primMovI: reg number fromObjectP: ptr
+    ]
+
+    movI: reg fromIntegerP: ptr [
+	"Move pointer to a register"
+	<category: 'dsl transfer'>
+
+	self primMovI: reg number fromIntegerP: ptr
     ]
 
     movI: reg fromUI: int [
@@ -787,11 +807,18 @@ CStruct subclass: CJitState [
         <cCall: 'lightningMovI_P' returning: #void args: #(#self #int #string)>
     ]
 
-    primMovI: regNumber fromP: ptr [
+    primMovI: regNumber fromObjectP: ptr [
 	"Move pointer to a register
 	 This is a private primitive use #movI:fromP: instead"
 	<category: 'dsl transfer'>
-	<cCall: 'lightningMovI_P' returning: #void args: #(#self #int #smalltalk)>
+	<cCall: 'lightningMovI_P' returning: #ulong args: #(#self #int #smalltalk)>
+    ]
+
+    primMovI: regNumber fromIntegerP: ptr [
+	"Move pointer to a register
+	 This is a private primitive use #movI:fromP: instead"
+	<category: 'dsl transfer'>
+	<cCall: 'lightningMovI_P' returning: #ulong args: #(#self #int #ulong)>
     ]
 
     primMovI: regNumber fromUI: int [
@@ -1981,7 +2008,7 @@ CStruct subclass: CJitState [
         "Move instruction address to a register"
         <category: 'dsl transfer'>
 	self label: label
-	     withInstruction:  [:ip | self primMovI: reg number fromUL: ip ]
+	     withInstruction:  [:ip | self primMovI: reg number fromIntegerP: ip ]
     ]
 
     jumpTo: label if: reg1 equal: reg2 [
