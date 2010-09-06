@@ -932,6 +932,12 @@ CStruct subclass: CJitState [
         <cCall: 'lightningPatch' returning: #void args: #(#self #ulong)>
     ]
 
+    patchMovI: long [
+        "Patch the forward jump "
+        <category: 'dsl jump'>
+        <cCall: 'lightningPatchMovI' returning: #void args: #(#self #ulong)>
+    ]
+
 "sti"
     storeImC: im fromReg: regSrc [
 	<category: 'store'>
@@ -2001,19 +2007,19 @@ CStruct subclass: CJitState [
 
     jumpTo: label [
 	self label: label 
-	     withInstruction:  [:ip | self branch: ip]
+	     withInstruction:  [:ip | (self branch: ip) -> [:ip | self patch: ip]]
     ]
 
     movI: reg fromIp: label [
         "Move instruction address to a register"
         <category: 'dsl transfer'>
 	self label: label
-	     withInstruction:  [:ip | self primMovI: reg number fromIntegerP: ip ]
+	     withInstruction:  [:ip | (self primMovI: reg number fromIntegerP: ip) -> [:ip | self patchMovI: ip] ]
     ]
 
     jumpTo: label if: reg1 equal: reg2 [
 	self label: label 
-	     withInstruction:  [:ip | self branch: ip reg: reg1 regEqualToUL: reg2]
+	     withInstruction:  [:ip | (self branch: ip reg: reg1 regEqualToUL: reg2) -> [:ip | self patch: ip]]
     ]
 
     jumpLabel: label [
@@ -2022,7 +2028,7 @@ CStruct subclass: CJitState [
 	forward := jumpMap at: label ifAbsent:[
 	    ^jumpMap at: label put: self label
 	].
-	self patch: forward
+	forward value value: forward key
     ]
 
     label: label withInstruction: block [

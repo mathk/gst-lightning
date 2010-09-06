@@ -1621,6 +1621,14 @@ patch (jit_stack * jitStack, jit_insn * label)
 #undef _jit
 }
 
+void
+patch_movi (jit_stack * jitStack, jit_insn * label)
+{
+#define _jit (jitStack->state)
+  jit_patch_movi (label, _jit.x.pc);
+#undef _jit
+}
+
 jit_code
 get_ip (jit_stack * jitStack)
 {
@@ -2111,6 +2119,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningForward", forward);
   _gst_vm_proxy->defineCFunc ("lightningGetLabel", get_label);
   _gst_vm_proxy->defineCFunc ("lightningPatch", patch);
+  _gst_vm_proxy->defineCFunc ("lightningPatchMovI",patch_movi);
 
   _gst_vm_proxy->defineCFunc ("lightningLtR_I", ltr_i);
   _gst_vm_proxy->defineCFunc ("lightningLeR_I", ler_i);
