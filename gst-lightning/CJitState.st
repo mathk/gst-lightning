@@ -534,10 +534,25 @@ CStruct subclass: CJitState [
         <cCall: 'lightningDivR_UI' returning: #void args: #(#self #int #int #int)>
     ]
 
+    andI: regDst to: regSrc int: anInteger [
+	 <category: 'dsl binary alu'>
+	self primAndI: regDst number to: regSrc number int: anInteger
+    ]
+
     primAndI: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
         <cCall: 'lightningAndI_I' returning: #void args: #(#self #int #int #int)>
-    ]   
+    ]
+
+    andI: regDst to: regSrc ulong: anInteger [
+	 <category: 'dsl binary alu'>
+	self primAndI: regDst number to: regSrc number ulong: anInteger
+    ]
+
+    primAndI: regDstNumber to: regSrcNumber ulong: val [
+        <category: 'private dsl binary alu'>
+        <cCall: 'lightningAndI_UL' returning: #void args: #(#self #int #int #ulong)>
+    ]  
 
     primAndR: regDstNumber to: regSrcNumber int: val [
         <category: 'private dsl binary alu'>
@@ -900,6 +915,18 @@ CStruct subclass: CJitState [
         "Jump to direction if reg < int "
         <category: 'private-primitive'>
         <cCall: 'lightningBneI_UI' returning: #ulong args: #(#self #int #int #int)>
+    ]
+
+    branch: dir reg: reg1 equalToUL: anInteger [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        ^ self primBranch: dir reg: reg1 number equalToUL: anInteger
+    ]
+
+    primBranch: dir reg: regNumber1 equalToUL: regNumber2 [
+        "Jump to direction if reg < int "
+        <category: 'private-primitive'>
+        <cCall: 'lightningBeqI_UL' returning: #ulong args: #(#self #ulong #int #ulong)>
     ]
 
     branch: dir reg: reg1 regEqualToUL: reg2 [
@@ -2020,6 +2047,11 @@ CStruct subclass: CJitState [
     jumpTo: label if: reg1 equal: reg2 [
 	self label: label 
 	     withInstruction:  [:ip | (self branch: ip reg: reg1 regEqualToUL: reg2) -> [:ip | self patch: ip]]
+    ]
+
+    jumpTo: label if: reg1 imEqualUL: anInteger  [
+	self label: label 
+	     withInstruction:  [:ip | (self branch: ip reg: reg1 equalToUL: anInteger) -> [:ip | self patch: ip]]
     ]
 
     jumpLabel: label [

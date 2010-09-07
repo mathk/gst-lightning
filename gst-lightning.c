@@ -101,6 +101,14 @@ andi_i (jit_stack * jitStack, int i, int j, int k)
 }
 
 void
+andi_ul (jit_stack * jitStack, int i, int j, unsigned long k)
+{
+#define _jit (jitStack->state)
+  jit_andi_ul (i, j, k);
+#undef _jit
+}
+
+void
 andr_i (jit_stack * jitStack, int i, int j, int k)
 {
 #define _jit (jitStack->state)
@@ -678,6 +686,15 @@ beqr_ul (jit_stack * jitStack, int i, int j, int k)
   return jit_beqr_ul (i, j, k);
 #undef _jit
 }
+
+jit_insn *
+beqi_ul (jit_stack * jitStack, int i, int j, unsigned long k)
+{
+#define _jit (jitStack->state)
+  return jit_beqi_ul (i, j, k);
+#undef _jit
+}
+
 
 jit_insn *
 bltr_ui (jit_stack * jitStack, int i, int j, int k)
@@ -2093,6 +2110,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningSubI_UI", subi_ui);
   _gst_vm_proxy->defineCFunc ("lightningSubI_UL", subi_ul);
 
+	_gst_vm_proxy->defineCFunc ("lightningAndI_UL", andi_ul);
   _gst_vm_proxy->defineCFunc ("lightningAndI_I", andi_i);
   _gst_vm_proxy->defineCFunc ("lightningAndR_I", andr_i);
   _gst_vm_proxy->defineCFunc ("lightningOrR_I", orr_i);
@@ -2114,6 +2132,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningBltI_UI", blti_ui);
   _gst_vm_proxy->defineCFunc ("lightningBneI_UI", bnei_ui);
   _gst_vm_proxy->defineCFunc ("lightningBeqR_UL", beqr_ul);
+  _gst_vm_proxy->defineCFunc ("lightningBeqI_UL", beqi_ul);
   _gst_vm_proxy->defineCFunc ("lightningJmpi", jmpi);
 
   _gst_vm_proxy->defineCFunc ("lightningForward", forward);
