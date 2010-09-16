@@ -1865,6 +1865,14 @@ finish (jit_stack * jitStack, void *fct)
 }
 
 void
+retval (jit_stack * jitStack, int i)
+{
+#define _jit (jitStack->state)
+  jit_retval (i);
+#undef _jit
+}
+
+void
 breakpoint (jit_stack * jitStack)
 {
 #define _jit (jitStack->state)
@@ -2086,6 +2094,7 @@ gst_initModule (VMProxy * proxy)
   _gst_vm_proxy->defineCFunc ("lightningPusharg_P", pusharg_p);
   _gst_vm_proxy->defineCFunc ("lightningPusharg_UL", pusharg_ul);
   _gst_vm_proxy->defineCFunc ("lightningFinish", finish);
+	_gst_vm_proxy->defineCFunc ("lightningRetVal", retval);
   _gst_vm_proxy->defineCFunc ("lightningR0", R0);
   _gst_vm_proxy->defineCFunc ("lightningR1", R1);
   _gst_vm_proxy->defineCFunc ("lightningR2", R2);

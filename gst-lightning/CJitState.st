@@ -343,6 +343,16 @@ CStruct subclass: CJitState [
 	<category: 'dsl call'>
 	<cCall: 'lightningFinish' returning: #void args: #(#self #ulong) >
     ]
+
+    retval: reg [
+	<category: 'dsl call'>
+	self primRetval: reg number
+    ]
+
+    primRetval: reg [
+	<category: 'dsl call'>
+	<cCall: 'lightningRetVal' returning: #void args: #(#self #int) >
+    ]
     
     addI: regDst to: regSrc int: val [
 	"Add an integer to a register. Result is store in a register"
